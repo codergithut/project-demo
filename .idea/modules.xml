@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/project-springboot-demo/project-springboot-demo.iml" filepath="$PROJECT_DIR$/project-springboot-demo/project-springboot-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-springboot-mybatis-plugin/project-springboot-mybatis-plugin.iml" filepath="$PROJECT_DIR$/project-springboot-mybatis-plugin/project-springboot-mybatis-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-wechart-demo/project-wechart-demo.iml" filepath="$PROJECT_DIR$/project-wechart-demo/project-wechart-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-wechart-service-demo/project-wechart-service-demo.iml" filepath="$PROJECT_DIR$/project-wechart-service-demo/project-wechart-service-demo.iml" />
     </modules>
   </component>
 </project>
