@@ -1,0 +1,5270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!--业务报文ID-->
+<xs:element name="BizMsgID">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="22"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--接入标准ID-->
+<xs:element name="ASID">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--行政区划编码-->
+<xs:element name="AreaCode">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--登记类型-->
+<xs:element name="RecType">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1234"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--权利类型-->
+<xs:element name="RightType">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--业务类型-->
+<xs:element name="RegType">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="80"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--创建时间-->
+<xs:element name="CreateDate" type="xs:dateTime"/>
+<!--业务流水号-->
+<xs:element name="RecFlowID">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--登记机构-->
+<xs:element name="RegOrgID">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--宗地/宗海代码-->
+<xs:element name="ParcelID">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--不动产单元号-->
+<xs:element name="EstateNum">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="28"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--数字签名-->
+<xs:element name="DigitalSign">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="500"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--来源不动产单元号-->
+<xs:element name="PreEstateNum">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="256"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--不动产权证号码数量-->
+<xs:element name="CertCount">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--证明号码数量-->
+<xs:element name="ProofCount">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--来源不动产权证号/不动产登记证明号-->
+<xs:element name="PreCertID">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="256"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<!--基础数据-->
+<xs:element name="Head">
+<xs:complexType>
+<xs:all>
+<xs:element ref="BizMsgID"/>
+<xs:element ref="ASID"/>
+<xs:element ref="AreaCode"/>
+<xs:element ref="RecType"/>
+<xs:element ref="RightType"/>
+<xs:element ref="RegType"/>
+<xs:element ref="CreateDate"/>
+<xs:element ref="RecFlowID"/>
+<xs:element ref="RegOrgID"/>
+<xs:element ref="ParcelID"/>
+<xs:element ref="EstateNum"/>
+<xs:element ref="DigitalSign"/>
+<xs:element ref="PreEstateNum"/>
+<xs:element ref="CertCount"/>
+<xs:element ref="ProofCount"/>
+<xs:element ref="PreCertID"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<!--要素代码-->
+<xs:attribute name="YSDM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--不动产单元号-->
+<xs:attribute name="BDCDYH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="28"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--顺序号-->
+<xs:attribute name="SXH">
+<xs:simpleType>
+<xs:restriction base="xs:integer"/>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人名称-->
+<xs:attribute name="QLRMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--不动产权证明号-->
+<xs:attribute name="BDCQZH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权证印刷序列号-->
+<xs:attribute name="QZYSXLH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--是否持证人-->
+<xs:attribute name="SFCZR">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--证件种类-->
+<xs:attribute name="ZJZL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+<xs:enumeration value="7"/>
+<xs:enumeration value="99"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--证件号-->
+<xs:attribute name="ZJH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--发证机关-->
+<xs:attribute name="FZJG">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--所属行业		-->
+<xs:attribute name="SSHY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="6"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--国家/地区-->
+<xs:attribute name="GJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="142"/>
+<xs:enumeration value="100"/>
+<xs:enumeration value="101"/>
+<xs:enumeration value="102"/>
+<xs:enumeration value="103"/>
+<xs:enumeration value="104"/>
+<xs:enumeration value="105"/>
+<xs:enumeration value="106"/>
+<xs:enumeration value="107"/>
+<xs:enumeration value="108"/>
+<xs:enumeration value="109"/>
+<xs:enumeration value="111"/>
+<xs:enumeration value="112"/>
+<xs:enumeration value="113"/>
+<xs:enumeration value="114"/>
+<xs:enumeration value="115"/>
+<xs:enumeration value="116"/>
+<xs:enumeration value="117"/>
+<xs:enumeration value="118"/>
+<xs:enumeration value="119"/>
+<xs:enumeration value="120"/>
+<xs:enumeration value="122"/>
+<xs:enumeration value="123"/>
+<xs:enumeration value="124"/>
+<xs:enumeration value="125"/>
+<xs:enumeration value="126"/>
+<xs:enumeration value="127"/>
+<xs:enumeration value="128"/>
+<xs:enumeration value="129"/>
+<xs:enumeration value="130"/>
+<xs:enumeration value="131"/>
+<xs:enumeration value="132"/>
+<xs:enumeration value="133"/>
+<xs:enumeration value="134"/>
+<xs:enumeration value="135"/>
+<xs:enumeration value="136"/>
+<xs:enumeration value="137"/>
+<xs:enumeration value="138"/>
+<xs:enumeration value="139"/>
+<xs:enumeration value="141"/>
+<xs:enumeration value="200"/>
+<xs:enumeration value="201"/>
+<xs:enumeration value="202"/>
+<xs:enumeration value="203"/>
+<xs:enumeration value="204"/>
+<xs:enumeration value="205"/>
+<xs:enumeration value="206"/>
+<xs:enumeration value="207"/>
+<xs:enumeration value="208"/>
+<xs:enumeration value="209"/>
+<xs:enumeration value="210"/>
+<xs:enumeration value="211"/>
+<xs:enumeration value="212"/>
+<xs:enumeration value="213"/>
+<xs:enumeration value="214"/>
+<xs:enumeration value="215"/>
+<xs:enumeration value="216"/>
+<xs:enumeration value="217"/>
+<xs:enumeration value="218"/>
+<xs:enumeration value="219"/>
+<xs:enumeration value="220"/>
+<xs:enumeration value="221"/>
+<xs:enumeration value="222"/>
+<xs:enumeration value="223"/>
+<xs:enumeration value="224"/>
+<xs:enumeration value="225"/>
+<xs:enumeration value="226"/>
+<xs:enumeration value="227"/>
+<xs:enumeration value="228"/>
+<xs:enumeration value="229"/>
+<xs:enumeration value="230"/>
+<xs:enumeration value="231"/>
+<xs:enumeration value="232"/>
+<xs:enumeration value="233"/>
+<xs:enumeration value="234"/>
+<xs:enumeration value="235"/>
+<xs:enumeration value="236"/>
+<xs:enumeration value="237"/>
+<xs:enumeration value="238"/>
+<xs:enumeration value="239"/>
+<xs:enumeration value="240"/>
+<xs:enumeration value="241"/>
+<xs:enumeration value="242"/>
+<xs:enumeration value="243"/>
+<xs:enumeration value="244"/>
+<xs:enumeration value="245"/>
+<xs:enumeration value="246"/>
+<xs:enumeration value="247"/>
+<xs:enumeration value="248"/>
+<xs:enumeration value="249"/>
+<xs:enumeration value="250"/>
+<xs:enumeration value="251"/>
+<xs:enumeration value="252"/>
+<xs:enumeration value="253"/>
+<xs:enumeration value="254"/>
+<xs:enumeration value="255"/>
+<xs:enumeration value="256"/>
+<xs:enumeration value="257"/>
+<xs:enumeration value="258"/>
+<xs:enumeration value="299"/>
+<xs:enumeration value="300"/>
+<xs:enumeration value="301"/>
+<xs:enumeration value="302"/>
+<xs:enumeration value="303"/>
+<xs:enumeration value="304"/>
+<xs:enumeration value="305"/>
+<xs:enumeration value="306"/>
+<xs:enumeration value="307"/>
+<xs:enumeration value="308"/>
+<xs:enumeration value="309"/>
+<xs:enumeration value="310"/>
+<xs:enumeration value="311"/>
+<xs:enumeration value="312"/>
+<xs:enumeration value="313"/>
+<xs:enumeration value="314"/>
+<xs:enumeration value="315"/>
+<xs:enumeration value="316"/>
+<xs:enumeration value="318"/>
+<xs:enumeration value="320"/>
+<xs:enumeration value="321"/>
+<xs:enumeration value="322"/>
+<xs:enumeration value="323"/>
+<xs:enumeration value="324"/>
+<xs:enumeration value="325"/>
+<xs:enumeration value="326"/>
+<xs:enumeration value="327"/>
+<xs:enumeration value="328"/>
+<xs:enumeration value="329"/>
+<xs:enumeration value="330"/>
+<xs:enumeration value="331"/>
+<xs:enumeration value="334"/>
+<xs:enumeration value="335"/>
+<xs:enumeration value="336"/>
+<xs:enumeration value="337"/>
+<xs:enumeration value="338"/>
+<xs:enumeration value="339"/>
+<xs:enumeration value="340"/>
+<xs:enumeration value="341"/>
+<xs:enumeration value="342"/>
+<xs:enumeration value="343"/>
+<xs:enumeration value="344"/>
+<xs:enumeration value="345"/>
+<xs:enumeration value="347"/>
+<xs:enumeration value="348"/>
+<xs:enumeration value="349"/>
+<xs:enumeration value="350"/>
+<xs:enumeration value="351"/>
+<xs:enumeration value="352"/>
+<xs:enumeration value="353"/>
+<xs:enumeration value="354"/>
+<xs:enumeration value="355"/>
+<xs:enumeration value="356"/>
+<xs:enumeration value="400"/>
+<xs:enumeration value="401"/>
+<xs:enumeration value="402"/>
+<xs:enumeration value="403"/>
+<xs:enumeration value="404"/>
+<xs:enumeration value="405"/>
+<xs:enumeration value="406"/>
+<xs:enumeration value="408"/>
+<xs:enumeration value="409"/>
+<xs:enumeration value="410"/>
+<xs:enumeration value="411"/>
+<xs:enumeration value="412"/>
+<xs:enumeration value="413"/>
+<xs:enumeration value="414"/>
+<xs:enumeration value="415"/>
+<xs:enumeration value="416"/>
+<xs:enumeration value="417"/>
+<xs:enumeration value="418"/>
+<xs:enumeration value="419"/>
+<xs:enumeration value="420"/>
+<xs:enumeration value="421"/>
+<xs:enumeration value="422"/>
+<xs:enumeration value="423"/>
+<xs:enumeration value="424"/>
+<xs:enumeration value="425"/>
+<xs:enumeration value="426"/>
+<xs:enumeration value="427"/>
+<xs:enumeration value="428"/>
+<xs:enumeration value="429"/>
+<xs:enumeration value="430"/>
+<xs:enumeration value="431"/>
+<xs:enumeration value="432"/>
+<xs:enumeration value="433"/>
+<xs:enumeration value="434"/>
+<xs:enumeration value="435"/>
+<xs:enumeration value="436"/>
+<xs:enumeration value="437"/>
+<xs:enumeration value="438"/>
+<xs:enumeration value="439"/>
+<xs:enumeration value="440"/>
+<xs:enumeration value="441"/>
+<xs:enumeration value="442"/>
+<xs:enumeration value="443"/>
+<xs:enumeration value="444"/>
+<xs:enumeration value="445"/>
+<xs:enumeration value="446"/>
+<xs:enumeration value="447"/>
+<xs:enumeration value="499"/>
+<xs:enumeration value="500"/>
+<xs:enumeration value="501"/>
+<xs:enumeration value="502"/>
+<xs:enumeration value="503"/>
+<xs:enumeration value="504"/>
+<xs:enumeration value="599"/>
+<xs:enumeration value="600"/>
+<xs:enumeration value="601"/>
+<xs:enumeration value="602"/>
+<xs:enumeration value="603"/>
+<xs:enumeration value="604"/>
+<xs:enumeration value="605"/>
+<xs:enumeration value="606"/>
+<xs:enumeration value="607"/>
+<xs:enumeration value="608"/>
+<xs:enumeration value="609"/>
+<xs:enumeration value="610"/>
+<xs:enumeration value="611"/>
+<xs:enumeration value="612"/>
+<xs:enumeration value="613"/>
+<xs:enumeration value="614"/>
+<xs:enumeration value="615"/>
+<xs:enumeration value="616"/>
+<xs:enumeration value="617"/>
+<xs:enumeration value="618"/>
+<xs:enumeration value="619"/>
+<xs:enumeration value="620"/>
+<xs:enumeration value="621"/>
+<xs:enumeration value="622"/>
+<xs:enumeration value="699"/>
+<xs:enumeration value="701"/>
+<xs:enumeration value="702"/>
+<xs:enumeration value="1421"/>
+<xs:enumeration value="1422"/>
+<xs:enumeration value="1423"/>
+<xs:enumeration value="1990"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--户籍所在省市-->
+<xs:attribute name="HJSZSS">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="110000"/>
+<xs:enumeration value="120000"/>
+<xs:enumeration value="130000"/>
+<xs:enumeration value="140000"/>
+<xs:enumeration value="150000"/>
+<xs:enumeration value="210000"/>
+<xs:enumeration value="220000"/>
+<xs:enumeration value="230000"/>
+<xs:enumeration value="310000"/>
+<xs:enumeration value="320000"/>
+<xs:enumeration value="330000"/>
+<xs:enumeration value="340000"/>
+<xs:enumeration value="350000"/>
+<xs:enumeration value="360000"/>
+<xs:enumeration value="370000"/>
+<xs:enumeration value="410000"/>
+<xs:enumeration value="420000"/>
+<xs:enumeration value="430000"/>
+<xs:enumeration value="440000"/>
+<xs:enumeration value="450000"/>
+<xs:enumeration value="460000"/>
+<xs:enumeration value="500000"/>
+<xs:enumeration value="510000"/>
+<xs:enumeration value="520000"/>
+<xs:enumeration value="530000"/>
+<xs:enumeration value="540000"/>
+<xs:enumeration value="610000"/>
+<xs:enumeration value="620000"/>
+<xs:enumeration value="630000"/>
+<xs:enumeration value="640000"/>
+<xs:enumeration value="650000"/>
+<xs:enumeration value="710000"/>
+<xs:enumeration value="810000"/>
+<xs:enumeration value="820000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--性别-->
+<xs:attribute name="XB">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--电话-->
+<xs:attribute name="DH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--地址-->
+<xs:attribute name="DZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--邮编-->
+<xs:attribute name="YB">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--工作单位-->
+<xs:attribute name="GZDW">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--电子邮件-->
+<xs:attribute name="DZYJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人类型-->
+<xs:attribute name="QLRLX">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="99"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利比例-->
+<xs:attribute name="QLBL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--共有方式-->
+<xs:attribute name="GYFS">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--共有情况-->
+<xs:attribute name="GYQK">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--备注-->
+<xs:attribute name="BZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--区县代码-->
+<xs:attribute name="QXDM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="110000"/>
+<xs:enumeration value="110100"/>
+<xs:enumeration value="110101"/>
+<xs:enumeration value="110102"/>
+<xs:enumeration value="110105"/>
+<xs:enumeration value="110106"/>
+<xs:enumeration value="110107"/>
+<xs:enumeration value="110108"/>
+<xs:enumeration value="110109"/>
+<xs:enumeration value="110111"/>
+<xs:enumeration value="110112"/>
+<xs:enumeration value="110113"/>
+<xs:enumeration value="110114"/>
+<xs:enumeration value="110115"/>
+<xs:enumeration value="110116"/>
+<xs:enumeration value="110117"/>
+<xs:enumeration value="110200"/>
+<xs:enumeration value="110228"/>
+<xs:enumeration value="110229"/>
+<xs:enumeration value="120000"/>
+<xs:enumeration value="120100"/>
+<xs:enumeration value="120101"/>
+<xs:enumeration value="120102"/>
+<xs:enumeration value="120103"/>
+<xs:enumeration value="120104"/>
+<xs:enumeration value="120105"/>
+<xs:enumeration value="120106"/>
+<xs:enumeration value="120110"/>
+<xs:enumeration value="120111"/>
+<xs:enumeration value="120112"/>
+<xs:enumeration value="120113"/>
+<xs:enumeration value="120114"/>
+<xs:enumeration value="120115"/>
+<xs:enumeration value="120116"/>
+<xs:enumeration value="120200"/>
+<xs:enumeration value="120221"/>
+<xs:enumeration value="120223"/>
+<xs:enumeration value="120225"/>
+<xs:enumeration value="130000"/>
+<xs:enumeration value="130100"/>
+<xs:enumeration value="130101"/>
+<xs:enumeration value="130102"/>
+<xs:enumeration value="130103"/>
+<xs:enumeration value="130104"/>
+<xs:enumeration value="130105"/>
+<xs:enumeration value="130107"/>
+<xs:enumeration value="130108"/>
+<xs:enumeration value="130121"/>
+<xs:enumeration value="130123"/>
+<xs:enumeration value="130124"/>
+<xs:enumeration value="130125"/>
+<xs:enumeration value="130126"/>
+<xs:enumeration value="130127"/>
+<xs:enumeration value="130128"/>
+<xs:enumeration value="130129"/>
+<xs:enumeration value="130130"/>
+<xs:enumeration value="130131"/>
+<xs:enumeration value="130132"/>
+<xs:enumeration value="130133"/>
+<xs:enumeration value="130181"/>
+<xs:enumeration value="130182"/>
+<xs:enumeration value="130183"/>
+<xs:enumeration value="130184"/>
+<xs:enumeration value="130185"/>
+<xs:enumeration value="130200"/>
+<xs:enumeration value="130201"/>
+<xs:enumeration value="130202"/>
+<xs:enumeration value="130203"/>
+<xs:enumeration value="130204"/>
+<xs:enumeration value="130205"/>
+<xs:enumeration value="130207"/>
+<xs:enumeration value="130208"/>
+<xs:enumeration value="130209"/>
+<xs:enumeration value="130223"/>
+<xs:enumeration value="130224"/>
+<xs:enumeration value="130225"/>
+<xs:enumeration value="130227"/>
+<xs:enumeration value="130229"/>
+<xs:enumeration value="130281"/>
+<xs:enumeration value="130283"/>
+<xs:enumeration value="130300"/>
+<xs:enumeration value="130301"/>
+<xs:enumeration value="130302"/>
+<xs:enumeration value="130303"/>
+<xs:enumeration value="130304"/>
+<xs:enumeration value="130321"/>
+<xs:enumeration value="130322"/>
+<xs:enumeration value="130323"/>
+<xs:enumeration value="130324"/>
+<xs:enumeration value="130400"/>
+<xs:enumeration value="130401"/>
+<xs:enumeration value="130402"/>
+<xs:enumeration value="130403"/>
+<xs:enumeration value="130404"/>
+<xs:enumeration value="130406"/>
+<xs:enumeration value="130421"/>
+<xs:enumeration value="130423"/>
+<xs:enumeration value="130424"/>
+<xs:enumeration value="130425"/>
+<xs:enumeration value="130426"/>
+<xs:enumeration value="130427"/>
+<xs:enumeration value="130428"/>
+<xs:enumeration value="130429"/>
+<xs:enumeration value="130430"/>
+<xs:enumeration value="130431"/>
+<xs:enumeration value="130432"/>
+<xs:enumeration value="130433"/>
+<xs:enumeration value="130434"/>
+<xs:enumeration value="130435"/>
+<xs:enumeration value="130481"/>
+<xs:enumeration value="130500"/>
+<xs:enumeration value="130501"/>
+<xs:enumeration value="130502"/>
+<xs:enumeration value="130503"/>
+<xs:enumeration value="130521"/>
+<xs:enumeration value="130522"/>
+<xs:enumeration value="130523"/>
+<xs:enumeration value="130524"/>
+<xs:enumeration value="130525"/>
+<xs:enumeration value="130526"/>
+<xs:enumeration value="130527"/>
+<xs:enumeration value="130528"/>
+<xs:enumeration value="130529"/>
+<xs:enumeration value="130530"/>
+<xs:enumeration value="130531"/>
+<xs:enumeration value="130532"/>
+<xs:enumeration value="130533"/>
+<xs:enumeration value="130534"/>
+<xs:enumeration value="130535"/>
+<xs:enumeration value="130581"/>
+<xs:enumeration value="130582"/>
+<xs:enumeration value="130600"/>
+<xs:enumeration value="130601"/>
+<xs:enumeration value="130602"/>
+<xs:enumeration value="130603"/>
+<xs:enumeration value="130604"/>
+<xs:enumeration value="130621"/>
+<xs:enumeration value="130622"/>
+<xs:enumeration value="130623"/>
+<xs:enumeration value="130624"/>
+<xs:enumeration value="130625"/>
+<xs:enumeration value="130626"/>
+<xs:enumeration value="130627"/>
+<xs:enumeration value="130628"/>
+<xs:enumeration value="130629"/>
+<xs:enumeration value="130630"/>
+<xs:enumeration value="130631"/>
+<xs:enumeration value="130632"/>
+<xs:enumeration value="130633"/>
+<xs:enumeration value="130634"/>
+<xs:enumeration value="130635"/>
+<xs:enumeration value="130636"/>
+<xs:enumeration value="130637"/>
+<xs:enumeration value="130638"/>
+<xs:enumeration value="130681"/>
+<xs:enumeration value="130682"/>
+<xs:enumeration value="130683"/>
+<xs:enumeration value="130684"/>
+<xs:enumeration value="130700"/>
+<xs:enumeration value="130701"/>
+<xs:enumeration value="130702"/>
+<xs:enumeration value="130703"/>
+<xs:enumeration value="130705"/>
+<xs:enumeration value="130706"/>
+<xs:enumeration value="130721"/>
+<xs:enumeration value="130722"/>
+<xs:enumeration value="130723"/>
+<xs:enumeration value="130724"/>
+<xs:enumeration value="130725"/>
+<xs:enumeration value="130726"/>
+<xs:enumeration value="130727"/>
+<xs:enumeration value="130728"/>
+<xs:enumeration value="130729"/>
+<xs:enumeration value="130730"/>
+<xs:enumeration value="130731"/>
+<xs:enumeration value="130732"/>
+<xs:enumeration value="130733"/>
+<xs:enumeration value="130800"/>
+<xs:enumeration value="130801"/>
+<xs:enumeration value="130802"/>
+<xs:enumeration value="130803"/>
+<xs:enumeration value="130804"/>
+<xs:enumeration value="130821"/>
+<xs:enumeration value="130822"/>
+<xs:enumeration value="130823"/>
+<xs:enumeration value="130824"/>
+<xs:enumeration value="130825"/>
+<xs:enumeration value="130826"/>
+<xs:enumeration value="130827"/>
+<xs:enumeration value="130828"/>
+<xs:enumeration value="130900"/>
+<xs:enumeration value="130901"/>
+<xs:enumeration value="130902"/>
+<xs:enumeration value="130903"/>
+<xs:enumeration value="130921"/>
+<xs:enumeration value="130922"/>
+<xs:enumeration value="130923"/>
+<xs:enumeration value="130924"/>
+<xs:enumeration value="130925"/>
+<xs:enumeration value="130926"/>
+<xs:enumeration value="130927"/>
+<xs:enumeration value="130928"/>
+<xs:enumeration value="130929"/>
+<xs:enumeration value="130930"/>
+<xs:enumeration value="130981"/>
+<xs:enumeration value="130982"/>
+<xs:enumeration value="130983"/>
+<xs:enumeration value="130984"/>
+<xs:enumeration value="131000"/>
+<xs:enumeration value="131001"/>
+<xs:enumeration value="131002"/>
+<xs:enumeration value="131003"/>
+<xs:enumeration value="131022"/>
+<xs:enumeration value="131023"/>
+<xs:enumeration value="131024"/>
+<xs:enumeration value="131025"/>
+<xs:enumeration value="131026"/>
+<xs:enumeration value="131028"/>
+<xs:enumeration value="131081"/>
+<xs:enumeration value="131082"/>
+<xs:enumeration value="131100"/>
+<xs:enumeration value="131101"/>
+<xs:enumeration value="131102"/>
+<xs:enumeration value="131121"/>
+<xs:enumeration value="131122"/>
+<xs:enumeration value="131123"/>
+<xs:enumeration value="131124"/>
+<xs:enumeration value="131125"/>
+<xs:enumeration value="131126"/>
+<xs:enumeration value="131127"/>
+<xs:enumeration value="131128"/>
+<xs:enumeration value="131181"/>
+<xs:enumeration value="131182"/>
+<xs:enumeration value="140000"/>
+<xs:enumeration value="140100"/>
+<xs:enumeration value="140101"/>
+<xs:enumeration value="140105"/>
+<xs:enumeration value="140106"/>
+<xs:enumeration value="140107"/>
+<xs:enumeration value="140108"/>
+<xs:enumeration value="140109"/>
+<xs:enumeration value="140110"/>
+<xs:enumeration value="140121"/>
+<xs:enumeration value="140122"/>
+<xs:enumeration value="140123"/>
+<xs:enumeration value="140181"/>
+<xs:enumeration value="140200"/>
+<xs:enumeration value="140201"/>
+<xs:enumeration value="140202"/>
+<xs:enumeration value="140203"/>
+<xs:enumeration value="140211"/>
+<xs:enumeration value="140212"/>
+<xs:enumeration value="140221"/>
+<xs:enumeration value="140222"/>
+<xs:enumeration value="140223"/>
+<xs:enumeration value="140224"/>
+<xs:enumeration value="140225"/>
+<xs:enumeration value="140226"/>
+<xs:enumeration value="140227"/>
+<xs:enumeration value="140300"/>
+<xs:enumeration value="140301"/>
+<xs:enumeration value="140302"/>
+<xs:enumeration value="140303"/>
+<xs:enumeration value="140311"/>
+<xs:enumeration value="140321"/>
+<xs:enumeration value="140322"/>
+<xs:enumeration value="140400"/>
+<xs:enumeration value="140401"/>
+<xs:enumeration value="140402"/>
+<xs:enumeration value="140411"/>
+<xs:enumeration value="140421"/>
+<xs:enumeration value="140423"/>
+<xs:enumeration value="140424"/>
+<xs:enumeration value="140425"/>
+<xs:enumeration value="140426"/>
+<xs:enumeration value="140427"/>
+<xs:enumeration value="140428"/>
+<xs:enumeration value="140429"/>
+<xs:enumeration value="140430"/>
+<xs:enumeration value="140431"/>
+<xs:enumeration value="140481"/>
+<xs:enumeration value="140500"/>
+<xs:enumeration value="140501"/>
+<xs:enumeration value="140502"/>
+<xs:enumeration value="140521"/>
+<xs:enumeration value="140522"/>
+<xs:enumeration value="140524"/>
+<xs:enumeration value="140525"/>
+<xs:enumeration value="140581"/>
+<xs:enumeration value="140600"/>
+<xs:enumeration value="140601"/>
+<xs:enumeration value="140602"/>
+<xs:enumeration value="140603"/>
+<xs:enumeration value="140621"/>
+<xs:enumeration value="140622"/>
+<xs:enumeration value="140623"/>
+<xs:enumeration value="140624"/>
+<xs:enumeration value="140700"/>
+<xs:enumeration value="140701"/>
+<xs:enumeration value="140702"/>
+<xs:enumeration value="140721"/>
+<xs:enumeration value="140722"/>
+<xs:enumeration value="140723"/>
+<xs:enumeration value="140724"/>
+<xs:enumeration value="140725"/>
+<xs:enumeration value="140726"/>
+<xs:enumeration value="140727"/>
+<xs:enumeration value="140728"/>
+<xs:enumeration value="140729"/>
+<xs:enumeration value="140781"/>
+<xs:enumeration value="140800"/>
+<xs:enumeration value="140801"/>
+<xs:enumeration value="140802"/>
+<xs:enumeration value="140821"/>
+<xs:enumeration value="140822"/>
+<xs:enumeration value="140823"/>
+<xs:enumeration value="140824"/>
+<xs:enumeration value="140825"/>
+<xs:enumeration value="140826"/>
+<xs:enumeration value="140827"/>
+<xs:enumeration value="140828"/>
+<xs:enumeration value="140829"/>
+<xs:enumeration value="140830"/>
+<xs:enumeration value="140881"/>
+<xs:enumeration value="140882"/>
+<xs:enumeration value="140900"/>
+<xs:enumeration value="140901"/>
+<xs:enumeration value="140902"/>
+<xs:enumeration value="140921"/>
+<xs:enumeration value="140922"/>
+<xs:enumeration value="140923"/>
+<xs:enumeration value="140924"/>
+<xs:enumeration value="140925"/>
+<xs:enumeration value="140926"/>
+<xs:enumeration value="140927"/>
+<xs:enumeration value="140928"/>
+<xs:enumeration value="140929"/>
+<xs:enumeration value="140930"/>
+<xs:enumeration value="140931"/>
+<xs:enumeration value="140932"/>
+<xs:enumeration value="140981"/>
+<xs:enumeration value="141000"/>
+<xs:enumeration value="141001"/>
+<xs:enumeration value="141002"/>
+<xs:enumeration value="141021"/>
+<xs:enumeration value="141022"/>
+<xs:enumeration value="141023"/>
+<xs:enumeration value="141024"/>
+<xs:enumeration value="141025"/>
+<xs:enumeration value="141026"/>
+<xs:enumeration value="141027"/>
+<xs:enumeration value="141028"/>
+<xs:enumeration value="141029"/>
+<xs:enumeration value="141030"/>
+<xs:enumeration value="141031"/>
+<xs:enumeration value="141032"/>
+<xs:enumeration value="141033"/>
+<xs:enumeration value="141034"/>
+<xs:enumeration value="141081"/>
+<xs:enumeration value="141082"/>
+<xs:enumeration value="141100"/>
+<xs:enumeration value="141101"/>
+<xs:enumeration value="141102"/>
+<xs:enumeration value="141121"/>
+<xs:enumeration value="141122"/>
+<xs:enumeration value="141123"/>
+<xs:enumeration value="141124"/>
+<xs:enumeration value="141125"/>
+<xs:enumeration value="141126"/>
+<xs:enumeration value="141127"/>
+<xs:enumeration value="141128"/>
+<xs:enumeration value="141129"/>
+<xs:enumeration value="141130"/>
+<xs:enumeration value="141181"/>
+<xs:enumeration value="141182"/>
+<xs:enumeration value="150000"/>
+<xs:enumeration value="150100"/>
+<xs:enumeration value="150101"/>
+<xs:enumeration value="150102"/>
+<xs:enumeration value="150103"/>
+<xs:enumeration value="150104"/>
+<xs:enumeration value="150105"/>
+<xs:enumeration value="150121"/>
+<xs:enumeration value="150122"/>
+<xs:enumeration value="150123"/>
+<xs:enumeration value="150124"/>
+<xs:enumeration value="150125"/>
+<xs:enumeration value="150200"/>
+<xs:enumeration value="150201"/>
+<xs:enumeration value="150202"/>
+<xs:enumeration value="150203"/>
+<xs:enumeration value="150204"/>
+<xs:enumeration value="150205"/>
+<xs:enumeration value="150206"/>
+<xs:enumeration value="150207"/>
+<xs:enumeration value="150221"/>
+<xs:enumeration value="150222"/>
+<xs:enumeration value="150223"/>
+<xs:enumeration value="150300"/>
+<xs:enumeration value="150301"/>
+<xs:enumeration value="150302"/>
+<xs:enumeration value="150303"/>
+<xs:enumeration value="150304"/>
+<xs:enumeration value="150400"/>
+<xs:enumeration value="150401"/>
+<xs:enumeration value="150402"/>
+<xs:enumeration value="150403"/>
+<xs:enumeration value="150404"/>
+<xs:enumeration value="150421"/>
+<xs:enumeration value="150422"/>
+<xs:enumeration value="150423"/>
+<xs:enumeration value="150424"/>
+<xs:enumeration value="150425"/>
+<xs:enumeration value="150426"/>
+<xs:enumeration value="150428"/>
+<xs:enumeration value="150429"/>
+<xs:enumeration value="150430"/>
+<xs:enumeration value="150500"/>
+<xs:enumeration value="150501"/>
+<xs:enumeration value="150502"/>
+<xs:enumeration value="150521"/>
+<xs:enumeration value="150522"/>
+<xs:enumeration value="150523"/>
+<xs:enumeration value="150524"/>
+<xs:enumeration value="150525"/>
+<xs:enumeration value="150526"/>
+<xs:enumeration value="150581"/>
+<xs:enumeration value="150600"/>
+<xs:enumeration value="150601"/>
+<xs:enumeration value="150602"/>
+<xs:enumeration value="150621"/>
+<xs:enumeration value="150622"/>
+<xs:enumeration value="150623"/>
+<xs:enumeration value="150624"/>
+<xs:enumeration value="150625"/>
+<xs:enumeration value="150626"/>
+<xs:enumeration value="150627"/>
+<xs:enumeration value="150700"/>
+<xs:enumeration value="150701"/>
+<xs:enumeration value="150702"/>
+<xs:enumeration value="150721"/>
+<xs:enumeration value="150722"/>
+<xs:enumeration value="150723"/>
+<xs:enumeration value="150724"/>
+<xs:enumeration value="150725"/>
+<xs:enumeration value="150726"/>
+<xs:enumeration value="150727"/>
+<xs:enumeration value="150781"/>
+<xs:enumeration value="150782"/>
+<xs:enumeration value="150783"/>
+<xs:enumeration value="150784"/>
+<xs:enumeration value="150785"/>
+<xs:enumeration value="150800"/>
+<xs:enumeration value="150801"/>
+<xs:enumeration value="150802"/>
+<xs:enumeration value="150821"/>
+<xs:enumeration value="150822"/>
+<xs:enumeration value="150823"/>
+<xs:enumeration value="150824"/>
+<xs:enumeration value="150825"/>
+<xs:enumeration value="150826"/>
+<xs:enumeration value="150900"/>
+<xs:enumeration value="150901"/>
+<xs:enumeration value="150902"/>
+<xs:enumeration value="150921"/>
+<xs:enumeration value="150922"/>
+<xs:enumeration value="150923"/>
+<xs:enumeration value="150924"/>
+<xs:enumeration value="150925"/>
+<xs:enumeration value="150926"/>
+<xs:enumeration value="150927"/>
+<xs:enumeration value="150928"/>
+<xs:enumeration value="150929"/>
+<xs:enumeration value="150981"/>
+<xs:enumeration value="152200"/>
+<xs:enumeration value="152201"/>
+<xs:enumeration value="152202"/>
+<xs:enumeration value="152221"/>
+<xs:enumeration value="152222"/>
+<xs:enumeration value="152223"/>
+<xs:enumeration value="152224"/>
+<xs:enumeration value="152500"/>
+<xs:enumeration value="152501"/>
+<xs:enumeration value="152502"/>
+<xs:enumeration value="152522"/>
+<xs:enumeration value="152523"/>
+<xs:enumeration value="152524"/>
+<xs:enumeration value="152525"/>
+<xs:enumeration value="152526"/>
+<xs:enumeration value="152527"/>
+<xs:enumeration value="152528"/>
+<xs:enumeration value="152529"/>
+<xs:enumeration value="152530"/>
+<xs:enumeration value="152531"/>
+<xs:enumeration value="152900"/>
+<xs:enumeration value="152921"/>
+<xs:enumeration value="152922"/>
+<xs:enumeration value="152923"/>
+<xs:enumeration value="210000"/>
+<xs:enumeration value="210100"/>
+<xs:enumeration value="210101"/>
+<xs:enumeration value="210102"/>
+<xs:enumeration value="210103"/>
+<xs:enumeration value="210104"/>
+<xs:enumeration value="210105"/>
+<xs:enumeration value="210106"/>
+<xs:enumeration value="210111"/>
+<xs:enumeration value="210112"/>
+<xs:enumeration value="210113"/>
+<xs:enumeration value="210114"/>
+<xs:enumeration value="210122"/>
+<xs:enumeration value="210123"/>
+<xs:enumeration value="210124"/>
+<xs:enumeration value="210181"/>
+<xs:enumeration value="210200"/>
+<xs:enumeration value="210201"/>
+<xs:enumeration value="210202"/>
+<xs:enumeration value="210203"/>
+<xs:enumeration value="210204"/>
+<xs:enumeration value="210211"/>
+<xs:enumeration value="210212"/>
+<xs:enumeration value="210213"/>
+<xs:enumeration value="210224"/>
+<xs:enumeration value="210281"/>
+<xs:enumeration value="210282"/>
+<xs:enumeration value="210283"/>
+<xs:enumeration value="210300"/>
+<xs:enumeration value="210301"/>
+<xs:enumeration value="210302"/>
+<xs:enumeration value="210303"/>
+<xs:enumeration value="210304"/>
+<xs:enumeration value="210311"/>
+<xs:enumeration value="210321"/>
+<xs:enumeration value="210323"/>
+<xs:enumeration value="210381"/>
+<xs:enumeration value="210400"/>
+<xs:enumeration value="210401"/>
+<xs:enumeration value="210402"/>
+<xs:enumeration value="210403"/>
+<xs:enumeration value="210404"/>
+<xs:enumeration value="210411"/>
+<xs:enumeration value="210421"/>
+<xs:enumeration value="210422"/>
+<xs:enumeration value="210423"/>
+<xs:enumeration value="210500"/>
+<xs:enumeration value="210501"/>
+<xs:enumeration value="210502"/>
+<xs:enumeration value="210503"/>
+<xs:enumeration value="210504"/>
+<xs:enumeration value="210505"/>
+<xs:enumeration value="210521"/>
+<xs:enumeration value="210522"/>
+<xs:enumeration value="210600"/>
+<xs:enumeration value="210601"/>
+<xs:enumeration value="210602"/>
+<xs:enumeration value="210603"/>
+<xs:enumeration value="210604"/>
+<xs:enumeration value="210624"/>
+<xs:enumeration value="210681"/>
+<xs:enumeration value="210682"/>
+<xs:enumeration value="210700"/>
+<xs:enumeration value="210701"/>
+<xs:enumeration value="210702"/>
+<xs:enumeration value="210703"/>
+<xs:enumeration value="210711"/>
+<xs:enumeration value="210726"/>
+<xs:enumeration value="210727"/>
+<xs:enumeration value="210781"/>
+<xs:enumeration value="210782"/>
+<xs:enumeration value="210800"/>
+<xs:enumeration value="210801"/>
+<xs:enumeration value="210802"/>
+<xs:enumeration value="210803"/>
+<xs:enumeration value="210804"/>
+<xs:enumeration value="210811"/>
+<xs:enumeration value="210881"/>
+<xs:enumeration value="210882"/>
+<xs:enumeration value="210900"/>
+<xs:enumeration value="210901"/>
+<xs:enumeration value="210902"/>
+<xs:enumeration value="210903"/>
+<xs:enumeration value="210904"/>
+<xs:enumeration value="210905"/>
+<xs:enumeration value="210911"/>
+<xs:enumeration value="210921"/>
+<xs:enumeration value="210922"/>
+<xs:enumeration value="211000"/>
+<xs:enumeration value="211001"/>
+<xs:enumeration value="211002"/>
+<xs:enumeration value="211003"/>
+<xs:enumeration value="211004"/>
+<xs:enumeration value="211005"/>
+<xs:enumeration value="211011"/>
+<xs:enumeration value="211021"/>
+<xs:enumeration value="211081"/>
+<xs:enumeration value="211100"/>
+<xs:enumeration value="211101"/>
+<xs:enumeration value="211102"/>
+<xs:enumeration value="211103"/>
+<xs:enumeration value="211121"/>
+<xs:enumeration value="211122"/>
+<xs:enumeration value="211200"/>
+<xs:enumeration value="211201"/>
+<xs:enumeration value="211202"/>
+<xs:enumeration value="211204"/>
+<xs:enumeration value="211221"/>
+<xs:enumeration value="211223"/>
+<xs:enumeration value="211224"/>
+<xs:enumeration value="211281"/>
+<xs:enumeration value="211282"/>
+<xs:enumeration value="211300"/>
+<xs:enumeration value="211301"/>
+<xs:enumeration value="211302"/>
+<xs:enumeration value="211303"/>
+<xs:enumeration value="211321"/>
+<xs:enumeration value="211322"/>
+<xs:enumeration value="211324"/>
+<xs:enumeration value="211381"/>
+<xs:enumeration value="211382"/>
+<xs:enumeration value="211400"/>
+<xs:enumeration value="211401"/>
+<xs:enumeration value="211402"/>
+<xs:enumeration value="211403"/>
+<xs:enumeration value="211404"/>
+<xs:enumeration value="211421"/>
+<xs:enumeration value="211422"/>
+<xs:enumeration value="211481"/>
+<xs:enumeration value="220000"/>
+<xs:enumeration value="220100"/>
+<xs:enumeration value="220101"/>
+<xs:enumeration value="220102"/>
+<xs:enumeration value="220103"/>
+<xs:enumeration value="220104"/>
+<xs:enumeration value="220105"/>
+<xs:enumeration value="220106"/>
+<xs:enumeration value="220112"/>
+<xs:enumeration value="220122"/>
+<xs:enumeration value="220181"/>
+<xs:enumeration value="220182"/>
+<xs:enumeration value="220183"/>
+<xs:enumeration value="220200"/>
+<xs:enumeration value="220201"/>
+<xs:enumeration value="220202"/>
+<xs:enumeration value="220203"/>
+<xs:enumeration value="220204"/>
+<xs:enumeration value="220211"/>
+<xs:enumeration value="220221"/>
+<xs:enumeration value="220281"/>
+<xs:enumeration value="220282"/>
+<xs:enumeration value="220283"/>
+<xs:enumeration value="220284"/>
+<xs:enumeration value="220300"/>
+<xs:enumeration value="220301"/>
+<xs:enumeration value="220302"/>
+<xs:enumeration value="220303"/>
+<xs:enumeration value="220322"/>
+<xs:enumeration value="220323"/>
+<xs:enumeration value="220381"/>
+<xs:enumeration value="220382"/>
+<xs:enumeration value="220400"/>
+<xs:enumeration value="220401"/>
+<xs:enumeration value="220402"/>
+<xs:enumeration value="220403"/>
+<xs:enumeration value="220421"/>
+<xs:enumeration value="220422"/>
+<xs:enumeration value="220500"/>
+<xs:enumeration value="220501"/>
+<xs:enumeration value="220502"/>
+<xs:enumeration value="220503"/>
+<xs:enumeration value="220521"/>
+<xs:enumeration value="220523"/>
+<xs:enumeration value="220524"/>
+<xs:enumeration value="220581"/>
+<xs:enumeration value="220582"/>
+<xs:enumeration value="220600"/>
+<xs:enumeration value="220601"/>
+<xs:enumeration value="220602"/>
+<xs:enumeration value="220605"/>
+<xs:enumeration value="220621"/>
+<xs:enumeration value="220622"/>
+<xs:enumeration value="220623"/>
+<xs:enumeration value="220681"/>
+<xs:enumeration value="220700"/>
+<xs:enumeration value="220701"/>
+<xs:enumeration value="220702"/>
+<xs:enumeration value="220721"/>
+<xs:enumeration value="220722"/>
+<xs:enumeration value="220723"/>
+<xs:enumeration value="220724"/>
+<xs:enumeration value="220800"/>
+<xs:enumeration value="220801"/>
+<xs:enumeration value="220802"/>
+<xs:enumeration value="220821"/>
+<xs:enumeration value="220822"/>
+<xs:enumeration value="220881"/>
+<xs:enumeration value="220882"/>
+<xs:enumeration value="222400"/>
+<xs:enumeration value="222401"/>
+<xs:enumeration value="222402"/>
+<xs:enumeration value="222403"/>
+<xs:enumeration value="222404"/>
+<xs:enumeration value="222405"/>
+<xs:enumeration value="222406"/>
+<xs:enumeration value="222424"/>
+<xs:enumeration value="222426"/>
+<xs:enumeration value="230000"/>
+<xs:enumeration value="230100"/>
+<xs:enumeration value="230101"/>
+<xs:enumeration value="230102"/>
+<xs:enumeration value="230103"/>
+<xs:enumeration value="230104"/>
+<xs:enumeration value="230108"/>
+<xs:enumeration value="230109"/>
+<xs:enumeration value="230110"/>
+<xs:enumeration value="230111"/>
+<xs:enumeration value="230112"/>
+<xs:enumeration value="230123"/>
+<xs:enumeration value="230124"/>
+<xs:enumeration value="230125"/>
+<xs:enumeration value="230126"/>
+<xs:enumeration value="230127"/>
+<xs:enumeration value="230128"/>
+<xs:enumeration value="230129"/>
+<xs:enumeration value="230182"/>
+<xs:enumeration value="230183"/>
+<xs:enumeration value="230184"/>
+<xs:enumeration value="230200"/>
+<xs:enumeration value="230201"/>
+<xs:enumeration value="230202"/>
+<xs:enumeration value="230203"/>
+<xs:enumeration value="230204"/>
+<xs:enumeration value="230205"/>
+<xs:enumeration value="230206"/>
+<xs:enumeration value="230207"/>
+<xs:enumeration value="230208"/>
+<xs:enumeration value="230221"/>
+<xs:enumeration value="230223"/>
+<xs:enumeration value="230224"/>
+<xs:enumeration value="230225"/>
+<xs:enumeration value="230227"/>
+<xs:enumeration value="230229"/>
+<xs:enumeration value="230230"/>
+<xs:enumeration value="230231"/>
+<xs:enumeration value="230281"/>
+<xs:enumeration value="230300"/>
+<xs:enumeration value="230301"/>
+<xs:enumeration value="230302"/>
+<xs:enumeration value="230303"/>
+<xs:enumeration value="230304"/>
+<xs:enumeration value="230305"/>
+<xs:enumeration value="230306"/>
+<xs:enumeration value="230307"/>
+<xs:enumeration value="230321"/>
+<xs:enumeration value="230381"/>
+<xs:enumeration value="230382"/>
+<xs:enumeration value="230400"/>
+<xs:enumeration value="230401"/>
+<xs:enumeration value="230402"/>
+<xs:enumeration value="230403"/>
+<xs:enumeration value="230404"/>
+<xs:enumeration value="230405"/>
+<xs:enumeration value="230406"/>
+<xs:enumeration value="230407"/>
+<xs:enumeration value="230421"/>
+<xs:enumeration value="230422"/>
+<xs:enumeration value="230500"/>
+<xs:enumeration value="230501"/>
+<xs:enumeration value="230502"/>
+<xs:enumeration value="230503"/>
+<xs:enumeration value="230505"/>
+<xs:enumeration value="230506"/>
+<xs:enumeration value="230521"/>
+<xs:enumeration value="230522"/>
+<xs:enumeration value="230523"/>
+<xs:enumeration value="230524"/>
+<xs:enumeration value="230600"/>
+<xs:enumeration value="230601"/>
+<xs:enumeration value="230602"/>
+<xs:enumeration value="230603"/>
+<xs:enumeration value="230604"/>
+<xs:enumeration value="230605"/>
+<xs:enumeration value="230606"/>
+<xs:enumeration value="230621"/>
+<xs:enumeration value="230622"/>
+<xs:enumeration value="230623"/>
+<xs:enumeration value="230624"/>
+<xs:enumeration value="230700"/>
+<xs:enumeration value="230701"/>
+<xs:enumeration value="230702"/>
+<xs:enumeration value="230703"/>
+<xs:enumeration value="230704"/>
+<xs:enumeration value="230705"/>
+<xs:enumeration value="230706"/>
+<xs:enumeration value="230707"/>
+<xs:enumeration value="230708"/>
+<xs:enumeration value="230709"/>
+<xs:enumeration value="230710"/>
+<xs:enumeration value="230711"/>
+<xs:enumeration value="230712"/>
+<xs:enumeration value="230713"/>
+<xs:enumeration value="230714"/>
+<xs:enumeration value="230715"/>
+<xs:enumeration value="230716"/>
+<xs:enumeration value="230722"/>
+<xs:enumeration value="230781"/>
+<xs:enumeration value="230800"/>
+<xs:enumeration value="230801"/>
+<xs:enumeration value="230803"/>
+<xs:enumeration value="230804"/>
+<xs:enumeration value="230805"/>
+<xs:enumeration value="230811"/>
+<xs:enumeration value="230822"/>
+<xs:enumeration value="230826"/>
+<xs:enumeration value="230828"/>
+<xs:enumeration value="230833"/>
+<xs:enumeration value="230881"/>
+<xs:enumeration value="230882"/>
+<xs:enumeration value="230900"/>
+<xs:enumeration value="230901"/>
+<xs:enumeration value="230902"/>
+<xs:enumeration value="230903"/>
+<xs:enumeration value="230904"/>
+<xs:enumeration value="230921"/>
+<xs:enumeration value="231000"/>
+<xs:enumeration value="231001"/>
+<xs:enumeration value="231002"/>
+<xs:enumeration value="231003"/>
+<xs:enumeration value="231004"/>
+<xs:enumeration value="231005"/>
+<xs:enumeration value="231024"/>
+<xs:enumeration value="231025"/>
+<xs:enumeration value="231081"/>
+<xs:enumeration value="231083"/>
+<xs:enumeration value="231084"/>
+<xs:enumeration value="231085"/>
+<xs:enumeration value="231100"/>
+<xs:enumeration value="231101"/>
+<xs:enumeration value="231102"/>
+<xs:enumeration value="231121"/>
+<xs:enumeration value="231123"/>
+<xs:enumeration value="231124"/>
+<xs:enumeration value="231181"/>
+<xs:enumeration value="231182"/>
+<xs:enumeration value="231200"/>
+<xs:enumeration value="231201"/>
+<xs:enumeration value="231202"/>
+<xs:enumeration value="231221"/>
+<xs:enumeration value="231222"/>
+<xs:enumeration value="231223"/>
+<xs:enumeration value="231224"/>
+<xs:enumeration value="231225"/>
+<xs:enumeration value="231226"/>
+<xs:enumeration value="231281"/>
+<xs:enumeration value="231282"/>
+<xs:enumeration value="231283"/>
+<xs:enumeration value="232700"/>
+<xs:enumeration value="232721"/>
+<xs:enumeration value="232722"/>
+<xs:enumeration value="232723"/>
+<xs:enumeration value="310000"/>
+<xs:enumeration value="310100"/>
+<xs:enumeration value="310101"/>
+<xs:enumeration value="310104"/>
+<xs:enumeration value="310105"/>
+<xs:enumeration value="310106"/>
+<xs:enumeration value="310107"/>
+<xs:enumeration value="310108"/>
+<xs:enumeration value="310109"/>
+<xs:enumeration value="310110"/>
+<xs:enumeration value="310112"/>
+<xs:enumeration value="310113"/>
+<xs:enumeration value="310114"/>
+<xs:enumeration value="310115"/>
+<xs:enumeration value="310116"/>
+<xs:enumeration value="310117"/>
+<xs:enumeration value="310118"/>
+<xs:enumeration value="310120"/>
+<xs:enumeration value="310200"/>
+<xs:enumeration value="310230"/>
+<xs:enumeration value="320000"/>
+<xs:enumeration value="320100"/>
+<xs:enumeration value="320101"/>
+<xs:enumeration value="320102"/>
+<xs:enumeration value="320103"/>
+<xs:enumeration value="320104"/>
+<xs:enumeration value="320105"/>
+<xs:enumeration value="320106"/>
+<xs:enumeration value="320107"/>
+<xs:enumeration value="320111"/>
+<xs:enumeration value="320113"/>
+<xs:enumeration value="320114"/>
+<xs:enumeration value="320115"/>
+<xs:enumeration value="320116"/>
+<xs:enumeration value="320124"/>
+<xs:enumeration value="320125"/>
+<xs:enumeration value="320200"/>
+<xs:enumeration value="320201"/>
+<xs:enumeration value="320202"/>
+<xs:enumeration value="320203"/>
+<xs:enumeration value="320204"/>
+<xs:enumeration value="320205"/>
+<xs:enumeration value="320206"/>
+<xs:enumeration value="320211"/>
+<xs:enumeration value="320281"/>
+<xs:enumeration value="320282"/>
+<xs:enumeration value="320300"/>
+<xs:enumeration value="320301"/>
+<xs:enumeration value="320302"/>
+<xs:enumeration value="320303"/>
+<xs:enumeration value="320305"/>
+<xs:enumeration value="320311"/>
+<xs:enumeration value="320312"/>
+<xs:enumeration value="320321"/>
+<xs:enumeration value="320322"/>
+<xs:enumeration value="320324"/>
+<xs:enumeration value="320381"/>
+<xs:enumeration value="320382"/>
+<xs:enumeration value="320400"/>
+<xs:enumeration value="320401"/>
+<xs:enumeration value="320402"/>
+<xs:enumeration value="320404"/>
+<xs:enumeration value="320405"/>
+<xs:enumeration value="320411"/>
+<xs:enumeration value="320412"/>
+<xs:enumeration value="320481"/>
+<xs:enumeration value="320482"/>
+<xs:enumeration value="320500"/>
+<xs:enumeration value="320501"/>
+<xs:enumeration value="320505"/>
+<xs:enumeration value="320506"/>
+<xs:enumeration value="320507"/>
+<xs:enumeration value="320508"/>
+<xs:enumeration value="320509"/>
+<xs:enumeration value="320581"/>
+<xs:enumeration value="320582"/>
+<xs:enumeration value="320583"/>
+<xs:enumeration value="320585"/>
+<xs:enumeration value="320600"/>
+<xs:enumeration value="320601"/>
+<xs:enumeration value="320602"/>
+<xs:enumeration value="320611"/>
+<xs:enumeration value="320612"/>
+<xs:enumeration value="320621"/>
+<xs:enumeration value="320623"/>
+<xs:enumeration value="320681"/>
+<xs:enumeration value="320682"/>
+<xs:enumeration value="320684"/>
+<xs:enumeration value="320700"/>
+<xs:enumeration value="320701"/>
+<xs:enumeration value="320703"/>
+<xs:enumeration value="320705"/>
+<xs:enumeration value="320706"/>
+<xs:enumeration value="320721"/>
+<xs:enumeration value="320722"/>
+<xs:enumeration value="320723"/>
+<xs:enumeration value="320724"/>
+<xs:enumeration value="320800"/>
+<xs:enumeration value="320801"/>
+<xs:enumeration value="320802"/>
+<xs:enumeration value="320803"/>
+<xs:enumeration value="320804"/>
+<xs:enumeration value="320811"/>
+<xs:enumeration value="320826"/>
+<xs:enumeration value="320829"/>
+<xs:enumeration value="320830"/>
+<xs:enumeration value="320831"/>
+<xs:enumeration value="320900"/>
+<xs:enumeration value="320901"/>
+<xs:enumeration value="320902"/>
+<xs:enumeration value="320903"/>
+<xs:enumeration value="320921"/>
+<xs:enumeration value="320922"/>
+<xs:enumeration value="320923"/>
+<xs:enumeration value="320924"/>
+<xs:enumeration value="320925"/>
+<xs:enumeration value="320981"/>
+<xs:enumeration value="320982"/>
+<xs:enumeration value="321000"/>
+<xs:enumeration value="321001"/>
+<xs:enumeration value="321002"/>
+<xs:enumeration value="321003"/>
+<xs:enumeration value="321012"/>
+<xs:enumeration value="321023"/>
+<xs:enumeration value="321081"/>
+<xs:enumeration value="321084"/>
+<xs:enumeration value="321100"/>
+<xs:enumeration value="321101"/>
+<xs:enumeration value="321102"/>
+<xs:enumeration value="321111"/>
+<xs:enumeration value="321112"/>
+<xs:enumeration value="321181"/>
+<xs:enumeration value="321182"/>
+<xs:enumeration value="321183"/>
+<xs:enumeration value="321200"/>
+<xs:enumeration value="321201"/>
+<xs:enumeration value="321202"/>
+<xs:enumeration value="321203"/>
+<xs:enumeration value="321281"/>
+<xs:enumeration value="321282"/>
+<xs:enumeration value="321283"/>
+<xs:enumeration value="321284"/>
+<xs:enumeration value="321300"/>
+<xs:enumeration value="321301"/>
+<xs:enumeration value="321302"/>
+<xs:enumeration value="321311"/>
+<xs:enumeration value="321322"/>
+<xs:enumeration value="321323"/>
+<xs:enumeration value="321324"/>
+<xs:enumeration value="330000"/>
+<xs:enumeration value="330100"/>
+<xs:enumeration value="330101"/>
+<xs:enumeration value="330102"/>
+<xs:enumeration value="330103"/>
+<xs:enumeration value="330104"/>
+<xs:enumeration value="330105"/>
+<xs:enumeration value="330106"/>
+<xs:enumeration value="330108"/>
+<xs:enumeration value="330109"/>
+<xs:enumeration value="330110"/>
+<xs:enumeration value="330122"/>
+<xs:enumeration value="330127"/>
+<xs:enumeration value="330182"/>
+<xs:enumeration value="330183"/>
+<xs:enumeration value="330185"/>
+<xs:enumeration value="330200"/>
+<xs:enumeration value="330201"/>
+<xs:enumeration value="330203"/>
+<xs:enumeration value="330204"/>
+<xs:enumeration value="330205"/>
+<xs:enumeration value="330206"/>
+<xs:enumeration value="330211"/>
+<xs:enumeration value="330212"/>
+<xs:enumeration value="330225"/>
+<xs:enumeration value="330226"/>
+<xs:enumeration value="330281"/>
+<xs:enumeration value="330282"/>
+<xs:enumeration value="330283"/>
+<xs:enumeration value="330300"/>
+<xs:enumeration value="330301"/>
+<xs:enumeration value="330302"/>
+<xs:enumeration value="330303"/>
+<xs:enumeration value="330304"/>
+<xs:enumeration value="330322"/>
+<xs:enumeration value="330324"/>
+<xs:enumeration value="330326"/>
+<xs:enumeration value="330327"/>
+<xs:enumeration value="330328"/>
+<xs:enumeration value="330329"/>
+<xs:enumeration value="330381"/>
+<xs:enumeration value="330382"/>
+<xs:enumeration value="330400"/>
+<xs:enumeration value="330401"/>
+<xs:enumeration value="330402"/>
+<xs:enumeration value="330411"/>
+<xs:enumeration value="330421"/>
+<xs:enumeration value="330424"/>
+<xs:enumeration value="330481"/>
+<xs:enumeration value="330482"/>
+<xs:enumeration value="330483"/>
+<xs:enumeration value="330500"/>
+<xs:enumeration value="330501"/>
+<xs:enumeration value="330502"/>
+<xs:enumeration value="330503"/>
+<xs:enumeration value="330521"/>
+<xs:enumeration value="330522"/>
+<xs:enumeration value="330523"/>
+<xs:enumeration value="330600"/>
+<xs:enumeration value="330601"/>
+<xs:enumeration value="330602"/>
+<xs:enumeration value="330621"/>
+<xs:enumeration value="330624"/>
+<xs:enumeration value="330681"/>
+<xs:enumeration value="330682"/>
+<xs:enumeration value="330683"/>
+<xs:enumeration value="330700"/>
+<xs:enumeration value="330701"/>
+<xs:enumeration value="330702"/>
+<xs:enumeration value="330703"/>
+<xs:enumeration value="330723"/>
+<xs:enumeration value="330726"/>
+<xs:enumeration value="330727"/>
+<xs:enumeration value="330781"/>
+<xs:enumeration value="330782"/>
+<xs:enumeration value="330783"/>
+<xs:enumeration value="330784"/>
+<xs:enumeration value="330800"/>
+<xs:enumeration value="330801"/>
+<xs:enumeration value="330802"/>
+<xs:enumeration value="330803"/>
+<xs:enumeration value="330822"/>
+<xs:enumeration value="330824"/>
+<xs:enumeration value="330825"/>
+<xs:enumeration value="330881"/>
+<xs:enumeration value="330900"/>
+<xs:enumeration value="330901"/>
+<xs:enumeration value="330902"/>
+<xs:enumeration value="330903"/>
+<xs:enumeration value="330921"/>
+<xs:enumeration value="330922"/>
+<xs:enumeration value="331000"/>
+<xs:enumeration value="331001"/>
+<xs:enumeration value="331002"/>
+<xs:enumeration value="331003"/>
+<xs:enumeration value="331004"/>
+<xs:enumeration value="331021"/>
+<xs:enumeration value="331022"/>
+<xs:enumeration value="331023"/>
+<xs:enumeration value="331024"/>
+<xs:enumeration value="331081"/>
+<xs:enumeration value="331082"/>
+<xs:enumeration value="331100"/>
+<xs:enumeration value="331101"/>
+<xs:enumeration value="331102"/>
+<xs:enumeration value="331121"/>
+<xs:enumeration value="331122"/>
+<xs:enumeration value="331123"/>
+<xs:enumeration value="331124"/>
+<xs:enumeration value="331125"/>
+<xs:enumeration value="331126"/>
+<xs:enumeration value="331127"/>
+<xs:enumeration value="331181"/>
+<xs:enumeration value="340000"/>
+<xs:enumeration value="340100"/>
+<xs:enumeration value="340101"/>
+<xs:enumeration value="340102"/>
+<xs:enumeration value="340103"/>
+<xs:enumeration value="340104"/>
+<xs:enumeration value="340111"/>
+<xs:enumeration value="340121"/>
+<xs:enumeration value="340122"/>
+<xs:enumeration value="340123"/>
+<xs:enumeration value="340124"/>
+<xs:enumeration value="340181"/>
+<xs:enumeration value="340200"/>
+<xs:enumeration value="340201"/>
+<xs:enumeration value="340202"/>
+<xs:enumeration value="340203"/>
+<xs:enumeration value="340207"/>
+<xs:enumeration value="340208"/>
+<xs:enumeration value="340221"/>
+<xs:enumeration value="340222"/>
+<xs:enumeration value="340223"/>
+<xs:enumeration value="340225"/>
+<xs:enumeration value="340300"/>
+<xs:enumeration value="340301"/>
+<xs:enumeration value="340302"/>
+<xs:enumeration value="340303"/>
+<xs:enumeration value="340304"/>
+<xs:enumeration value="340311"/>
+<xs:enumeration value="340321"/>
+<xs:enumeration value="340322"/>
+<xs:enumeration value="340323"/>
+<xs:enumeration value="340400"/>
+<xs:enumeration value="340401"/>
+<xs:enumeration value="340402"/>
+<xs:enumeration value="340403"/>
+<xs:enumeration value="340404"/>
+<xs:enumeration value="340405"/>
+<xs:enumeration value="340406"/>
+<xs:enumeration value="340421"/>
+<xs:enumeration value="340500"/>
+<xs:enumeration value="340501"/>
+<xs:enumeration value="340503"/>
+<xs:enumeration value="340504"/>
+<xs:enumeration value="340506"/>
+<xs:enumeration value="340521"/>
+<xs:enumeration value="340522"/>
+<xs:enumeration value="340523"/>
+<xs:enumeration value="340600"/>
+<xs:enumeration value="340601"/>
+<xs:enumeration value="340602"/>
+<xs:enumeration value="340603"/>
+<xs:enumeration value="340604"/>
+<xs:enumeration value="340621"/>
+<xs:enumeration value="340700"/>
+<xs:enumeration value="340701"/>
+<xs:enumeration value="340702"/>
+<xs:enumeration value="340703"/>
+<xs:enumeration value="340711"/>
+<xs:enumeration value="340721"/>
+<xs:enumeration value="340800"/>
+<xs:enumeration value="340801"/>
+<xs:enumeration value="340802"/>
+<xs:enumeration value="340803"/>
+<xs:enumeration value="340811"/>
+<xs:enumeration value="340822"/>
+<xs:enumeration value="340823"/>
+<xs:enumeration value="340824"/>
+<xs:enumeration value="340825"/>
+<xs:enumeration value="340826"/>
+<xs:enumeration value="340827"/>
+<xs:enumeration value="340828"/>
+<xs:enumeration value="340881"/>
+<xs:enumeration value="341000"/>
+<xs:enumeration value="341001"/>
+<xs:enumeration value="341002"/>
+<xs:enumeration value="341003"/>
+<xs:enumeration value="341004"/>
+<xs:enumeration value="341021"/>
+<xs:enumeration value="341022"/>
+<xs:enumeration value="341023"/>
+<xs:enumeration value="341024"/>
+<xs:enumeration value="341100"/>
+<xs:enumeration value="341101"/>
+<xs:enumeration value="341102"/>
+<xs:enumeration value="341103"/>
+<xs:enumeration value="341122"/>
+<xs:enumeration value="341124"/>
+<xs:enumeration value="341125"/>
+<xs:enumeration value="341126"/>
+<xs:enumeration value="341181"/>
+<xs:enumeration value="341182"/>
+<xs:enumeration value="341200"/>
+<xs:enumeration value="341201"/>
+<xs:enumeration value="341202"/>
+<xs:enumeration value="341203"/>
+<xs:enumeration value="341204"/>
+<xs:enumeration value="341221"/>
+<xs:enumeration value="341222"/>
+<xs:enumeration value="341225"/>
+<xs:enumeration value="341226"/>
+<xs:enumeration value="341282"/>
+<xs:enumeration value="341300"/>
+<xs:enumeration value="341301"/>
+<xs:enumeration value="341302"/>
+<xs:enumeration value="341321"/>
+<xs:enumeration value="341322"/>
+<xs:enumeration value="341323"/>
+<xs:enumeration value="341324"/>
+<xs:enumeration value="341500"/>
+<xs:enumeration value="341501"/>
+<xs:enumeration value="341502"/>
+<xs:enumeration value="341503"/>
+<xs:enumeration value="341521"/>
+<xs:enumeration value="341522"/>
+<xs:enumeration value="341523"/>
+<xs:enumeration value="341524"/>
+<xs:enumeration value="341525"/>
+<xs:enumeration value="341600"/>
+<xs:enumeration value="341601"/>
+<xs:enumeration value="341602"/>
+<xs:enumeration value="341621"/>
+<xs:enumeration value="341622"/>
+<xs:enumeration value="341623"/>
+<xs:enumeration value="341700"/>
+<xs:enumeration value="341701"/>
+<xs:enumeration value="341702"/>
+<xs:enumeration value="341721"/>
+<xs:enumeration value="341722"/>
+<xs:enumeration value="341723"/>
+<xs:enumeration value="341800"/>
+<xs:enumeration value="341801"/>
+<xs:enumeration value="341802"/>
+<xs:enumeration value="341821"/>
+<xs:enumeration value="341822"/>
+<xs:enumeration value="341823"/>
+<xs:enumeration value="341824"/>
+<xs:enumeration value="341825"/>
+<xs:enumeration value="341881"/>
+<xs:enumeration value="350000"/>
+<xs:enumeration value="350100"/>
+<xs:enumeration value="350101"/>
+<xs:enumeration value="350102"/>
+<xs:enumeration value="350103"/>
+<xs:enumeration value="350104"/>
+<xs:enumeration value="350105"/>
+<xs:enumeration value="350111"/>
+<xs:enumeration value="350121"/>
+<xs:enumeration value="350122"/>
+<xs:enumeration value="350123"/>
+<xs:enumeration value="350124"/>
+<xs:enumeration value="350125"/>
+<xs:enumeration value="350128"/>
+<xs:enumeration value="350181"/>
+<xs:enumeration value="350182"/>
+<xs:enumeration value="350200"/>
+<xs:enumeration value="350201"/>
+<xs:enumeration value="350203"/>
+<xs:enumeration value="350205"/>
+<xs:enumeration value="350206"/>
+<xs:enumeration value="350211"/>
+<xs:enumeration value="350212"/>
+<xs:enumeration value="350213"/>
+<xs:enumeration value="350300"/>
+<xs:enumeration value="350301"/>
+<xs:enumeration value="350302"/>
+<xs:enumeration value="350303"/>
+<xs:enumeration value="350304"/>
+<xs:enumeration value="350305"/>
+<xs:enumeration value="350322"/>
+<xs:enumeration value="350400"/>
+<xs:enumeration value="350401"/>
+<xs:enumeration value="350402"/>
+<xs:enumeration value="350403"/>
+<xs:enumeration value="350421"/>
+<xs:enumeration value="350423"/>
+<xs:enumeration value="350424"/>
+<xs:enumeration value="350425"/>
+<xs:enumeration value="350426"/>
+<xs:enumeration value="350427"/>
+<xs:enumeration value="350428"/>
+<xs:enumeration value="350429"/>
+<xs:enumeration value="350430"/>
+<xs:enumeration value="350481"/>
+<xs:enumeration value="350500"/>
+<xs:enumeration value="350501"/>
+<xs:enumeration value="350502"/>
+<xs:enumeration value="350503"/>
+<xs:enumeration value="350504"/>
+<xs:enumeration value="350505"/>
+<xs:enumeration value="350521"/>
+<xs:enumeration value="350524"/>
+<xs:enumeration value="350525"/>
+<xs:enumeration value="350526"/>
+<xs:enumeration value="350527"/>
+<xs:enumeration value="350581"/>
+<xs:enumeration value="350582"/>
+<xs:enumeration value="350583"/>
+<xs:enumeration value="350600"/>
+<xs:enumeration value="350601"/>
+<xs:enumeration value="350602"/>
+<xs:enumeration value="350603"/>
+<xs:enumeration value="350622"/>
+<xs:enumeration value="350623"/>
+<xs:enumeration value="350624"/>
+<xs:enumeration value="350625"/>
+<xs:enumeration value="350626"/>
+<xs:enumeration value="350627"/>
+<xs:enumeration value="350628"/>
+<xs:enumeration value="350629"/>
+<xs:enumeration value="350681"/>
+<xs:enumeration value="350700"/>
+<xs:enumeration value="350701"/>
+<xs:enumeration value="350702"/>
+<xs:enumeration value="350721"/>
+<xs:enumeration value="350722"/>
+<xs:enumeration value="350723"/>
+<xs:enumeration value="350724"/>
+<xs:enumeration value="350725"/>
+<xs:enumeration value="350781"/>
+<xs:enumeration value="350782"/>
+<xs:enumeration value="350783"/>
+<xs:enumeration value="350784"/>
+<xs:enumeration value="350800"/>
+<xs:enumeration value="350801"/>
+<xs:enumeration value="350802"/>
+<xs:enumeration value="350821"/>
+<xs:enumeration value="350822"/>
+<xs:enumeration value="350823"/>
+<xs:enumeration value="350824"/>
+<xs:enumeration value="350825"/>
+<xs:enumeration value="350881"/>
+<xs:enumeration value="350900"/>
+<xs:enumeration value="350901"/>
+<xs:enumeration value="350902"/>
+<xs:enumeration value="350921"/>
+<xs:enumeration value="350922"/>
+<xs:enumeration value="350923"/>
+<xs:enumeration value="350924"/>
+<xs:enumeration value="350925"/>
+<xs:enumeration value="350926"/>
+<xs:enumeration value="350981"/>
+<xs:enumeration value="350982"/>
+<xs:enumeration value="360000"/>
+<xs:enumeration value="360100"/>
+<xs:enumeration value="360101"/>
+<xs:enumeration value="360102"/>
+<xs:enumeration value="360103"/>
+<xs:enumeration value="360104"/>
+<xs:enumeration value="360105"/>
+<xs:enumeration value="360111"/>
+<xs:enumeration value="360121"/>
+<xs:enumeration value="360122"/>
+<xs:enumeration value="360123"/>
+<xs:enumeration value="360124"/>
+<xs:enumeration value="360200"/>
+<xs:enumeration value="360201"/>
+<xs:enumeration value="360202"/>
+<xs:enumeration value="360203"/>
+<xs:enumeration value="360222"/>
+<xs:enumeration value="360281"/>
+<xs:enumeration value="360300"/>
+<xs:enumeration value="360301"/>
+<xs:enumeration value="360302"/>
+<xs:enumeration value="360313"/>
+<xs:enumeration value="360321"/>
+<xs:enumeration value="360322"/>
+<xs:enumeration value="360323"/>
+<xs:enumeration value="360400"/>
+<xs:enumeration value="360401"/>
+<xs:enumeration value="360402"/>
+<xs:enumeration value="360403"/>
+<xs:enumeration value="360421"/>
+<xs:enumeration value="360423"/>
+<xs:enumeration value="360424"/>
+<xs:enumeration value="360425"/>
+<xs:enumeration value="360426"/>
+<xs:enumeration value="360427"/>
+<xs:enumeration value="360428"/>
+<xs:enumeration value="360429"/>
+<xs:enumeration value="360430"/>
+<xs:enumeration value="360481"/>
+<xs:enumeration value="360482"/>
+<xs:enumeration value="360500"/>
+<xs:enumeration value="360501"/>
+<xs:enumeration value="360502"/>
+<xs:enumeration value="360521"/>
+<xs:enumeration value="360600"/>
+<xs:enumeration value="360601"/>
+<xs:enumeration value="360602"/>
+<xs:enumeration value="360622"/>
+<xs:enumeration value="360681"/>
+<xs:enumeration value="360700"/>
+<xs:enumeration value="360701"/>
+<xs:enumeration value="360702"/>
+<xs:enumeration value="360721"/>
+<xs:enumeration value="360722"/>
+<xs:enumeration value="360723"/>
+<xs:enumeration value="360724"/>
+<xs:enumeration value="360725"/>
+<xs:enumeration value="360726"/>
+<xs:enumeration value="360727"/>
+<xs:enumeration value="360728"/>
+<xs:enumeration value="360729"/>
+<xs:enumeration value="360730"/>
+<xs:enumeration value="360731"/>
+<xs:enumeration value="360732"/>
+<xs:enumeration value="360733"/>
+<xs:enumeration value="360734"/>
+<xs:enumeration value="360735"/>
+<xs:enumeration value="360781"/>
+<xs:enumeration value="360782"/>
+<xs:enumeration value="360800"/>
+<xs:enumeration value="360801"/>
+<xs:enumeration value="360802"/>
+<xs:enumeration value="360803"/>
+<xs:enumeration value="360821"/>
+<xs:enumeration value="360822"/>
+<xs:enumeration value="360823"/>
+<xs:enumeration value="360824"/>
+<xs:enumeration value="360825"/>
+<xs:enumeration value="360826"/>
+<xs:enumeration value="360827"/>
+<xs:enumeration value="360828"/>
+<xs:enumeration value="360829"/>
+<xs:enumeration value="360830"/>
+<xs:enumeration value="360881"/>
+<xs:enumeration value="360900"/>
+<xs:enumeration value="360901"/>
+<xs:enumeration value="360902"/>
+<xs:enumeration value="360921"/>
+<xs:enumeration value="360922"/>
+<xs:enumeration value="360923"/>
+<xs:enumeration value="360924"/>
+<xs:enumeration value="360925"/>
+<xs:enumeration value="360926"/>
+<xs:enumeration value="360981"/>
+<xs:enumeration value="360982"/>
+<xs:enumeration value="360983"/>
+<xs:enumeration value="361000"/>
+<xs:enumeration value="361001"/>
+<xs:enumeration value="361002"/>
+<xs:enumeration value="361021"/>
+<xs:enumeration value="361022"/>
+<xs:enumeration value="361023"/>
+<xs:enumeration value="361024"/>
+<xs:enumeration value="361025"/>
+<xs:enumeration value="361026"/>
+<xs:enumeration value="361027"/>
+<xs:enumeration value="361028"/>
+<xs:enumeration value="361029"/>
+<xs:enumeration value="361030"/>
+<xs:enumeration value="361100"/>
+<xs:enumeration value="361101"/>
+<xs:enumeration value="361102"/>
+<xs:enumeration value="361121"/>
+<xs:enumeration value="361122"/>
+<xs:enumeration value="361123"/>
+<xs:enumeration value="361124"/>
+<xs:enumeration value="361125"/>
+<xs:enumeration value="361126"/>
+<xs:enumeration value="361127"/>
+<xs:enumeration value="361128"/>
+<xs:enumeration value="361129"/>
+<xs:enumeration value="361130"/>
+<xs:enumeration value="361181"/>
+<xs:enumeration value="370000"/>
+<xs:enumeration value="370100"/>
+<xs:enumeration value="370101"/>
+<xs:enumeration value="370102"/>
+<xs:enumeration value="370103"/>
+<xs:enumeration value="370104"/>
+<xs:enumeration value="370105"/>
+<xs:enumeration value="370112"/>
+<xs:enumeration value="370113"/>
+<xs:enumeration value="370124"/>
+<xs:enumeration value="370125"/>
+<xs:enumeration value="370126"/>
+<xs:enumeration value="370181"/>
+<xs:enumeration value="370200"/>
+<xs:enumeration value="370201"/>
+<xs:enumeration value="370202"/>
+<xs:enumeration value="370203"/>
+<xs:enumeration value="370205"/>
+<xs:enumeration value="370211"/>
+<xs:enumeration value="370212"/>
+<xs:enumeration value="370213"/>
+<xs:enumeration value="370214"/>
+<xs:enumeration value="370281"/>
+<xs:enumeration value="370282"/>
+<xs:enumeration value="370283"/>
+<xs:enumeration value="370284"/>
+<xs:enumeration value="370285"/>
+<xs:enumeration value="370300"/>
+<xs:enumeration value="370301"/>
+<xs:enumeration value="370302"/>
+<xs:enumeration value="370303"/>
+<xs:enumeration value="370304"/>
+<xs:enumeration value="370305"/>
+<xs:enumeration value="370306"/>
+<xs:enumeration value="370321"/>
+<xs:enumeration value="370322"/>
+<xs:enumeration value="370323"/>
+<xs:enumeration value="370400"/>
+<xs:enumeration value="370401"/>
+<xs:enumeration value="370402"/>
+<xs:enumeration value="370403"/>
+<xs:enumeration value="370404"/>
+<xs:enumeration value="370405"/>
+<xs:enumeration value="370406"/>
+<xs:enumeration value="370481"/>
+<xs:enumeration value="370500"/>
+<xs:enumeration value="370501"/>
+<xs:enumeration value="370502"/>
+<xs:enumeration value="370503"/>
+<xs:enumeration value="370521"/>
+<xs:enumeration value="370522"/>
+<xs:enumeration value="370523"/>
+<xs:enumeration value="370600"/>
+<xs:enumeration value="370601"/>
+<xs:enumeration value="370602"/>
+<xs:enumeration value="370611"/>
+<xs:enumeration value="370612"/>
+<xs:enumeration value="370613"/>
+<xs:enumeration value="370634"/>
+<xs:enumeration value="370681"/>
+<xs:enumeration value="370682"/>
+<xs:enumeration value="370683"/>
+<xs:enumeration value="370684"/>
+<xs:enumeration value="370685"/>
+<xs:enumeration value="370686"/>
+<xs:enumeration value="370687"/>
+<xs:enumeration value="370700"/>
+<xs:enumeration value="370701"/>
+<xs:enumeration value="370702"/>
+<xs:enumeration value="370703"/>
+<xs:enumeration value="370704"/>
+<xs:enumeration value="370705"/>
+<xs:enumeration value="370724"/>
+<xs:enumeration value="370725"/>
+<xs:enumeration value="370781"/>
+<xs:enumeration value="370782"/>
+<xs:enumeration value="370783"/>
+<xs:enumeration value="370784"/>
+<xs:enumeration value="370785"/>
+<xs:enumeration value="370786"/>
+<xs:enumeration value="370800"/>
+<xs:enumeration value="370801"/>
+<xs:enumeration value="370802"/>
+<xs:enumeration value="370811"/>
+<xs:enumeration value="370826"/>
+<xs:enumeration value="370827"/>
+<xs:enumeration value="370828"/>
+<xs:enumeration value="370829"/>
+<xs:enumeration value="370830"/>
+<xs:enumeration value="370831"/>
+<xs:enumeration value="370832"/>
+<xs:enumeration value="370881"/>
+<xs:enumeration value="370882"/>
+<xs:enumeration value="370883"/>
+<xs:enumeration value="370900"/>
+<xs:enumeration value="370901"/>
+<xs:enumeration value="370902"/>
+<xs:enumeration value="370911"/>
+<xs:enumeration value="370921"/>
+<xs:enumeration value="370923"/>
+<xs:enumeration value="370982"/>
+<xs:enumeration value="370983"/>
+<xs:enumeration value="371000"/>
+<xs:enumeration value="371001"/>
+<xs:enumeration value="371002"/>
+<xs:enumeration value="371081"/>
+<xs:enumeration value="371082"/>
+<xs:enumeration value="371083"/>
+<xs:enumeration value="371100"/>
+<xs:enumeration value="371101"/>
+<xs:enumeration value="371102"/>
+<xs:enumeration value="371103"/>
+<xs:enumeration value="371121"/>
+<xs:enumeration value="371122"/>
+<xs:enumeration value="371200"/>
+<xs:enumeration value="371201"/>
+<xs:enumeration value="371202"/>
+<xs:enumeration value="371203"/>
+<xs:enumeration value="371300"/>
+<xs:enumeration value="371301"/>
+<xs:enumeration value="371302"/>
+<xs:enumeration value="371311"/>
+<xs:enumeration value="371312"/>
+<xs:enumeration value="371321"/>
+<xs:enumeration value="371322"/>
+<xs:enumeration value="371323"/>
+<xs:enumeration value="371324"/>
+<xs:enumeration value="371325"/>
+<xs:enumeration value="371326"/>
+<xs:enumeration value="371327"/>
+<xs:enumeration value="371328"/>
+<xs:enumeration value="371329"/>
+<xs:enumeration value="371400"/>
+<xs:enumeration value="371401"/>
+<xs:enumeration value="371402"/>
+<xs:enumeration value="371421"/>
+<xs:enumeration value="371422"/>
+<xs:enumeration value="371423"/>
+<xs:enumeration value="371424"/>
+<xs:enumeration value="371425"/>
+<xs:enumeration value="371426"/>
+<xs:enumeration value="371427"/>
+<xs:enumeration value="371428"/>
+<xs:enumeration value="371481"/>
+<xs:enumeration value="371482"/>
+<xs:enumeration value="371500"/>
+<xs:enumeration value="371501"/>
+<xs:enumeration value="371502"/>
+<xs:enumeration value="371521"/>
+<xs:enumeration value="371522"/>
+<xs:enumeration value="371523"/>
+<xs:enumeration value="371524"/>
+<xs:enumeration value="371525"/>
+<xs:enumeration value="371526"/>
+<xs:enumeration value="371581"/>
+<xs:enumeration value="371600"/>
+<xs:enumeration value="371601"/>
+<xs:enumeration value="371602"/>
+<xs:enumeration value="371621"/>
+<xs:enumeration value="371622"/>
+<xs:enumeration value="371623"/>
+<xs:enumeration value="371624"/>
+<xs:enumeration value="371625"/>
+<xs:enumeration value="371626"/>
+<xs:enumeration value="371700"/>
+<xs:enumeration value="371701"/>
+<xs:enumeration value="371702"/>
+<xs:enumeration value="371721"/>
+<xs:enumeration value="371722"/>
+<xs:enumeration value="371723"/>
+<xs:enumeration value="371724"/>
+<xs:enumeration value="371725"/>
+<xs:enumeration value="371726"/>
+<xs:enumeration value="371727"/>
+<xs:enumeration value="371728"/>
+<xs:enumeration value="410000"/>
+<xs:enumeration value="410100"/>
+<xs:enumeration value="410101"/>
+<xs:enumeration value="410102"/>
+<xs:enumeration value="410103"/>
+<xs:enumeration value="410104"/>
+<xs:enumeration value="410105"/>
+<xs:enumeration value="410106"/>
+<xs:enumeration value="410108"/>
+<xs:enumeration value="410122"/>
+<xs:enumeration value="410181"/>
+<xs:enumeration value="410182"/>
+<xs:enumeration value="410183"/>
+<xs:enumeration value="410184"/>
+<xs:enumeration value="410185"/>
+<xs:enumeration value="410200"/>
+<xs:enumeration value="410201"/>
+<xs:enumeration value="410202"/>
+<xs:enumeration value="410203"/>
+<xs:enumeration value="410204"/>
+<xs:enumeration value="410205"/>
+<xs:enumeration value="410211"/>
+<xs:enumeration value="410221"/>
+<xs:enumeration value="410222"/>
+<xs:enumeration value="410223"/>
+<xs:enumeration value="410224"/>
+<xs:enumeration value="410225"/>
+<xs:enumeration value="410300"/>
+<xs:enumeration value="410301"/>
+<xs:enumeration value="410302"/>
+<xs:enumeration value="410303"/>
+<xs:enumeration value="410304"/>
+<xs:enumeration value="410305"/>
+<xs:enumeration value="410306"/>
+<xs:enumeration value="410311"/>
+<xs:enumeration value="410322"/>
+<xs:enumeration value="410323"/>
+<xs:enumeration value="410324"/>
+<xs:enumeration value="410325"/>
+<xs:enumeration value="410326"/>
+<xs:enumeration value="410327"/>
+<xs:enumeration value="410328"/>
+<xs:enumeration value="410329"/>
+<xs:enumeration value="410381"/>
+<xs:enumeration value="410400"/>
+<xs:enumeration value="410401"/>
+<xs:enumeration value="410402"/>
+<xs:enumeration value="410403"/>
+<xs:enumeration value="410404"/>
+<xs:enumeration value="410411"/>
+<xs:enumeration value="410421"/>
+<xs:enumeration value="410422"/>
+<xs:enumeration value="410423"/>
+<xs:enumeration value="410425"/>
+<xs:enumeration value="410481"/>
+<xs:enumeration value="410482"/>
+<xs:enumeration value="410500"/>
+<xs:enumeration value="410501"/>
+<xs:enumeration value="410502"/>
+<xs:enumeration value="410503"/>
+<xs:enumeration value="410505"/>
+<xs:enumeration value="410506"/>
+<xs:enumeration value="410522"/>
+<xs:enumeration value="410523"/>
+<xs:enumeration value="410526"/>
+<xs:enumeration value="410527"/>
+<xs:enumeration value="410581"/>
+<xs:enumeration value="410600"/>
+<xs:enumeration value="410601"/>
+<xs:enumeration value="410602"/>
+<xs:enumeration value="410603"/>
+<xs:enumeration value="410611"/>
+<xs:enumeration value="410621"/>
+<xs:enumeration value="410622"/>
+<xs:enumeration value="410700"/>
+<xs:enumeration value="410701"/>
+<xs:enumeration value="410702"/>
+<xs:enumeration value="410703"/>
+<xs:enumeration value="410704"/>
+<xs:enumeration value="410711"/>
+<xs:enumeration value="410721"/>
+<xs:enumeration value="410724"/>
+<xs:enumeration value="410725"/>
+<xs:enumeration value="410726"/>
+<xs:enumeration value="410727"/>
+<xs:enumeration value="410728"/>
+<xs:enumeration value="410781"/>
+<xs:enumeration value="410782"/>
+<xs:enumeration value="410800"/>
+<xs:enumeration value="410801"/>
+<xs:enumeration value="410802"/>
+<xs:enumeration value="410803"/>
+<xs:enumeration value="410804"/>
+<xs:enumeration value="410811"/>
+<xs:enumeration value="410821"/>
+<xs:enumeration value="410822"/>
+<xs:enumeration value="410823"/>
+<xs:enumeration value="410825"/>
+<xs:enumeration value="410882"/>
+<xs:enumeration value="410883"/>
+<xs:enumeration value="410900"/>
+<xs:enumeration value="410901"/>
+<xs:enumeration value="410902"/>
+<xs:enumeration value="410922"/>
+<xs:enumeration value="410923"/>
+<xs:enumeration value="410926"/>
+<xs:enumeration value="410927"/>
+<xs:enumeration value="410928"/>
+<xs:enumeration value="411000"/>
+<xs:enumeration value="411001"/>
+<xs:enumeration value="411002"/>
+<xs:enumeration value="411023"/>
+<xs:enumeration value="411024"/>
+<xs:enumeration value="411025"/>
+<xs:enumeration value="411081"/>
+<xs:enumeration value="411082"/>
+<xs:enumeration value="411100"/>
+<xs:enumeration value="411101"/>
+<xs:enumeration value="411102"/>
+<xs:enumeration value="411103"/>
+<xs:enumeration value="411104"/>
+<xs:enumeration value="411121"/>
+<xs:enumeration value="411122"/>
+<xs:enumeration value="411200"/>
+<xs:enumeration value="411201"/>
+<xs:enumeration value="411202"/>
+<xs:enumeration value="411221"/>
+<xs:enumeration value="411222"/>
+<xs:enumeration value="411224"/>
+<xs:enumeration value="411281"/>
+<xs:enumeration value="411282"/>
+<xs:enumeration value="411300"/>
+<xs:enumeration value="411301"/>
+<xs:enumeration value="411302"/>
+<xs:enumeration value="411303"/>
+<xs:enumeration value="411321"/>
+<xs:enumeration value="411322"/>
+<xs:enumeration value="411323"/>
+<xs:enumeration value="411324"/>
+<xs:enumeration value="411325"/>
+<xs:enumeration value="411326"/>
+<xs:enumeration value="411327"/>
+<xs:enumeration value="411328"/>
+<xs:enumeration value="411329"/>
+<xs:enumeration value="411330"/>
+<xs:enumeration value="411381"/>
+<xs:enumeration value="411400"/>
+<xs:enumeration value="411401"/>
+<xs:enumeration value="411402"/>
+<xs:enumeration value="411403"/>
+<xs:enumeration value="411421"/>
+<xs:enumeration value="411422"/>
+<xs:enumeration value="411423"/>
+<xs:enumeration value="411424"/>
+<xs:enumeration value="411425"/>
+<xs:enumeration value="411426"/>
+<xs:enumeration value="411481"/>
+<xs:enumeration value="411500"/>
+<xs:enumeration value="411501"/>
+<xs:enumeration value="411502"/>
+<xs:enumeration value="411503"/>
+<xs:enumeration value="411521"/>
+<xs:enumeration value="411522"/>
+<xs:enumeration value="411523"/>
+<xs:enumeration value="411524"/>
+<xs:enumeration value="411525"/>
+<xs:enumeration value="411526"/>
+<xs:enumeration value="411527"/>
+<xs:enumeration value="411528"/>
+<xs:enumeration value="411600"/>
+<xs:enumeration value="411601"/>
+<xs:enumeration value="411602"/>
+<xs:enumeration value="411621"/>
+<xs:enumeration value="411622"/>
+<xs:enumeration value="411623"/>
+<xs:enumeration value="411624"/>
+<xs:enumeration value="411625"/>
+<xs:enumeration value="411626"/>
+<xs:enumeration value="411627"/>
+<xs:enumeration value="411628"/>
+<xs:enumeration value="411681"/>
+<xs:enumeration value="411700"/>
+<xs:enumeration value="411701"/>
+<xs:enumeration value="411702"/>
+<xs:enumeration value="411721"/>
+<xs:enumeration value="411722"/>
+<xs:enumeration value="411723"/>
+<xs:enumeration value="411724"/>
+<xs:enumeration value="411725"/>
+<xs:enumeration value="411726"/>
+<xs:enumeration value="411727"/>
+<xs:enumeration value="411728"/>
+<xs:enumeration value="411729"/>
+<xs:enumeration value="419000"/>
+<xs:enumeration value="419001"/>
+<xs:enumeration value="420000"/>
+<xs:enumeration value="420100"/>
+<xs:enumeration value="420101"/>
+<xs:enumeration value="420102"/>
+<xs:enumeration value="420103"/>
+<xs:enumeration value="420104"/>
+<xs:enumeration value="420105"/>
+<xs:enumeration value="420106"/>
+<xs:enumeration value="420107"/>
+<xs:enumeration value="420111"/>
+<xs:enumeration value="420112"/>
+<xs:enumeration value="420113"/>
+<xs:enumeration value="420114"/>
+<xs:enumeration value="420115"/>
+<xs:enumeration value="420116"/>
+<xs:enumeration value="420117"/>
+<xs:enumeration value="420200"/>
+<xs:enumeration value="420201"/>
+<xs:enumeration value="420202"/>
+<xs:enumeration value="420203"/>
+<xs:enumeration value="420204"/>
+<xs:enumeration value="420205"/>
+<xs:enumeration value="420222"/>
+<xs:enumeration value="420281"/>
+<xs:enumeration value="420300"/>
+<xs:enumeration value="420301"/>
+<xs:enumeration value="420302"/>
+<xs:enumeration value="420303"/>
+<xs:enumeration value="420321"/>
+<xs:enumeration value="420322"/>
+<xs:enumeration value="420323"/>
+<xs:enumeration value="420324"/>
+<xs:enumeration value="420325"/>
+<xs:enumeration value="420381"/>
+<xs:enumeration value="420500"/>
+<xs:enumeration value="420501"/>
+<xs:enumeration value="420502"/>
+<xs:enumeration value="420503"/>
+<xs:enumeration value="420504"/>
+<xs:enumeration value="420505"/>
+<xs:enumeration value="420506"/>
+<xs:enumeration value="420525"/>
+<xs:enumeration value="420526"/>
+<xs:enumeration value="420527"/>
+<xs:enumeration value="420528"/>
+<xs:enumeration value="420529"/>
+<xs:enumeration value="420581"/>
+<xs:enumeration value="420582"/>
+<xs:enumeration value="420583"/>
+<xs:enumeration value="420600"/>
+<xs:enumeration value="420601"/>
+<xs:enumeration value="420602"/>
+<xs:enumeration value="420606"/>
+<xs:enumeration value="420607"/>
+<xs:enumeration value="420624"/>
+<xs:enumeration value="420625"/>
+<xs:enumeration value="420626"/>
+<xs:enumeration value="420682"/>
+<xs:enumeration value="420683"/>
+<xs:enumeration value="420684"/>
+<xs:enumeration value="420700"/>
+<xs:enumeration value="420701"/>
+<xs:enumeration value="420702"/>
+<xs:enumeration value="420703"/>
+<xs:enumeration value="420704"/>
+<xs:enumeration value="420800"/>
+<xs:enumeration value="420801"/>
+<xs:enumeration value="420802"/>
+<xs:enumeration value="420804"/>
+<xs:enumeration value="420821"/>
+<xs:enumeration value="420822"/>
+<xs:enumeration value="420881"/>
+<xs:enumeration value="420900"/>
+<xs:enumeration value="420901"/>
+<xs:enumeration value="420902"/>
+<xs:enumeration value="420921"/>
+<xs:enumeration value="420922"/>
+<xs:enumeration value="420923"/>
+<xs:enumeration value="420981"/>
+<xs:enumeration value="420982"/>
+<xs:enumeration value="420984"/>
+<xs:enumeration value="421000"/>
+<xs:enumeration value="421001"/>
+<xs:enumeration value="421002"/>
+<xs:enumeration value="421003"/>
+<xs:enumeration value="421022"/>
+<xs:enumeration value="421023"/>
+<xs:enumeration value="421024"/>
+<xs:enumeration value="421081"/>
+<xs:enumeration value="421083"/>
+<xs:enumeration value="421087"/>
+<xs:enumeration value="421100"/>
+<xs:enumeration value="421101"/>
+<xs:enumeration value="421102"/>
+<xs:enumeration value="421121"/>
+<xs:enumeration value="421122"/>
+<xs:enumeration value="421123"/>
+<xs:enumeration value="421124"/>
+<xs:enumeration value="421125"/>
+<xs:enumeration value="421126"/>
+<xs:enumeration value="421127"/>
+<xs:enumeration value="421181"/>
+<xs:enumeration value="421182"/>
+<xs:enumeration value="421200"/>
+<xs:enumeration value="421201"/>
+<xs:enumeration value="421202"/>
+<xs:enumeration value="421221"/>
+<xs:enumeration value="421222"/>
+<xs:enumeration value="421223"/>
+<xs:enumeration value="421224"/>
+<xs:enumeration value="421281"/>
+<xs:enumeration value="421300"/>
+<xs:enumeration value="421301"/>
+<xs:enumeration value="421303"/>
+<xs:enumeration value="421321"/>
+<xs:enumeration value="421381"/>
+<xs:enumeration value="422800"/>
+<xs:enumeration value="422801"/>
+<xs:enumeration value="422802"/>
+<xs:enumeration value="422822"/>
+<xs:enumeration value="422823"/>
+<xs:enumeration value="422825"/>
+<xs:enumeration value="422826"/>
+<xs:enumeration value="422827"/>
+<xs:enumeration value="422828"/>
+<xs:enumeration value="429000"/>
+<xs:enumeration value="429004"/>
+<xs:enumeration value="429005"/>
+<xs:enumeration value="429006"/>
+<xs:enumeration value="429021"/>
+<xs:enumeration value="430000"/>
+<xs:enumeration value="430100"/>
+<xs:enumeration value="430101"/>
+<xs:enumeration value="430102"/>
+<xs:enumeration value="430103"/>
+<xs:enumeration value="430104"/>
+<xs:enumeration value="430105"/>
+<xs:enumeration value="430111"/>
+<xs:enumeration value="430112"/>
+<xs:enumeration value="430121"/>
+<xs:enumeration value="430124"/>
+<xs:enumeration value="430181"/>
+<xs:enumeration value="430200"/>
+<xs:enumeration value="430201"/>
+<xs:enumeration value="430202"/>
+<xs:enumeration value="430203"/>
+<xs:enumeration value="430204"/>
+<xs:enumeration value="430211"/>
+<xs:enumeration value="430221"/>
+<xs:enumeration value="430223"/>
+<xs:enumeration value="430224"/>
+<xs:enumeration value="430225"/>
+<xs:enumeration value="430281"/>
+<xs:enumeration value="430300"/>
+<xs:enumeration value="430301"/>
+<xs:enumeration value="430302"/>
+<xs:enumeration value="430304"/>
+<xs:enumeration value="430321"/>
+<xs:enumeration value="430381"/>
+<xs:enumeration value="430382"/>
+<xs:enumeration value="430400"/>
+<xs:enumeration value="430401"/>
+<xs:enumeration value="430405"/>
+<xs:enumeration value="430406"/>
+<xs:enumeration value="430407"/>
+<xs:enumeration value="430408"/>
+<xs:enumeration value="430412"/>
+<xs:enumeration value="430421"/>
+<xs:enumeration value="430422"/>
+<xs:enumeration value="430423"/>
+<xs:enumeration value="430424"/>
+<xs:enumeration value="430426"/>
+<xs:enumeration value="430481"/>
+<xs:enumeration value="430482"/>
+<xs:enumeration value="430500"/>
+<xs:enumeration value="430501"/>
+<xs:enumeration value="430502"/>
+<xs:enumeration value="430503"/>
+<xs:enumeration value="430511"/>
+<xs:enumeration value="430521"/>
+<xs:enumeration value="430522"/>
+<xs:enumeration value="430523"/>
+<xs:enumeration value="430524"/>
+<xs:enumeration value="430525"/>
+<xs:enumeration value="430527"/>
+<xs:enumeration value="430528"/>
+<xs:enumeration value="430529"/>
+<xs:enumeration value="430581"/>
+<xs:enumeration value="430600"/>
+<xs:enumeration value="430601"/>
+<xs:enumeration value="430602"/>
+<xs:enumeration value="430603"/>
+<xs:enumeration value="430611"/>
+<xs:enumeration value="430621"/>
+<xs:enumeration value="430623"/>
+<xs:enumeration value="430624"/>
+<xs:enumeration value="430626"/>
+<xs:enumeration value="430681"/>
+<xs:enumeration value="430682"/>
+<xs:enumeration value="430700"/>
+<xs:enumeration value="430701"/>
+<xs:enumeration value="430702"/>
+<xs:enumeration value="430703"/>
+<xs:enumeration value="430721"/>
+<xs:enumeration value="430722"/>
+<xs:enumeration value="430723"/>
+<xs:enumeration value="430724"/>
+<xs:enumeration value="430725"/>
+<xs:enumeration value="430726"/>
+<xs:enumeration value="430781"/>
+<xs:enumeration value="430800"/>
+<xs:enumeration value="430801"/>
+<xs:enumeration value="430802"/>
+<xs:enumeration value="430811"/>
+<xs:enumeration value="430821"/>
+<xs:enumeration value="430822"/>
+<xs:enumeration value="430900"/>
+<xs:enumeration value="430901"/>
+<xs:enumeration value="430902"/>
+<xs:enumeration value="430903"/>
+<xs:enumeration value="430921"/>
+<xs:enumeration value="430922"/>
+<xs:enumeration value="430923"/>
+<xs:enumeration value="430981"/>
+<xs:enumeration value="431000"/>
+<xs:enumeration value="431001"/>
+<xs:enumeration value="431002"/>
+<xs:enumeration value="431003"/>
+<xs:enumeration value="431021"/>
+<xs:enumeration value="431022"/>
+<xs:enumeration value="431023"/>
+<xs:enumeration value="431024"/>
+<xs:enumeration value="431025"/>
+<xs:enumeration value="431026"/>
+<xs:enumeration value="431027"/>
+<xs:enumeration value="431028"/>
+<xs:enumeration value="431081"/>
+<xs:enumeration value="431100"/>
+<xs:enumeration value="431101"/>
+<xs:enumeration value="431102"/>
+<xs:enumeration value="431103"/>
+<xs:enumeration value="431121"/>
+<xs:enumeration value="431122"/>
+<xs:enumeration value="431123"/>
+<xs:enumeration value="431124"/>
+<xs:enumeration value="431125"/>
+<xs:enumeration value="431126"/>
+<xs:enumeration value="431127"/>
+<xs:enumeration value="431128"/>
+<xs:enumeration value="431129"/>
+<xs:enumeration value="431200"/>
+<xs:enumeration value="431201"/>
+<xs:enumeration value="431202"/>
+<xs:enumeration value="431221"/>
+<xs:enumeration value="431222"/>
+<xs:enumeration value="431223"/>
+<xs:enumeration value="431224"/>
+<xs:enumeration value="431225"/>
+<xs:enumeration value="431226"/>
+<xs:enumeration value="431227"/>
+<xs:enumeration value="431228"/>
+<xs:enumeration value="431229"/>
+<xs:enumeration value="431230"/>
+<xs:enumeration value="431281"/>
+<xs:enumeration value="431300"/>
+<xs:enumeration value="431301"/>
+<xs:enumeration value="431302"/>
+<xs:enumeration value="431321"/>
+<xs:enumeration value="431322"/>
+<xs:enumeration value="431381"/>
+<xs:enumeration value="431382"/>
+<xs:enumeration value="433100"/>
+<xs:enumeration value="433101"/>
+<xs:enumeration value="433122"/>
+<xs:enumeration value="433123"/>
+<xs:enumeration value="433124"/>
+<xs:enumeration value="433125"/>
+<xs:enumeration value="433126"/>
+<xs:enumeration value="433127"/>
+<xs:enumeration value="433130"/>
+<xs:enumeration value="440000"/>
+<xs:enumeration value="440100"/>
+<xs:enumeration value="440101"/>
+<xs:enumeration value="440103"/>
+<xs:enumeration value="440104"/>
+<xs:enumeration value="440105"/>
+<xs:enumeration value="440106"/>
+<xs:enumeration value="440111"/>
+<xs:enumeration value="440112"/>
+<xs:enumeration value="440113"/>
+<xs:enumeration value="440114"/>
+<xs:enumeration value="440115"/>
+<xs:enumeration value="440116"/>
+<xs:enumeration value="440183"/>
+<xs:enumeration value="440184"/>
+<xs:enumeration value="440200"/>
+<xs:enumeration value="440201"/>
+<xs:enumeration value="440203"/>
+<xs:enumeration value="440204"/>
+<xs:enumeration value="440205"/>
+<xs:enumeration value="440222"/>
+<xs:enumeration value="440224"/>
+<xs:enumeration value="440229"/>
+<xs:enumeration value="440232"/>
+<xs:enumeration value="440233"/>
+<xs:enumeration value="440281"/>
+<xs:enumeration value="440282"/>
+<xs:enumeration value="440300"/>
+<xs:enumeration value="440301"/>
+<xs:enumeration value="440303"/>
+<xs:enumeration value="440304"/>
+<xs:enumeration value="440305"/>
+<xs:enumeration value="440306"/>
+<xs:enumeration value="440307"/>
+<xs:enumeration value="440308"/>
+<xs:enumeration value="440400"/>
+<xs:enumeration value="440401"/>
+<xs:enumeration value="440402"/>
+<xs:enumeration value="440403"/>
+<xs:enumeration value="440404"/>
+<xs:enumeration value="440500"/>
+<xs:enumeration value="440501"/>
+<xs:enumeration value="440507"/>
+<xs:enumeration value="440511"/>
+<xs:enumeration value="440512"/>
+<xs:enumeration value="440513"/>
+<xs:enumeration value="440514"/>
+<xs:enumeration value="440515"/>
+<xs:enumeration value="440523"/>
+<xs:enumeration value="440600"/>
+<xs:enumeration value="440601"/>
+<xs:enumeration value="440604"/>
+<xs:enumeration value="440605"/>
+<xs:enumeration value="440606"/>
+<xs:enumeration value="440607"/>
+<xs:enumeration value="440608"/>
+<xs:enumeration value="440700"/>
+<xs:enumeration value="440701"/>
+<xs:enumeration value="440703"/>
+<xs:enumeration value="440704"/>
+<xs:enumeration value="440705"/>
+<xs:enumeration value="440781"/>
+<xs:enumeration value="440783"/>
+<xs:enumeration value="440784"/>
+<xs:enumeration value="440785"/>
+<xs:enumeration value="440800"/>
+<xs:enumeration value="440801"/>
+<xs:enumeration value="440802"/>
+<xs:enumeration value="440803"/>
+<xs:enumeration value="440804"/>
+<xs:enumeration value="440811"/>
+<xs:enumeration value="440823"/>
+<xs:enumeration value="440825"/>
+<xs:enumeration value="440881"/>
+<xs:enumeration value="440882"/>
+<xs:enumeration value="440883"/>
+<xs:enumeration value="440900"/>
+<xs:enumeration value="440901"/>
+<xs:enumeration value="440902"/>
+<xs:enumeration value="440903"/>
+<xs:enumeration value="440923"/>
+<xs:enumeration value="440981"/>
+<xs:enumeration value="440982"/>
+<xs:enumeration value="440983"/>
+<xs:enumeration value="441200"/>
+<xs:enumeration value="441201"/>
+<xs:enumeration value="441202"/>
+<xs:enumeration value="441203"/>
+<xs:enumeration value="441223"/>
+<xs:enumeration value="441224"/>
+<xs:enumeration value="441225"/>
+<xs:enumeration value="441226"/>
+<xs:enumeration value="441283"/>
+<xs:enumeration value="441284"/>
+<xs:enumeration value="441300"/>
+<xs:enumeration value="441301"/>
+<xs:enumeration value="441302"/>
+<xs:enumeration value="441303"/>
+<xs:enumeration value="441322"/>
+<xs:enumeration value="441323"/>
+<xs:enumeration value="441324"/>
+<xs:enumeration value="441400"/>
+<xs:enumeration value="441401"/>
+<xs:enumeration value="441402"/>
+<xs:enumeration value="441421"/>
+<xs:enumeration value="441422"/>
+<xs:enumeration value="441423"/>
+<xs:enumeration value="441424"/>
+<xs:enumeration value="441426"/>
+<xs:enumeration value="441427"/>
+<xs:enumeration value="441481"/>
+<xs:enumeration value="441500"/>
+<xs:enumeration value="441501"/>
+<xs:enumeration value="441502"/>
+<xs:enumeration value="441521"/>
+<xs:enumeration value="441523"/>
+<xs:enumeration value="441581"/>
+<xs:enumeration value="441600"/>
+<xs:enumeration value="441601"/>
+<xs:enumeration value="441602"/>
+<xs:enumeration value="441621"/>
+<xs:enumeration value="441622"/>
+<xs:enumeration value="441623"/>
+<xs:enumeration value="441624"/>
+<xs:enumeration value="441625"/>
+<xs:enumeration value="441700"/>
+<xs:enumeration value="441701"/>
+<xs:enumeration value="441702"/>
+<xs:enumeration value="441721"/>
+<xs:enumeration value="441723"/>
+<xs:enumeration value="441781"/>
+<xs:enumeration value="441800"/>
+<xs:enumeration value="441801"/>
+<xs:enumeration value="441802"/>
+<xs:enumeration value="441821"/>
+<xs:enumeration value="441823"/>
+<xs:enumeration value="441825"/>
+<xs:enumeration value="441826"/>
+<xs:enumeration value="441827"/>
+<xs:enumeration value="441881"/>
+<xs:enumeration value="441882"/>
+<xs:enumeration value="441900"/>
+<xs:enumeration value="442000"/>
+<xs:enumeration value="445100"/>
+<xs:enumeration value="445101"/>
+<xs:enumeration value="445102"/>
+<xs:enumeration value="445121"/>
+<xs:enumeration value="445122"/>
+<xs:enumeration value="445200"/>
+<xs:enumeration value="445201"/>
+<xs:enumeration value="445202"/>
+<xs:enumeration value="445221"/>
+<xs:enumeration value="445222"/>
+<xs:enumeration value="445224"/>
+<xs:enumeration value="445281"/>
+<xs:enumeration value="445300"/>
+<xs:enumeration value="445301"/>
+<xs:enumeration value="445302"/>
+<xs:enumeration value="445321"/>
+<xs:enumeration value="445322"/>
+<xs:enumeration value="445323"/>
+<xs:enumeration value="445381"/>
+<xs:enumeration value="450000"/>
+<xs:enumeration value="450100"/>
+<xs:enumeration value="450101"/>
+<xs:enumeration value="450102"/>
+<xs:enumeration value="450103"/>
+<xs:enumeration value="450105"/>
+<xs:enumeration value="450107"/>
+<xs:enumeration value="450108"/>
+<xs:enumeration value="450109"/>
+<xs:enumeration value="450122"/>
+<xs:enumeration value="450123"/>
+<xs:enumeration value="450124"/>
+<xs:enumeration value="450125"/>
+<xs:enumeration value="450126"/>
+<xs:enumeration value="450127"/>
+<xs:enumeration value="450200"/>
+<xs:enumeration value="450201"/>
+<xs:enumeration value="450202"/>
+<xs:enumeration value="450203"/>
+<xs:enumeration value="450204"/>
+<xs:enumeration value="450205"/>
+<xs:enumeration value="450221"/>
+<xs:enumeration value="450222"/>
+<xs:enumeration value="450223"/>
+<xs:enumeration value="450224"/>
+<xs:enumeration value="450225"/>
+<xs:enumeration value="450226"/>
+<xs:enumeration value="450300"/>
+<xs:enumeration value="450301"/>
+<xs:enumeration value="450302"/>
+<xs:enumeration value="450303"/>
+<xs:enumeration value="450304"/>
+<xs:enumeration value="450305"/>
+<xs:enumeration value="450311"/>
+<xs:enumeration value="450321"/>
+<xs:enumeration value="450322"/>
+<xs:enumeration value="450323"/>
+<xs:enumeration value="450324"/>
+<xs:enumeration value="450325"/>
+<xs:enumeration value="450326"/>
+<xs:enumeration value="450327"/>
+<xs:enumeration value="450328"/>
+<xs:enumeration value="450329"/>
+<xs:enumeration value="450330"/>
+<xs:enumeration value="450331"/>
+<xs:enumeration value="450332"/>
+<xs:enumeration value="450400"/>
+<xs:enumeration value="450401"/>
+<xs:enumeration value="450403"/>
+<xs:enumeration value="450404"/>
+<xs:enumeration value="450405"/>
+<xs:enumeration value="450421"/>
+<xs:enumeration value="450422"/>
+<xs:enumeration value="450423"/>
+<xs:enumeration value="450481"/>
+<xs:enumeration value="450500"/>
+<xs:enumeration value="450501"/>
+<xs:enumeration value="450502"/>
+<xs:enumeration value="450503"/>
+<xs:enumeration value="450512"/>
+<xs:enumeration value="450521"/>
+<xs:enumeration value="450600"/>
+<xs:enumeration value="450601"/>
+<xs:enumeration value="450602"/>
+<xs:enumeration value="450603"/>
+<xs:enumeration value="450621"/>
+<xs:enumeration value="450681"/>
+<xs:enumeration value="450700"/>
+<xs:enumeration value="450701"/>
+<xs:enumeration value="450702"/>
+<xs:enumeration value="450703"/>
+<xs:enumeration value="450721"/>
+<xs:enumeration value="450722"/>
+<xs:enumeration value="450800"/>
+<xs:enumeration value="450801"/>
+<xs:enumeration value="450802"/>
+<xs:enumeration value="450803"/>
+<xs:enumeration value="450804"/>
+<xs:enumeration value="450821"/>
+<xs:enumeration value="450881"/>
+<xs:enumeration value="450900"/>
+<xs:enumeration value="450901"/>
+<xs:enumeration value="450902"/>
+<xs:enumeration value="450921"/>
+<xs:enumeration value="450922"/>
+<xs:enumeration value="450923"/>
+<xs:enumeration value="450924"/>
+<xs:enumeration value="450981"/>
+<xs:enumeration value="451000"/>
+<xs:enumeration value="451001"/>
+<xs:enumeration value="451002"/>
+<xs:enumeration value="451021"/>
+<xs:enumeration value="451022"/>
+<xs:enumeration value="451023"/>
+<xs:enumeration value="451024"/>
+<xs:enumeration value="451025"/>
+<xs:enumeration value="451026"/>
+<xs:enumeration value="451027"/>
+<xs:enumeration value="451028"/>
+<xs:enumeration value="451029"/>
+<xs:enumeration value="451030"/>
+<xs:enumeration value="451031"/>
+<xs:enumeration value="451100"/>
+<xs:enumeration value="451101"/>
+<xs:enumeration value="451102"/>
+<xs:enumeration value="451121"/>
+<xs:enumeration value="451122"/>
+<xs:enumeration value="451123"/>
+<xs:enumeration value="451200"/>
+<xs:enumeration value="451201"/>
+<xs:enumeration value="451202"/>
+<xs:enumeration value="451221"/>
+<xs:enumeration value="451222"/>
+<xs:enumeration value="451223"/>
+<xs:enumeration value="451224"/>
+<xs:enumeration value="451225"/>
+<xs:enumeration value="451226"/>
+<xs:enumeration value="451227"/>
+<xs:enumeration value="451228"/>
+<xs:enumeration value="451229"/>
+<xs:enumeration value="451281"/>
+<xs:enumeration value="451300"/>
+<xs:enumeration value="451301"/>
+<xs:enumeration value="451302"/>
+<xs:enumeration value="451321"/>
+<xs:enumeration value="451322"/>
+<xs:enumeration value="451323"/>
+<xs:enumeration value="451324"/>
+<xs:enumeration value="451381"/>
+<xs:enumeration value="451400"/>
+<xs:enumeration value="451401"/>
+<xs:enumeration value="451402"/>
+<xs:enumeration value="451421"/>
+<xs:enumeration value="451422"/>
+<xs:enumeration value="451423"/>
+<xs:enumeration value="451424"/>
+<xs:enumeration value="451425"/>
+<xs:enumeration value="451481"/>
+<xs:enumeration value="460000"/>
+<xs:enumeration value="460100"/>
+<xs:enumeration value="460101"/>
+<xs:enumeration value="460105"/>
+<xs:enumeration value="460106"/>
+<xs:enumeration value="460107"/>
+<xs:enumeration value="460108"/>
+<xs:enumeration value="460200"/>
+<xs:enumeration value="460201"/>
+<xs:enumeration value="460300"/>
+<xs:enumeration value="460321"/>
+<xs:enumeration value="460322"/>
+<xs:enumeration value="460323"/>
+<xs:enumeration value="469000"/>
+<xs:enumeration value="469001"/>
+<xs:enumeration value="469002"/>
+<xs:enumeration value="469003"/>
+<xs:enumeration value="469005"/>
+<xs:enumeration value="469006"/>
+<xs:enumeration value="469007"/>
+<xs:enumeration value="469021"/>
+<xs:enumeration value="469022"/>
+<xs:enumeration value="469023"/>
+<xs:enumeration value="469024"/>
+<xs:enumeration value="469025"/>
+<xs:enumeration value="469026"/>
+<xs:enumeration value="469027"/>
+<xs:enumeration value="469028"/>
+<xs:enumeration value="469029"/>
+<xs:enumeration value="469030"/>
+<xs:enumeration value="500000"/>
+<xs:enumeration value="500100"/>
+<xs:enumeration value="500101"/>
+<xs:enumeration value="500102"/>
+<xs:enumeration value="500103"/>
+<xs:enumeration value="500104"/>
+<xs:enumeration value="500105"/>
+<xs:enumeration value="500106"/>
+<xs:enumeration value="500107"/>
+<xs:enumeration value="500108"/>
+<xs:enumeration value="500109"/>
+<xs:enumeration value="500110"/>
+<xs:enumeration value="500111"/>
+<xs:enumeration value="500112"/>
+<xs:enumeration value="500113"/>
+<xs:enumeration value="500114"/>
+<xs:enumeration value="500115"/>
+<xs:enumeration value="500116"/>
+<xs:enumeration value="500117"/>
+<xs:enumeration value="500118"/>
+<xs:enumeration value="500119"/>
+<xs:enumeration value="500200"/>
+<xs:enumeration value="500223"/>
+<xs:enumeration value="500224"/>
+<xs:enumeration value="500226"/>
+<xs:enumeration value="500227"/>
+<xs:enumeration value="500228"/>
+<xs:enumeration value="500229"/>
+<xs:enumeration value="500230"/>
+<xs:enumeration value="500231"/>
+<xs:enumeration value="500232"/>
+<xs:enumeration value="500233"/>
+<xs:enumeration value="500234"/>
+<xs:enumeration value="500235"/>
+<xs:enumeration value="500236"/>
+<xs:enumeration value="500237"/>
+<xs:enumeration value="500238"/>
+<xs:enumeration value="500240"/>
+<xs:enumeration value="500241"/>
+<xs:enumeration value="500242"/>
+<xs:enumeration value="500243"/>
+<xs:enumeration value="510000"/>
+<xs:enumeration value="510100"/>
+<xs:enumeration value="510101"/>
+<xs:enumeration value="510104"/>
+<xs:enumeration value="510105"/>
+<xs:enumeration value="510106"/>
+<xs:enumeration value="510107"/>
+<xs:enumeration value="510108"/>
+<xs:enumeration value="510112"/>
+<xs:enumeration value="510113"/>
+<xs:enumeration value="510114"/>
+<xs:enumeration value="510115"/>
+<xs:enumeration value="510121"/>
+<xs:enumeration value="510122"/>
+<xs:enumeration value="510124"/>
+<xs:enumeration value="510129"/>
+<xs:enumeration value="510131"/>
+<xs:enumeration value="510132"/>
+<xs:enumeration value="510181"/>
+<xs:enumeration value="510182"/>
+<xs:enumeration value="510183"/>
+<xs:enumeration value="510184"/>
+<xs:enumeration value="510300"/>
+<xs:enumeration value="510301"/>
+<xs:enumeration value="510302"/>
+<xs:enumeration value="510303"/>
+<xs:enumeration value="510304"/>
+<xs:enumeration value="510311"/>
+<xs:enumeration value="510321"/>
+<xs:enumeration value="510322"/>
+<xs:enumeration value="510400"/>
+<xs:enumeration value="510401"/>
+<xs:enumeration value="510402"/>
+<xs:enumeration value="510403"/>
+<xs:enumeration value="510411"/>
+<xs:enumeration value="510421"/>
+<xs:enumeration value="510422"/>
+<xs:enumeration value="510500"/>
+<xs:enumeration value="510501"/>
+<xs:enumeration value="510502"/>
+<xs:enumeration value="510503"/>
+<xs:enumeration value="510504"/>
+<xs:enumeration value="510521"/>
+<xs:enumeration value="510522"/>
+<xs:enumeration value="510524"/>
+<xs:enumeration value="510525"/>
+<xs:enumeration value="510600"/>
+<xs:enumeration value="510601"/>
+<xs:enumeration value="510603"/>
+<xs:enumeration value="510623"/>
+<xs:enumeration value="510626"/>
+<xs:enumeration value="510681"/>
+<xs:enumeration value="510682"/>
+<xs:enumeration value="510683"/>
+<xs:enumeration value="510700"/>
+<xs:enumeration value="510701"/>
+<xs:enumeration value="510703"/>
+<xs:enumeration value="510704"/>
+<xs:enumeration value="510722"/>
+<xs:enumeration value="510723"/>
+<xs:enumeration value="510724"/>
+<xs:enumeration value="510725"/>
+<xs:enumeration value="510726"/>
+<xs:enumeration value="510727"/>
+<xs:enumeration value="510781"/>
+<xs:enumeration value="510800"/>
+<xs:enumeration value="510801"/>
+<xs:enumeration value="510802"/>
+<xs:enumeration value="510811"/>
+<xs:enumeration value="510812"/>
+<xs:enumeration value="510821"/>
+<xs:enumeration value="510822"/>
+<xs:enumeration value="510823"/>
+<xs:enumeration value="510824"/>
+<xs:enumeration value="510900"/>
+<xs:enumeration value="510901"/>
+<xs:enumeration value="510903"/>
+<xs:enumeration value="510904"/>
+<xs:enumeration value="510921"/>
+<xs:enumeration value="510922"/>
+<xs:enumeration value="510923"/>
+<xs:enumeration value="511000"/>
+<xs:enumeration value="511001"/>
+<xs:enumeration value="511002"/>
+<xs:enumeration value="511011"/>
+<xs:enumeration value="511024"/>
+<xs:enumeration value="511025"/>
+<xs:enumeration value="511028"/>
+<xs:enumeration value="511100"/>
+<xs:enumeration value="511101"/>
+<xs:enumeration value="511102"/>
+<xs:enumeration value="511111"/>
+<xs:enumeration value="511112"/>
+<xs:enumeration value="511113"/>
+<xs:enumeration value="511123"/>
+<xs:enumeration value="511124"/>
+<xs:enumeration value="511126"/>
+<xs:enumeration value="511129"/>
+<xs:enumeration value="511132"/>
+<xs:enumeration value="511133"/>
+<xs:enumeration value="511181"/>
+<xs:enumeration value="511300"/>
+<xs:enumeration value="511301"/>
+<xs:enumeration value="511302"/>
+<xs:enumeration value="511303"/>
+<xs:enumeration value="511304"/>
+<xs:enumeration value="511321"/>
+<xs:enumeration value="511322"/>
+<xs:enumeration value="511323"/>
+<xs:enumeration value="511324"/>
+<xs:enumeration value="511325"/>
+<xs:enumeration value="511381"/>
+<xs:enumeration value="511400"/>
+<xs:enumeration value="511401"/>
+<xs:enumeration value="511402"/>
+<xs:enumeration value="511421"/>
+<xs:enumeration value="511422"/>
+<xs:enumeration value="511423"/>
+<xs:enumeration value="511424"/>
+<xs:enumeration value="511425"/>
+<xs:enumeration value="511500"/>
+<xs:enumeration value="511501"/>
+<xs:enumeration value="511502"/>
+<xs:enumeration value="511503"/>
+<xs:enumeration value="511521"/>
+<xs:enumeration value="511523"/>
+<xs:enumeration value="511524"/>
+<xs:enumeration value="511525"/>
+<xs:enumeration value="511526"/>
+<xs:enumeration value="511527"/>
+<xs:enumeration value="511528"/>
+<xs:enumeration value="511529"/>
+<xs:enumeration value="511600"/>
+<xs:enumeration value="511601"/>
+<xs:enumeration value="511602"/>
+<xs:enumeration value="511621"/>
+<xs:enumeration value="511622"/>
+<xs:enumeration value="511623"/>
+<xs:enumeration value="511681"/>
+<xs:enumeration value="511700"/>
+<xs:enumeration value="511701"/>
+<xs:enumeration value="511702"/>
+<xs:enumeration value="511721"/>
+<xs:enumeration value="511722"/>
+<xs:enumeration value="511723"/>
+<xs:enumeration value="511724"/>
+<xs:enumeration value="511725"/>
+<xs:enumeration value="511781"/>
+<xs:enumeration value="511800"/>
+<xs:enumeration value="511801"/>
+<xs:enumeration value="511802"/>
+<xs:enumeration value="511803"/>
+<xs:enumeration value="511822"/>
+<xs:enumeration value="511823"/>
+<xs:enumeration value="511824"/>
+<xs:enumeration value="511825"/>
+<xs:enumeration value="511826"/>
+<xs:enumeration value="511827"/>
+<xs:enumeration value="511900"/>
+<xs:enumeration value="511901"/>
+<xs:enumeration value="511902"/>
+<xs:enumeration value="511921"/>
+<xs:enumeration value="511922"/>
+<xs:enumeration value="511923"/>
+<xs:enumeration value="512000"/>
+<xs:enumeration value="512001"/>
+<xs:enumeration value="512002"/>
+<xs:enumeration value="512021"/>
+<xs:enumeration value="512022"/>
+<xs:enumeration value="512081"/>
+<xs:enumeration value="513200"/>
+<xs:enumeration value="513221"/>
+<xs:enumeration value="513222"/>
+<xs:enumeration value="513223"/>
+<xs:enumeration value="513224"/>
+<xs:enumeration value="513225"/>
+<xs:enumeration value="513226"/>
+<xs:enumeration value="513227"/>
+<xs:enumeration value="513228"/>
+<xs:enumeration value="513229"/>
+<xs:enumeration value="513230"/>
+<xs:enumeration value="513231"/>
+<xs:enumeration value="513232"/>
+<xs:enumeration value="513233"/>
+<xs:enumeration value="513300"/>
+<xs:enumeration value="513321"/>
+<xs:enumeration value="513322"/>
+<xs:enumeration value="513323"/>
+<xs:enumeration value="513324"/>
+<xs:enumeration value="513325"/>
+<xs:enumeration value="513326"/>
+<xs:enumeration value="513327"/>
+<xs:enumeration value="513328"/>
+<xs:enumeration value="513329"/>
+<xs:enumeration value="513330"/>
+<xs:enumeration value="513331"/>
+<xs:enumeration value="513332"/>
+<xs:enumeration value="513333"/>
+<xs:enumeration value="513334"/>
+<xs:enumeration value="513335"/>
+<xs:enumeration value="513336"/>
+<xs:enumeration value="513337"/>
+<xs:enumeration value="513338"/>
+<xs:enumeration value="513400"/>
+<xs:enumeration value="513401"/>
+<xs:enumeration value="513422"/>
+<xs:enumeration value="513423"/>
+<xs:enumeration value="513424"/>
+<xs:enumeration value="513425"/>
+<xs:enumeration value="513426"/>
+<xs:enumeration value="513427"/>
+<xs:enumeration value="513428"/>
+<xs:enumeration value="513429"/>
+<xs:enumeration value="513430"/>
+<xs:enumeration value="513431"/>
+<xs:enumeration value="513432"/>
+<xs:enumeration value="513433"/>
+<xs:enumeration value="513434"/>
+<xs:enumeration value="513435"/>
+<xs:enumeration value="513436"/>
+<xs:enumeration value="513437"/>
+<xs:enumeration value="520000"/>
+<xs:enumeration value="520100"/>
+<xs:enumeration value="520101"/>
+<xs:enumeration value="520102"/>
+<xs:enumeration value="520103"/>
+<xs:enumeration value="520111"/>
+<xs:enumeration value="520112"/>
+<xs:enumeration value="520113"/>
+<xs:enumeration value="520114"/>
+<xs:enumeration value="520121"/>
+<xs:enumeration value="520122"/>
+<xs:enumeration value="520123"/>
+<xs:enumeration value="520181"/>
+<xs:enumeration value="520200"/>
+<xs:enumeration value="520201"/>
+<xs:enumeration value="520203"/>
+<xs:enumeration value="520221"/>
+<xs:enumeration value="520222"/>
+<xs:enumeration value="520300"/>
+<xs:enumeration value="520301"/>
+<xs:enumeration value="520302"/>
+<xs:enumeration value="520303"/>
+<xs:enumeration value="520321"/>
+<xs:enumeration value="520322"/>
+<xs:enumeration value="520323"/>
+<xs:enumeration value="520324"/>
+<xs:enumeration value="520325"/>
+<xs:enumeration value="520326"/>
+<xs:enumeration value="520327"/>
+<xs:enumeration value="520328"/>
+<xs:enumeration value="520329"/>
+<xs:enumeration value="520330"/>
+<xs:enumeration value="520381"/>
+<xs:enumeration value="520382"/>
+<xs:enumeration value="520400"/>
+<xs:enumeration value="520401"/>
+<xs:enumeration value="520402"/>
+<xs:enumeration value="520421"/>
+<xs:enumeration value="520422"/>
+<xs:enumeration value="520423"/>
+<xs:enumeration value="520424"/>
+<xs:enumeration value="520425"/>
+<xs:enumeration value="520500"/>
+<xs:enumeration value="520502"/>
+<xs:enumeration value="520521"/>
+<xs:enumeration value="520522"/>
+<xs:enumeration value="520523"/>
+<xs:enumeration value="520524"/>
+<xs:enumeration value="520525"/>
+<xs:enumeration value="520526"/>
+<xs:enumeration value="520527"/>
+<xs:enumeration value="520600"/>
+<xs:enumeration value="520602"/>
+<xs:enumeration value="520603"/>
+<xs:enumeration value="520621"/>
+<xs:enumeration value="520622"/>
+<xs:enumeration value="520623"/>
+<xs:enumeration value="520624"/>
+<xs:enumeration value="520625"/>
+<xs:enumeration value="520626"/>
+<xs:enumeration value="520627"/>
+<xs:enumeration value="520628"/>
+<xs:enumeration value="522300"/>
+<xs:enumeration value="522301"/>
+<xs:enumeration value="522322"/>
+<xs:enumeration value="522323"/>
+<xs:enumeration value="522324"/>
+<xs:enumeration value="522325"/>
+<xs:enumeration value="522326"/>
+<xs:enumeration value="522327"/>
+<xs:enumeration value="522328"/>
+<xs:enumeration value="522600"/>
+<xs:enumeration value="522601"/>
+<xs:enumeration value="522622"/>
+<xs:enumeration value="522623"/>
+<xs:enumeration value="522624"/>
+<xs:enumeration value="522625"/>
+<xs:enumeration value="522626"/>
+<xs:enumeration value="522627"/>
+<xs:enumeration value="522628"/>
+<xs:enumeration value="522629"/>
+<xs:enumeration value="522630"/>
+<xs:enumeration value="522631"/>
+<xs:enumeration value="522632"/>
+<xs:enumeration value="522633"/>
+<xs:enumeration value="522634"/>
+<xs:enumeration value="522635"/>
+<xs:enumeration value="522636"/>
+<xs:enumeration value="522700"/>
+<xs:enumeration value="522701"/>
+<xs:enumeration value="522702"/>
+<xs:enumeration value="522722"/>
+<xs:enumeration value="522723"/>
+<xs:enumeration value="522725"/>
+<xs:enumeration value="522726"/>
+<xs:enumeration value="522727"/>
+<xs:enumeration value="522728"/>
+<xs:enumeration value="522729"/>
+<xs:enumeration value="522730"/>
+<xs:enumeration value="522731"/>
+<xs:enumeration value="522732"/>
+<xs:enumeration value="530000"/>
+<xs:enumeration value="530100"/>
+<xs:enumeration value="530101"/>
+<xs:enumeration value="530102"/>
+<xs:enumeration value="530103"/>
+<xs:enumeration value="530111"/>
+<xs:enumeration value="530112"/>
+<xs:enumeration value="530113"/>
+<xs:enumeration value="530114"/>
+<xs:enumeration value="530122"/>
+<xs:enumeration value="530124"/>
+<xs:enumeration value="530125"/>
+<xs:enumeration value="530126"/>
+<xs:enumeration value="530127"/>
+<xs:enumeration value="530128"/>
+<xs:enumeration value="530129"/>
+<xs:enumeration value="530181"/>
+<xs:enumeration value="530300"/>
+<xs:enumeration value="530301"/>
+<xs:enumeration value="530302"/>
+<xs:enumeration value="530321"/>
+<xs:enumeration value="530322"/>
+<xs:enumeration value="530323"/>
+<xs:enumeration value="530324"/>
+<xs:enumeration value="530325"/>
+<xs:enumeration value="530326"/>
+<xs:enumeration value="530328"/>
+<xs:enumeration value="530381"/>
+<xs:enumeration value="530400"/>
+<xs:enumeration value="530402"/>
+<xs:enumeration value="530421"/>
+<xs:enumeration value="530422"/>
+<xs:enumeration value="530423"/>
+<xs:enumeration value="530424"/>
+<xs:enumeration value="530425"/>
+<xs:enumeration value="530426"/>
+<xs:enumeration value="530427"/>
+<xs:enumeration value="530428"/>
+<xs:enumeration value="530500"/>
+<xs:enumeration value="530501"/>
+<xs:enumeration value="530502"/>
+<xs:enumeration value="530521"/>
+<xs:enumeration value="530522"/>
+<xs:enumeration value="530523"/>
+<xs:enumeration value="530524"/>
+<xs:enumeration value="530600"/>
+<xs:enumeration value="530601"/>
+<xs:enumeration value="530602"/>
+<xs:enumeration value="530621"/>
+<xs:enumeration value="530622"/>
+<xs:enumeration value="530623"/>
+<xs:enumeration value="530624"/>
+<xs:enumeration value="530625"/>
+<xs:enumeration value="530626"/>
+<xs:enumeration value="530627"/>
+<xs:enumeration value="530628"/>
+<xs:enumeration value="530629"/>
+<xs:enumeration value="530630"/>
+<xs:enumeration value="530700"/>
+<xs:enumeration value="530701"/>
+<xs:enumeration value="530702"/>
+<xs:enumeration value="530721"/>
+<xs:enumeration value="530722"/>
+<xs:enumeration value="530723"/>
+<xs:enumeration value="530724"/>
+<xs:enumeration value="530800"/>
+<xs:enumeration value="530801"/>
+<xs:enumeration value="530802"/>
+<xs:enumeration value="530821"/>
+<xs:enumeration value="530822"/>
+<xs:enumeration value="530823"/>
+<xs:enumeration value="530824"/>
+<xs:enumeration value="530825"/>
+<xs:enumeration value="530826"/>
+<xs:enumeration value="530827"/>
+<xs:enumeration value="530828"/>
+<xs:enumeration value="530829"/>
+<xs:enumeration value="530900"/>
+<xs:enumeration value="530901"/>
+<xs:enumeration value="530902"/>
+<xs:enumeration value="530921"/>
+<xs:enumeration value="530922"/>
+<xs:enumeration value="530923"/>
+<xs:enumeration value="530924"/>
+<xs:enumeration value="530925"/>
+<xs:enumeration value="530926"/>
+<xs:enumeration value="530927"/>
+<xs:enumeration value="532300"/>
+<xs:enumeration value="532301"/>
+<xs:enumeration value="532322"/>
+<xs:enumeration value="532323"/>
+<xs:enumeration value="532324"/>
+<xs:enumeration value="532325"/>
+<xs:enumeration value="532326"/>
+<xs:enumeration value="532327"/>
+<xs:enumeration value="532328"/>
+<xs:enumeration value="532329"/>
+<xs:enumeration value="532331"/>
+<xs:enumeration value="532500"/>
+<xs:enumeration value="532501"/>
+<xs:enumeration value="532502"/>
+<xs:enumeration value="532503"/>
+<xs:enumeration value="532523"/>
+<xs:enumeration value="532524"/>
+<xs:enumeration value="532525"/>
+<xs:enumeration value="532526"/>
+<xs:enumeration value="532527"/>
+<xs:enumeration value="532528"/>
+<xs:enumeration value="532529"/>
+<xs:enumeration value="532530"/>
+<xs:enumeration value="532531"/>
+<xs:enumeration value="532532"/>
+<xs:enumeration value="532600"/>
+<xs:enumeration value="532601"/>
+<xs:enumeration value="532622"/>
+<xs:enumeration value="532623"/>
+<xs:enumeration value="532624"/>
+<xs:enumeration value="532625"/>
+<xs:enumeration value="532626"/>
+<xs:enumeration value="532627"/>
+<xs:enumeration value="532628"/>
+<xs:enumeration value="532800"/>
+<xs:enumeration value="532801"/>
+<xs:enumeration value="532822"/>
+<xs:enumeration value="532823"/>
+<xs:enumeration value="532900"/>
+<xs:enumeration value="532901"/>
+<xs:enumeration value="532922"/>
+<xs:enumeration value="532923"/>
+<xs:enumeration value="532924"/>
+<xs:enumeration value="532925"/>
+<xs:enumeration value="532926"/>
+<xs:enumeration value="532927"/>
+<xs:enumeration value="532928"/>
+<xs:enumeration value="532929"/>
+<xs:enumeration value="532930"/>
+<xs:enumeration value="532931"/>
+<xs:enumeration value="532932"/>
+<xs:enumeration value="533100"/>
+<xs:enumeration value="533102"/>
+<xs:enumeration value="533103"/>
+<xs:enumeration value="533122"/>
+<xs:enumeration value="533123"/>
+<xs:enumeration value="533124"/>
+<xs:enumeration value="533300"/>
+<xs:enumeration value="533321"/>
+<xs:enumeration value="533323"/>
+<xs:enumeration value="533324"/>
+<xs:enumeration value="533325"/>
+<xs:enumeration value="533400"/>
+<xs:enumeration value="533421"/>
+<xs:enumeration value="533422"/>
+<xs:enumeration value="533423"/>
+<xs:enumeration value="540000"/>
+<xs:enumeration value="540100"/>
+<xs:enumeration value="540101"/>
+<xs:enumeration value="540102"/>
+<xs:enumeration value="540121"/>
+<xs:enumeration value="540122"/>
+<xs:enumeration value="540123"/>
+<xs:enumeration value="540124"/>
+<xs:enumeration value="540125"/>
+<xs:enumeration value="540126"/>
+<xs:enumeration value="540127"/>
+<xs:enumeration value="542100"/>
+<xs:enumeration value="542121"/>
+<xs:enumeration value="542122"/>
+<xs:enumeration value="542123"/>
+<xs:enumeration value="542124"/>
+<xs:enumeration value="542125"/>
+<xs:enumeration value="542126"/>
+<xs:enumeration value="542127"/>
+<xs:enumeration value="542128"/>
+<xs:enumeration value="542129"/>
+<xs:enumeration value="542132"/>
+<xs:enumeration value="542133"/>
+<xs:enumeration value="542200"/>
+<xs:enumeration value="542221"/>
+<xs:enumeration value="542222"/>
+<xs:enumeration value="542223"/>
+<xs:enumeration value="542224"/>
+<xs:enumeration value="542225"/>
+<xs:enumeration value="542226"/>
+<xs:enumeration value="542227"/>
+<xs:enumeration value="542228"/>
+<xs:enumeration value="542229"/>
+<xs:enumeration value="542231"/>
+<xs:enumeration value="542232"/>
+<xs:enumeration value="542233"/>
+<xs:enumeration value="542300"/>
+<xs:enumeration value="542301"/>
+<xs:enumeration value="542322"/>
+<xs:enumeration value="542323"/>
+<xs:enumeration value="542324"/>
+<xs:enumeration value="542325"/>
+<xs:enumeration value="542326"/>
+<xs:enumeration value="542327"/>
+<xs:enumeration value="542328"/>
+<xs:enumeration value="542329"/>
+<xs:enumeration value="542330"/>
+<xs:enumeration value="542331"/>
+<xs:enumeration value="542332"/>
+<xs:enumeration value="542333"/>
+<xs:enumeration value="542334"/>
+<xs:enumeration value="542335"/>
+<xs:enumeration value="542336"/>
+<xs:enumeration value="542337"/>
+<xs:enumeration value="542338"/>
+<xs:enumeration value="542400"/>
+<xs:enumeration value="542421"/>
+<xs:enumeration value="542422"/>
+<xs:enumeration value="542423"/>
+<xs:enumeration value="542424"/>
+<xs:enumeration value="542425"/>
+<xs:enumeration value="542426"/>
+<xs:enumeration value="542427"/>
+<xs:enumeration value="542428"/>
+<xs:enumeration value="542429"/>
+<xs:enumeration value="542430"/>
+<xs:enumeration value="542500"/>
+<xs:enumeration value="542521"/>
+<xs:enumeration value="542522"/>
+<xs:enumeration value="542523"/>
+<xs:enumeration value="542524"/>
+<xs:enumeration value="542525"/>
+<xs:enumeration value="542526"/>
+<xs:enumeration value="542527"/>
+<xs:enumeration value="542600"/>
+<xs:enumeration value="542621"/>
+<xs:enumeration value="542622"/>
+<xs:enumeration value="542623"/>
+<xs:enumeration value="542624"/>
+<xs:enumeration value="542625"/>
+<xs:enumeration value="542626"/>
+<xs:enumeration value="542627"/>
+<xs:enumeration value="610000"/>
+<xs:enumeration value="610100"/>
+<xs:enumeration value="610101"/>
+<xs:enumeration value="610102"/>
+<xs:enumeration value="610103"/>
+<xs:enumeration value="610104"/>
+<xs:enumeration value="610111"/>
+<xs:enumeration value="610112"/>
+<xs:enumeration value="610113"/>
+<xs:enumeration value="610114"/>
+<xs:enumeration value="610115"/>
+<xs:enumeration value="610116"/>
+<xs:enumeration value="610122"/>
+<xs:enumeration value="610124"/>
+<xs:enumeration value="610125"/>
+<xs:enumeration value="610126"/>
+<xs:enumeration value="610200"/>
+<xs:enumeration value="610201"/>
+<xs:enumeration value="610202"/>
+<xs:enumeration value="610203"/>
+<xs:enumeration value="610204"/>
+<xs:enumeration value="610222"/>
+<xs:enumeration value="610300"/>
+<xs:enumeration value="610301"/>
+<xs:enumeration value="610302"/>
+<xs:enumeration value="610303"/>
+<xs:enumeration value="610304"/>
+<xs:enumeration value="610322"/>
+<xs:enumeration value="610323"/>
+<xs:enumeration value="610324"/>
+<xs:enumeration value="610326"/>
+<xs:enumeration value="610327"/>
+<xs:enumeration value="610328"/>
+<xs:enumeration value="610329"/>
+<xs:enumeration value="610330"/>
+<xs:enumeration value="610331"/>
+<xs:enumeration value="610400"/>
+<xs:enumeration value="610401"/>
+<xs:enumeration value="610402"/>
+<xs:enumeration value="610403"/>
+<xs:enumeration value="610404"/>
+<xs:enumeration value="610422"/>
+<xs:enumeration value="610423"/>
+<xs:enumeration value="610424"/>
+<xs:enumeration value="610425"/>
+<xs:enumeration value="610426"/>
+<xs:enumeration value="610427"/>
+<xs:enumeration value="610428"/>
+<xs:enumeration value="610429"/>
+<xs:enumeration value="610430"/>
+<xs:enumeration value="610431"/>
+<xs:enumeration value="610481"/>
+<xs:enumeration value="610500"/>
+<xs:enumeration value="610501"/>
+<xs:enumeration value="610502"/>
+<xs:enumeration value="610521"/>
+<xs:enumeration value="610522"/>
+<xs:enumeration value="610523"/>
+<xs:enumeration value="610524"/>
+<xs:enumeration value="610525"/>
+<xs:enumeration value="610526"/>
+<xs:enumeration value="610527"/>
+<xs:enumeration value="610528"/>
+<xs:enumeration value="610581"/>
+<xs:enumeration value="610582"/>
+<xs:enumeration value="610600"/>
+<xs:enumeration value="610601"/>
+<xs:enumeration value="610602"/>
+<xs:enumeration value="610621"/>
+<xs:enumeration value="610622"/>
+<xs:enumeration value="610623"/>
+<xs:enumeration value="610624"/>
+<xs:enumeration value="610625"/>
+<xs:enumeration value="610626"/>
+<xs:enumeration value="610627"/>
+<xs:enumeration value="610628"/>
+<xs:enumeration value="610629"/>
+<xs:enumeration value="610630"/>
+<xs:enumeration value="610631"/>
+<xs:enumeration value="610632"/>
+<xs:enumeration value="610700"/>
+<xs:enumeration value="610701"/>
+<xs:enumeration value="610702"/>
+<xs:enumeration value="610721"/>
+<xs:enumeration value="610722"/>
+<xs:enumeration value="610723"/>
+<xs:enumeration value="610724"/>
+<xs:enumeration value="610725"/>
+<xs:enumeration value="610726"/>
+<xs:enumeration value="610727"/>
+<xs:enumeration value="610728"/>
+<xs:enumeration value="610729"/>
+<xs:enumeration value="610730"/>
+<xs:enumeration value="610800"/>
+<xs:enumeration value="610801"/>
+<xs:enumeration value="610802"/>
+<xs:enumeration value="610821"/>
+<xs:enumeration value="610822"/>
+<xs:enumeration value="610823"/>
+<xs:enumeration value="610824"/>
+<xs:enumeration value="610825"/>
+<xs:enumeration value="610826"/>
+<xs:enumeration value="610827"/>
+<xs:enumeration value="610828"/>
+<xs:enumeration value="610829"/>
+<xs:enumeration value="610830"/>
+<xs:enumeration value="610831"/>
+<xs:enumeration value="610900"/>
+<xs:enumeration value="610901"/>
+<xs:enumeration value="610902"/>
+<xs:enumeration value="610921"/>
+<xs:enumeration value="610922"/>
+<xs:enumeration value="610923"/>
+<xs:enumeration value="610924"/>
+<xs:enumeration value="610925"/>
+<xs:enumeration value="610926"/>
+<xs:enumeration value="610927"/>
+<xs:enumeration value="610928"/>
+<xs:enumeration value="610929"/>
+<xs:enumeration value="611000"/>
+<xs:enumeration value="611001"/>
+<xs:enumeration value="611002"/>
+<xs:enumeration value="611021"/>
+<xs:enumeration value="611022"/>
+<xs:enumeration value="611023"/>
+<xs:enumeration value="611024"/>
+<xs:enumeration value="611025"/>
+<xs:enumeration value="611026"/>
+<xs:enumeration value="620000"/>
+<xs:enumeration value="620100"/>
+<xs:enumeration value="620101"/>
+<xs:enumeration value="620102"/>
+<xs:enumeration value="620103"/>
+<xs:enumeration value="620104"/>
+<xs:enumeration value="620105"/>
+<xs:enumeration value="620111"/>
+<xs:enumeration value="620121"/>
+<xs:enumeration value="620122"/>
+<xs:enumeration value="620123"/>
+<xs:enumeration value="620200"/>
+<xs:enumeration value="620201"/>
+<xs:enumeration value="620300"/>
+<xs:enumeration value="620301"/>
+<xs:enumeration value="620302"/>
+<xs:enumeration value="620321"/>
+<xs:enumeration value="620400"/>
+<xs:enumeration value="620401"/>
+<xs:enumeration value="620402"/>
+<xs:enumeration value="620403"/>
+<xs:enumeration value="620421"/>
+<xs:enumeration value="620422"/>
+<xs:enumeration value="620423"/>
+<xs:enumeration value="620500"/>
+<xs:enumeration value="620501"/>
+<xs:enumeration value="620502"/>
+<xs:enumeration value="620503"/>
+<xs:enumeration value="620521"/>
+<xs:enumeration value="620522"/>
+<xs:enumeration value="620523"/>
+<xs:enumeration value="620524"/>
+<xs:enumeration value="620525"/>
+<xs:enumeration value="620600"/>
+<xs:enumeration value="620601"/>
+<xs:enumeration value="620602"/>
+<xs:enumeration value="620621"/>
+<xs:enumeration value="620622"/>
+<xs:enumeration value="620623"/>
+<xs:enumeration value="620700"/>
+<xs:enumeration value="620701"/>
+<xs:enumeration value="620702"/>
+<xs:enumeration value="620721"/>
+<xs:enumeration value="620722"/>
+<xs:enumeration value="620723"/>
+<xs:enumeration value="620724"/>
+<xs:enumeration value="620725"/>
+<xs:enumeration value="620800"/>
+<xs:enumeration value="620801"/>
+<xs:enumeration value="620802"/>
+<xs:enumeration value="620821"/>
+<xs:enumeration value="620822"/>
+<xs:enumeration value="620823"/>
+<xs:enumeration value="620824"/>
+<xs:enumeration value="620825"/>
+<xs:enumeration value="620826"/>
+<xs:enumeration value="620900"/>
+<xs:enumeration value="620901"/>
+<xs:enumeration value="620902"/>
+<xs:enumeration value="620921"/>
+<xs:enumeration value="620922"/>
+<xs:enumeration value="620923"/>
+<xs:enumeration value="620924"/>
+<xs:enumeration value="620981"/>
+<xs:enumeration value="620982"/>
+<xs:enumeration value="621000"/>
+<xs:enumeration value="621001"/>
+<xs:enumeration value="621002"/>
+<xs:enumeration value="621021"/>
+<xs:enumeration value="621022"/>
+<xs:enumeration value="621023"/>
+<xs:enumeration value="621024"/>
+<xs:enumeration value="621025"/>
+<xs:enumeration value="621026"/>
+<xs:enumeration value="621027"/>
+<xs:enumeration value="621100"/>
+<xs:enumeration value="621101"/>
+<xs:enumeration value="621102"/>
+<xs:enumeration value="621121"/>
+<xs:enumeration value="621122"/>
+<xs:enumeration value="621123"/>
+<xs:enumeration value="621124"/>
+<xs:enumeration value="621125"/>
+<xs:enumeration value="621126"/>
+<xs:enumeration value="621200"/>
+<xs:enumeration value="621201"/>
+<xs:enumeration value="621202"/>
+<xs:enumeration value="621221"/>
+<xs:enumeration value="621222"/>
+<xs:enumeration value="621223"/>
+<xs:enumeration value="621224"/>
+<xs:enumeration value="621225"/>
+<xs:enumeration value="621226"/>
+<xs:enumeration value="621227"/>
+<xs:enumeration value="621228"/>
+<xs:enumeration value="622900"/>
+<xs:enumeration value="622901"/>
+<xs:enumeration value="622921"/>
+<xs:enumeration value="622922"/>
+<xs:enumeration value="622923"/>
+<xs:enumeration value="622924"/>
+<xs:enumeration value="622925"/>
+<xs:enumeration value="622926"/>
+<xs:enumeration value="622927"/>
+<xs:enumeration value="623000"/>
+<xs:enumeration value="623001"/>
+<xs:enumeration value="623021"/>
+<xs:enumeration value="623022"/>
+<xs:enumeration value="623023"/>
+<xs:enumeration value="623024"/>
+<xs:enumeration value="623025"/>
+<xs:enumeration value="623026"/>
+<xs:enumeration value="623027"/>
+<xs:enumeration value="630000"/>
+<xs:enumeration value="630100"/>
+<xs:enumeration value="630101"/>
+<xs:enumeration value="630102"/>
+<xs:enumeration value="630103"/>
+<xs:enumeration value="630104"/>
+<xs:enumeration value="630105"/>
+<xs:enumeration value="630121"/>
+<xs:enumeration value="630122"/>
+<xs:enumeration value="630123"/>
+<xs:enumeration value="632100"/>
+<xs:enumeration value="632121"/>
+<xs:enumeration value="632122"/>
+<xs:enumeration value="632123"/>
+<xs:enumeration value="632126"/>
+<xs:enumeration value="632127"/>
+<xs:enumeration value="632128"/>
+<xs:enumeration value="632200"/>
+<xs:enumeration value="632221"/>
+<xs:enumeration value="632222"/>
+<xs:enumeration value="632223"/>
+<xs:enumeration value="632224"/>
+<xs:enumeration value="632300"/>
+<xs:enumeration value="632321"/>
+<xs:enumeration value="632322"/>
+<xs:enumeration value="632323"/>
+<xs:enumeration value="632324"/>
+<xs:enumeration value="632500"/>
+<xs:enumeration value="632521"/>
+<xs:enumeration value="632522"/>
+<xs:enumeration value="632523"/>
+<xs:enumeration value="632524"/>
+<xs:enumeration value="632525"/>
+<xs:enumeration value="632600"/>
+<xs:enumeration value="632621"/>
+<xs:enumeration value="632622"/>
+<xs:enumeration value="632623"/>
+<xs:enumeration value="632624"/>
+<xs:enumeration value="632625"/>
+<xs:enumeration value="632626"/>
+<xs:enumeration value="632700"/>
+<xs:enumeration value="632721"/>
+<xs:enumeration value="632722"/>
+<xs:enumeration value="632723"/>
+<xs:enumeration value="632724"/>
+<xs:enumeration value="632725"/>
+<xs:enumeration value="632726"/>
+<xs:enumeration value="632800"/>
+<xs:enumeration value="632801"/>
+<xs:enumeration value="632802"/>
+<xs:enumeration value="632821"/>
+<xs:enumeration value="632822"/>
+<xs:enumeration value="632823"/>
+<xs:enumeration value="640000"/>
+<xs:enumeration value="640100"/>
+<xs:enumeration value="640101"/>
+<xs:enumeration value="640104"/>
+<xs:enumeration value="640105"/>
+<xs:enumeration value="640106"/>
+<xs:enumeration value="640121"/>
+<xs:enumeration value="640122"/>
+<xs:enumeration value="640181"/>
+<xs:enumeration value="640200"/>
+<xs:enumeration value="640201"/>
+<xs:enumeration value="640202"/>
+<xs:enumeration value="640205"/>
+<xs:enumeration value="640221"/>
+<xs:enumeration value="640300"/>
+<xs:enumeration value="640301"/>
+<xs:enumeration value="640302"/>
+<xs:enumeration value="640303"/>
+<xs:enumeration value="640323"/>
+<xs:enumeration value="640324"/>
+<xs:enumeration value="640381"/>
+<xs:enumeration value="640400"/>
+<xs:enumeration value="640401"/>
+<xs:enumeration value="640402"/>
+<xs:enumeration value="640422"/>
+<xs:enumeration value="640423"/>
+<xs:enumeration value="640424"/>
+<xs:enumeration value="640425"/>
+<xs:enumeration value="640500"/>
+<xs:enumeration value="640501"/>
+<xs:enumeration value="640502"/>
+<xs:enumeration value="640521"/>
+<xs:enumeration value="640522"/>
+<xs:enumeration value="650000"/>
+<xs:enumeration value="650100"/>
+<xs:enumeration value="650101"/>
+<xs:enumeration value="650102"/>
+<xs:enumeration value="650103"/>
+<xs:enumeration value="650104"/>
+<xs:enumeration value="650105"/>
+<xs:enumeration value="650106"/>
+<xs:enumeration value="650107"/>
+<xs:enumeration value="650109"/>
+<xs:enumeration value="650121"/>
+<xs:enumeration value="650200"/>
+<xs:enumeration value="650201"/>
+<xs:enumeration value="650202"/>
+<xs:enumeration value="650203"/>
+<xs:enumeration value="650204"/>
+<xs:enumeration value="650205"/>
+<xs:enumeration value="652100"/>
+<xs:enumeration value="652101"/>
+<xs:enumeration value="652122"/>
+<xs:enumeration value="652123"/>
+<xs:enumeration value="652200"/>
+<xs:enumeration value="652201"/>
+<xs:enumeration value="652222"/>
+<xs:enumeration value="652223"/>
+<xs:enumeration value="652300"/>
+<xs:enumeration value="652301"/>
+<xs:enumeration value="652302"/>
+<xs:enumeration value="652323"/>
+<xs:enumeration value="652324"/>
+<xs:enumeration value="652325"/>
+<xs:enumeration value="652327"/>
+<xs:enumeration value="652328"/>
+<xs:enumeration value="652700"/>
+<xs:enumeration value="652701"/>
+<xs:enumeration value="652722"/>
+<xs:enumeration value="652723"/>
+<xs:enumeration value="652800"/>
+<xs:enumeration value="652801"/>
+<xs:enumeration value="652822"/>
+<xs:enumeration value="652823"/>
+<xs:enumeration value="652824"/>
+<xs:enumeration value="652825"/>
+<xs:enumeration value="652826"/>
+<xs:enumeration value="652827"/>
+<xs:enumeration value="652828"/>
+<xs:enumeration value="652829"/>
+<xs:enumeration value="652900"/>
+<xs:enumeration value="652901"/>
+<xs:enumeration value="652922"/>
+<xs:enumeration value="652923"/>
+<xs:enumeration value="652924"/>
+<xs:enumeration value="652925"/>
+<xs:enumeration value="652926"/>
+<xs:enumeration value="652927"/>
+<xs:enumeration value="652928"/>
+<xs:enumeration value="652929"/>
+<xs:enumeration value="653000"/>
+<xs:enumeration value="653001"/>
+<xs:enumeration value="653022"/>
+<xs:enumeration value="653023"/>
+<xs:enumeration value="653024"/>
+<xs:enumeration value="653100"/>
+<xs:enumeration value="653101"/>
+<xs:enumeration value="653121"/>
+<xs:enumeration value="653122"/>
+<xs:enumeration value="653123"/>
+<xs:enumeration value="653124"/>
+<xs:enumeration value="653125"/>
+<xs:enumeration value="653126"/>
+<xs:enumeration value="653127"/>
+<xs:enumeration value="653128"/>
+<xs:enumeration value="653129"/>
+<xs:enumeration value="653130"/>
+<xs:enumeration value="653131"/>
+<xs:enumeration value="653200"/>
+<xs:enumeration value="653201"/>
+<xs:enumeration value="653221"/>
+<xs:enumeration value="653222"/>
+<xs:enumeration value="653223"/>
+<xs:enumeration value="653224"/>
+<xs:enumeration value="653225"/>
+<xs:enumeration value="653226"/>
+<xs:enumeration value="653227"/>
+<xs:enumeration value="654000"/>
+<xs:enumeration value="654002"/>
+<xs:enumeration value="654003"/>
+<xs:enumeration value="654021"/>
+<xs:enumeration value="654022"/>
+<xs:enumeration value="654023"/>
+<xs:enumeration value="654024"/>
+<xs:enumeration value="654025"/>
+<xs:enumeration value="654026"/>
+<xs:enumeration value="654027"/>
+<xs:enumeration value="654028"/>
+<xs:enumeration value="654200"/>
+<xs:enumeration value="654201"/>
+<xs:enumeration value="654202"/>
+<xs:enumeration value="654221"/>
+<xs:enumeration value="654223"/>
+<xs:enumeration value="654224"/>
+<xs:enumeration value="654225"/>
+<xs:enumeration value="654226"/>
+<xs:enumeration value="654300"/>
+<xs:enumeration value="654301"/>
+<xs:enumeration value="654321"/>
+<xs:enumeration value="654322"/>
+<xs:enumeration value="654323"/>
+<xs:enumeration value="654324"/>
+<xs:enumeration value="654325"/>
+<xs:enumeration value="654326"/>
+<xs:enumeration value="659000"/>
+<xs:enumeration value="659001"/>
+<xs:enumeration value="659002"/>
+<xs:enumeration value="659003"/>
+<xs:enumeration value="659004"/>
+<xs:enumeration value="710000"/>
+<xs:enumeration value="810000"/>
+<xs:enumeration value="820000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="ZTT_GY_QLR">
+<xs:complexType>
+<xs:attribute ref="YSDM" use="required"/>
+<xs:attribute ref="BDCDYH" use="required"/>
+<xs:attribute ref="SXH" use="required"/>
+<xs:attribute ref="QLRMC" use="required"/>
+<xs:attribute ref="BDCQZH" use="required"/>
+<xs:attribute ref="QZYSXLH"/>
+<xs:attribute ref="SFCZR"/>
+<xs:attribute ref="ZJZL"/>
+<xs:attribute ref="ZJH"/>
+<xs:attribute ref="FZJG"/>
+<xs:attribute ref="SSHY"/>
+<xs:attribute ref="GJ" use="required"/>
+<xs:attribute ref="HJSZSS"/>
+<xs:attribute ref="XB"/>
+<xs:attribute ref="DH"/>
+<xs:attribute ref="DZ"/>
+<xs:attribute ref="YB"/>
+<xs:attribute ref="GZDW"/>
+<xs:attribute ref="DZYJ"/>
+<xs:attribute ref="QLRLX" use="required"/>
+<xs:attribute ref="QLBL"/>
+<xs:attribute ref="GYFS"/>
+<xs:attribute ref="GYQK"/>
+<xs:attribute ref="BZ"/>
+<xs:attribute ref="QXDM" use="required"/>
+</xs:complexType>
+</xs:element>
+<!--业务号-->
+<xs:attribute name="YWH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="20"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--需役地坐落-->
+<xs:attribute name="XYDZL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--供役地权利人-->
+<xs:attribute name="GYDQLR">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--供役地权利人证件种类-->
+<xs:attribute name="GYDQLRZJZL">
+<xs:simpleType>
+<xs:restriction base="xs:string"/>
+</xs:simpleType>
+</xs:attribute>
+<!--供役地权利人证件号-->
+<xs:attribute name="GYDQLRZJH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--登记类型-->
+<xs:attribute name="DJLX">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="100"/>
+<xs:enumeration value="200"/>
+<xs:enumeration value="300"/>
+<xs:enumeration value="400"/>
+<xs:enumeration value="500"/>
+<xs:enumeration value="600"/>
+<xs:enumeration value="700"/>
+<xs:enumeration value="800"/>
+<xs:enumeration value="900"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--登记原因-->
+<xs:attribute name="DJYY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--地役权内容-->
+<xs:attribute name="DYQNR">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--不动产登记证明号-->
+<xs:attribute name="BDCDJZMH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--登记机构-->
+<xs:attribute name="DJJG">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--登簿人-->
+<xs:attribute name="DBR">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--登记时间-->
+<xs:attribute name="DJSJ" type="xs:dateTime"/>
+<!--附记-->
+<xs:attribute name="FJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权属状态-->
+<xs:attribute name="QSZT">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="QLF_QL_DYIQ">
+<xs:complexType>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="BDCDYH"/>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="XYDZL" use="required"/>
+<xs:attribute ref="GYDQLR" use="required"/>
+<xs:attribute ref="GYDQLRZJZL"/>
+<xs:attribute ref="GYDQLRZJH"/>
+<xs:attribute ref="DJLX" use="required"/>
+<xs:attribute ref="DJYY" use="required"/>
+<xs:attribute ref="DYQNR" use="required"/>
+<xs:attribute ref="BDCDJZMH" use="required"/>
+<xs:attribute ref="QXDM"/>
+<xs:attribute ref="DJJG" use="required"/>
+<xs:attribute ref="DBR" use="required"/>
+<xs:attribute ref="DJSJ" use="required"/>
+<xs:attribute ref="FJ"/>
+<xs:attribute ref="QSZT" use="required"/>
+</xs:complexType>
+</xs:element>
+<!--登记大类-->
+<xs:attribute name="DJDL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="100"/>
+<xs:enumeration value="200"/>
+<xs:enumeration value="300"/>
+<xs:enumeration value="400"/>
+<xs:enumeration value="500"/>
+<xs:enumeration value="600"/>
+<xs:enumeration value="700"/>
+<xs:enumeration value="800"/>
+<xs:enumeration value="900"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--登记小类-->
+<xs:attribute name="DJXL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--申请证书版式-->
+<xs:attribute name="SQZSBS">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--申请分别持证-->
+<xs:attribute name="SQFBCZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--受理人员-->
+<xs:attribute name="SLRY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--受理时间-->
+<xs:attribute name="SLSJ" type="xs:dateTime"/>
+<!--坐落-->
+<xs:attribute name="ZL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--通知人姓名-->
+<xs:attribute name="TZRXM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--通知方式-->
+<xs:attribute name="TZFS">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--通知人电话-->
+<xs:attribute name="TZRDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--通知人移动电话-->
+<xs:attribute name="TZRYDDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--通知人电子邮件-->
+<xs:attribute name="TZRDZYJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--是否问题案件-->
+<xs:attribute name="SFWTAJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--结束时间-->
+<xs:attribute name="JSSJ" type="xs:dateTime"/>
+<!--案件状态-->
+<xs:attribute name="AJZT">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="DJT_DJ_SLSQ">
+<xs:complexType>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="DJDL" use="required"/>
+<xs:attribute ref="DJXL"/>
+<xs:attribute ref="QXDM"/>
+<xs:attribute ref="SQZSBS" use="required"/>
+<xs:attribute ref="SQFBCZ" use="required"/>
+<xs:attribute ref="SLRY" use="required"/>
+<xs:attribute ref="SLSJ" use="required"/>
+<xs:attribute ref="ZL"/>
+<xs:attribute ref="TZRXM"/>
+<xs:attribute ref="TZFS"/>
+<xs:attribute ref="TZRDH"/>
+<xs:attribute ref="TZRYDDH"/>
+<xs:attribute ref="TZRDZYJ"/>
+<xs:attribute ref="SFWTAJ"/>
+<xs:attribute ref="JSSJ"/>
+<xs:attribute ref="AJZT"/>
+<xs:attribute ref="BZ"/>
+</xs:complexType>
+</xs:element>
+<!--收件时间-->
+<xs:attribute name="SJSJ" type="xs:dateTime"/>
+<!--收件类型-->
+<xs:attribute name="SJLX">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="99"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收件名称-->
+<xs:attribute name="SJMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收件数量-->
+<xs:attribute name="SJSL">
+<xs:simpleType>
+<xs:restriction base="xs:integer"/>
+</xs:simpleType>
+</xs:attribute>
+<!--是否收缴收验-->
+<xs:attribute name="SFSYBZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--是否额外收件-->
+<xs:attribute name="SFEWSJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--是否补充收件-->
+<xs:attribute name="SFBCSJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--页数-->
+<xs:attribute name="YS">
+<xs:simpleType>
+<xs:restriction base="xs:integer"/>
+</xs:simpleType>
+</xs:attribute>
+<!--是否收缴收验-->
+<xs:attribute name="SFSJSY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="DJF_DJ_SJ">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="SJSJ"/>
+<xs:attribute ref="SJLX" use="required"/>
+<xs:attribute ref="SJMC" use="required"/>
+<xs:attribute ref="SJSL" use="required"/>
+<xs:attribute ref="SFSYBZ"/>
+<xs:attribute ref="SFEWSJ"/>
+<xs:attribute ref="SFBCSJ"/>
+<xs:attribute ref="YS"/>
+<xs:attribute ref="BZ"/>
+<xs:attribute ref="QXDM"/>
+<xs:attribute ref="SFSJSY" use="required"/>
+</xs:complexType>
+</xs:element>
+<!--计费人员-->
+<xs:attribute name="JFRY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--计费日期-->
+<xs:attribute name="JFRQ" type="xs:dateTime"/>
+<!--收费科目名称-->
+<xs:attribute name="SFKMMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--是否额外收费-->
+<xs:attribute name="SFEWSF">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收费基数-->
+<xs:attribute name="SFJS">
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收费类型-->
+<xs:attribute name="SFLX">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--应收金额-->
+<xs:attribute name="YSJE">
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--折扣后应收金额-->
+<xs:attribute name="ZKHYSJE">
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收费人员-->
+<xs:attribute name="SFRY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收费日期-->
+<xs:attribute name="SFRQ" type="xs:dateTime"/>
+<!--付费方-->
+<xs:attribute name="FFF">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--实际付费人-->
+<xs:attribute name="SJFFR">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--实收金额-->
+<xs:attribute name="SSJE">
+<xs:simpleType>
+<xs:restriction base="xs:decimal">
+<xs:totalDigits value="20"/>
+<xs:fractionDigits value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--收费单位-->
+<xs:attribute name="SFDW">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="DJF_DJ_SF">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="JFRY" use="required"/>
+<xs:attribute ref="JFRQ" use="required"/>
+<xs:attribute ref="SFKMMC" use="required"/>
+<xs:attribute ref="SFEWSF"/>
+<xs:attribute ref="SFJS"/>
+<xs:attribute ref="SFLX" use="required"/>
+<xs:attribute ref="YSJE" use="required"/>
+<xs:attribute ref="ZKHYSJE"/>
+<xs:attribute ref="SFRY" use="required"/>
+<xs:attribute ref="SFRQ" use="required"/>
+<xs:attribute ref="FFF" use="required"/>
+<xs:attribute ref="SJFFR" use="required"/>
+<xs:attribute ref="SSJE" use="required"/>
+<xs:attribute ref="SFDW" use="required"/>
+<xs:attribute ref="QXDM"/>
+</xs:complexType>
+</xs:element>
+<!--节点名称-->
+<xs:attribute name="JDMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--审核人员姓名-->
+<xs:attribute name="SHRYXM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--审核开始时间-->
+<xs:attribute name="SHKSSJ" type="xs:dateTime"/>
+<!--审核结束时间-->
+<xs:attribute name="SHJSSJ" type="xs:dateTime"/>
+<!--审核意见-->
+<xs:attribute name="SHYJ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="500"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--操作结果-->
+<xs:attribute name="CZJG">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="DJF_DJ_SH">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="JDMC"/>
+<xs:attribute ref="SXH"/>
+<xs:attribute ref="SHRYXM" use="required"/>
+<xs:attribute ref="SHKSSJ" use="required"/>
+<xs:attribute ref="SHJSSJ" use="required"/>
+<xs:attribute ref="SHYJ" use="required"/>
+<xs:attribute ref="CZJG" use="required"/>
+<xs:attribute ref="QXDM"/>
+</xs:complexType>
+</xs:element>
+<!--缮证名称-->
+<xs:attribute name="SZMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--缮证证号-->
+<xs:attribute name="SZZH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--印刷序列号-->
+<xs:attribute name="YSXLH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--缮证人员-->
+<xs:attribute name="SZRY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--缮证时间-->
+<xs:attribute name="SZSJ" type="xs:dateTime"/>
+<xs:element name="DJF_DJ_SZ">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="SZMC" use="required"/>
+<xs:attribute ref="SZZH" use="required"/>
+<xs:attribute ref="YSXLH" use="required"/>
+<xs:attribute ref="SZRY" use="required"/>
+<xs:attribute ref="SZSJ"/>
+<xs:attribute ref="BZ"/>
+<xs:attribute ref="QXDM"/>
+</xs:complexType>
+</xs:element>
+<!--发证人员-->
+<xs:attribute name="FZRY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--发证时间-->
+<xs:attribute name="FZSJ" type="xs:dateTime"/>
+<!--发证名称-->
+<xs:attribute name="FZMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--发证数量-->
+<xs:attribute name="FZSL">
+<xs:simpleType>
+<xs:restriction base="xs:integer"/>
+</xs:simpleType>
+</xs:attribute>
+<!--核发证书号-->
+<xs:attribute name="HFZSH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--领证人姓名-->
+<xs:attribute name="LZRXM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--领证人证件类别-->
+<xs:attribute name="LZRZJLB">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+<xs:enumeration value="7"/>
+<xs:enumeration value="99"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--领证人证件号码-->
+<xs:attribute name="LZRZJHM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--领证人电话-->
+<xs:attribute name="LZRDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--领证人地址-->
+<xs:attribute name="LZRDZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--领证人邮编-->
+<xs:attribute name="LZRYB">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="DJF_DJ_FZ">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="FZRY" use="required"/>
+<xs:attribute ref="FZSJ" use="required"/>
+<xs:attribute ref="FZMC" use="required"/>
+<xs:attribute ref="FZSL" use="required"/>
+<xs:attribute ref="HFZSH" use="required"/>
+<xs:attribute ref="LZRXM" use="required"/>
+<xs:attribute ref="LZRZJLB" use="required"/>
+<xs:attribute ref="LZRZJHM" use="required"/>
+<xs:attribute ref="LZRDH"/>
+<xs:attribute ref="LZRDZ"/>
+<xs:attribute ref="LZRYB"/>
+<xs:attribute ref="BZ"/>
+<xs:attribute ref="QXDM"/>
+</xs:complexType>
+</xs:element>
+<!--权证号码-->
+<xs:attribute name="QZHM">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--文件件数-->
+<xs:attribute name="WJJS">
+<xs:simpleType>
+<xs:restriction base="xs:integer"/>
+</xs:simpleType>
+</xs:attribute>
+<!--总页数-->
+<xs:attribute name="ZYS">
+<xs:simpleType>
+<xs:restriction base="xs:integer"/>
+</xs:simpleType>
+</xs:attribute>
+<!--归档人员-->
+<xs:attribute name="GDRY">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--归档时间-->
+<xs:attribute name="GDSJ" type="xs:dateTime"/>
+<xs:element name="DJF_DJ_GD">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="DJDL"/>
+<xs:attribute ref="DJXL"/>
+<xs:attribute ref="ZL"/>
+<xs:attribute ref="QZHM" use="required"/>
+<xs:attribute ref="WJJS" use="required"/>
+<xs:attribute ref="ZYS"/>
+<xs:attribute ref="GDRY"/>
+<xs:attribute ref="GDSJ" use="required"/>
+<xs:attribute ref="BZ"/>
+<xs:attribute ref="QXDM"/>
+</xs:complexType>
+</xs:element>
+<!--权利人证件种类-->
+<xs:attribute name="QLRZJZL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+<xs:enumeration value="7"/>
+<xs:enumeration value="99"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人证件号-->
+<xs:attribute name="QLRZJH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人通讯地址-->
+<xs:attribute name="QLRTXDZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人邮编-->
+<xs:attribute name="QLRYB">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人法人名称-->
+<xs:attribute name="QLRFRMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人法人电话-->
+<xs:attribute name="QLRFRDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人代理人名称-->
+<xs:attribute name="QLRDLRMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人代理人电话-->
+<xs:attribute name="QLRDLRDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--权利人代理机构-->
+<xs:attribute name="QLRDLJG">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人名称-->
+<xs:attribute name="YWRMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人证件种类-->
+<xs:attribute name="YWRZJZL">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="1"/>
+<xs:enumeration value="2"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+<xs:enumeration value="7"/>
+<xs:enumeration value="99"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人证件号-->
+<xs:attribute name="YWRZJH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人通讯地址-->
+<xs:attribute name="YWRTXDZ">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人邮编-->
+<xs:attribute name="YWRYB">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人法人名称-->
+<xs:attribute name="YWRFRMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人法人电话-->
+<xs:attribute name="YWRFRDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人代理人名称-->
+<xs:attribute name="YWRDLRMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--义务人代理人电话-->
+<xs:attribute name="YWRDLRDH">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--	义务人代理机构-->
+<xs:attribute name="YWRDLJG">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="DJF_DJ_SQR">
+<xs:complexType>
+<xs:attribute ref="YWH"/>
+<xs:attribute ref="YSDM"/>
+<xs:attribute ref="QLRMC"/>
+<xs:attribute ref="QLRZJZL"/>
+<xs:attribute ref="QLRZJH"/>
+<xs:attribute ref="QLRTXDZ"/>
+<xs:attribute ref="QLRYB"/>
+<xs:attribute ref="QLRFRMC"/>
+<xs:attribute ref="QLRFRDH"/>
+<xs:attribute ref="QLRDLRMC"/>
+<xs:attribute ref="QLRDLRDH"/>
+<xs:attribute ref="QLRDLJG"/>
+<xs:attribute ref="YWRMC"/>
+<xs:attribute ref="YWRZJZL"/>
+<xs:attribute ref="YWRZJH"/>
+<xs:attribute ref="YWRTXDZ"/>
+<xs:attribute ref="YWRYB"/>
+<xs:attribute ref="YWRFRMC"/>
+<xs:attribute ref="YWRFRDH"/>
+<xs:attribute ref="YWRDLRMC"/>
+<xs:attribute ref="YWRDLRDH"/>
+<xs:attribute ref="YWRDLJG"/>
+<xs:attribute ref="BZ"/>
+<xs:attribute ref="QXDM"/>
+</xs:complexType>
+</xs:element>
+<!--附件名称-->
+<xs:attribute name="FJMC">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="50"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--附件类型-->
+<xs:attribute name="FJLX">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="20"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<!--附件内容-->
+<xs:attribute name="FJNR">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="2000"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:element name="FJ_F_100">
+<xs:complexType>
+<xs:attribute ref="FJMC" use="required"/>
+<xs:attribute ref="FJLX" use="required"/>
+<xs:attribute ref="FJNR" use="required"/>
+</xs:complexType>
+</xs:element>
+<!--业务数据-->
+<xs:element name="Data">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" ref="ZTT_GY_QLR"/>
+<xs:element maxOccurs="unbounded" ref="QLF_QL_DYIQ"/>
+<xs:element maxOccurs="unbounded" ref="DJT_DJ_SLSQ"/>
+<xs:element maxOccurs="unbounded" ref="DJF_DJ_SJ"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="DJF_DJ_SF"/>
+<xs:element maxOccurs="unbounded" ref="DJF_DJ_SH"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="DJF_DJ_SZ"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="DJF_DJ_FZ"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="DJF_DJ_GD"/>
+<xs:element maxOccurs="unbounded" ref="DJF_DJ_SQR"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="FJ_F_100"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<!--报文-->
+<xs:element name="Message">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="1" minOccurs="1" ref="Head"/>
+<xs:element maxOccurs="1" minOccurs="1" ref="Data"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+</xs:schema>

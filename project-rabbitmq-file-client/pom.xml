@@ -10,5 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>project-rabbitmq-file-client</artifactId>
+    <dependencies>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>1.3.0.RELEASE</version>
+    </dependency>
+
+    </dependencies>
     
 </project>

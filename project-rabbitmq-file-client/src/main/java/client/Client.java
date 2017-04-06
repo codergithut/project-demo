@@ -1,4 +1,4 @@
-package cn.gtmap.realestate.supervise.client;
+package client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +16,6 @@ public class Client implements EmbeddedServletContainerCustomizer {
         SpringApplication.run(Client.class, args);
     }
 
-    @Override
     public void customize(ConfigurableEmbeddedServletContainer container) {
         container.setPort(8081);
     }
