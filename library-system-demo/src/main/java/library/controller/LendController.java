@@ -31,14 +31,10 @@ import java.util.Map;
 public class LendController {
 
     @Autowired
-    BookService bookService;
-
-
-    @Autowired
-    RelationMapper lendBookMapper;
-
-    @Autowired
     ReaderService readerService;
+
+    @Autowired
+    BookService bookService;
 
     @Autowired
     LibraryService libraryService;
@@ -50,7 +46,7 @@ public class LendController {
         Reader reader=readerService.findReaderById(readerid);
         showBookData.put("reader",reader);
         //多表查询，根据relation中readerid的值取bookid，在根据bookid在book中取得book的所有信息
-        List<Book> lendBooks= lendBookMapper.findAllBookByRelationId(readerid);
+        List<Book> lendBooks= bookService.findAllBookByRelationId(readerid);
         showBookData.put("lendBooks",lendBooks);
        // List<Book> lendBooks = new ArrayList<Book>();
         if(lendBooks.size()>5){
@@ -67,9 +63,7 @@ public class LendController {
     @ResponseBody
     public Map<String,String> lendBook(int readerid, int bookid, int adminid) throws IOException, SQLException {
         Map<String,String> result = new HashMap<String,String>();
-
         boolean flag = libraryService.lendBook(readerid, bookid, adminid);
-
         if(flag){
             result.put("msg", "ok");
         }else{

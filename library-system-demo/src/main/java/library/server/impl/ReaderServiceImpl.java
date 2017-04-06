@@ -1,5 +1,6 @@
 package library.server.impl;
 
+import library.entity.Book;
 import library.entity.Reader;
 import library.mybatis.ReaderMapper;
 import library.server.ReaderService;
@@ -13,11 +14,12 @@ import java.util.List;
  */
 @Service
 public class ReaderServiceImpl implements ReaderService {
-
     @Autowired
     ReaderMapper readerDao;
     //获取所有图书信息
     public List<Reader> getAllReaders(){return readerDao.findAllReader();}
+
+
 
 
     //添加图书信息

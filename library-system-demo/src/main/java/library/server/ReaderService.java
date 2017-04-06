@@ -1,5 +1,6 @@
 package library.server;
 
+import library.entity.Book;
 import library.entity.Reader;
 import org.springframework.stereotype.Service;
 
@@ -24,4 +25,5 @@ public interface ReaderService {
 
     //更新图书信息
     boolean updateReadeInfo(Reader reader);
+
 }
