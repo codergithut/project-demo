@@ -84,7 +84,6 @@ public class MybatisConfig implements TransactionManagementConfigurer {
      * 事务管理,具体使用在service层加入@Transactional注解
      */
     @Bean(name = "transactionManager")
-    @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new DataSourceTransactionManager(DataSource());
     }
