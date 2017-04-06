@@ -26,14 +26,6 @@
                 debugger;
                 var obj = JSON.parse(data);
                 if(obj.msg == 'ok'){
-
-//                <th>bookid</th>
-//                    <th>bookname</th>
-//                    <th>classification</th>
-//                    <th>statement</th>
-//                    <th>number</th>
-//                    <th>give</th>
-
                     $("#tab").append("<tr>"
                             +"<td>"+obj.bookid+"</td>"
                             +"<td>"+obj.bookname+"</td>"
