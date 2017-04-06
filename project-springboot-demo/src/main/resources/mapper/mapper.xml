@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webSource.mybatis.UserMapper">
+    <select id="findUserByName" parameterType="String" resultType="User">
+        SELECT * FROM users WHERE name=#{name}
+    </select>
+
+    <insert id="insertUser" parameterType="User" >
+        insert into users (id,name,password,group_id) values (#{id},#{name},#{password},#{group_id})
+    </insert>
+
+    <insert id="insertUserByGenerate" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into users (name,password,group_id) values (#{name},#{password},#{group_id})
+    </insert>
+
+    <insert id="insertUserByRandom" parameterType="User">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+--             select CAST(RANDOM()*1000000 as INTEGER) a from users
+            SELECT FLOOR(7 + (RAND() * 3000)) a
+        </selectKey>
+        insert into users (id,name,password,group_id) values(#{id},#{name},#{password},#{group_id})
+    </insert>
+</mapper>

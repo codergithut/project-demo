@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//library.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="library.mybatis.ReturnBookMapper">
+    <select id="selectRelationByReaderid" parameterType="int"  resultType="Relation" >
+       select * from relation where readerid=#{readerid}
+    </select>
+
+    <update id="updateRelation" parameterType="int">
+        update relation set fine="c",returntime="30" WHERE bookid=#{bookid}
+    </update>
+
+    <select id="selectRelationByBookid" parameterType="int" >
+        select * from relation where bookid=#{bookid}
+    </select>
+</mapper>

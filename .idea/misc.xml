@@ -4,10 +4,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/project-rabbitmq-file-client/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/project-rabbitmq-file-common/pom.xml" />
+        <option value="$PROJECT_DIR$/project-rabbitmq-file/pom.xml" />
+        <option value="$PROJECT_DIR$/project-rabbitmq-project-demo/pom.xml" />
         <option value="$PROJECT_DIR$/projectlucenedemo/pom.xml" />
       </set>
     </option>
@@ -17,21 +21,5 @@
   </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

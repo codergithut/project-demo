@@ -6,16 +6,33 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="library-system-demo" />
         <module name="project-common" />
         <module name="project-java" />
+        <module name="project-lucene-demo" />
+        <module name="project-rabbit-file-common" />
+        <module name="project-rabbitmq-file-client" />
+        <module name="project-rabbitmq-file-server" />
         <module name="project-springboot-demo" />
+        <module name="project-springboot-mybatis-plugin" />
+        <module name="project-wechart-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="library-system-demo" target="1.5" />
       <module name="project-common" target="1.5" />
       <module name="project-demo" target="1.5" />
       <module name="project-java" target="1.5" />
-      <module name="project-springboot-demo" target="1.5" />
+      <module name="project-lucene-demo" target="1.5" />
+      <module name="project-rabbit-file-common" target="1.5" />
+      <module name="project-rabbitmq-file" target="1.5" />
+      <module name="project-rabbitmq-file-client" target="1.5" />
+      <module name="project-rabbitmq-file-common" target="1.5" />
+      <module name="project-rabbitmq-file-server" target="1.5" />
+      <module name="project-rabbitmq-project-demo" target="1.5" />
+      <module name="project-springboot-demo" target="1.8" />
+      <module name="project-springboot-mybatis-plugin" target="1.5" />
+      <module name="project-wechart-demo" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

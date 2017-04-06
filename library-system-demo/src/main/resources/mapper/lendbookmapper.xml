@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//library.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="library.mybatis.LendBookMapper">
+
+        <update id="updatebookpower" parameterType="int" >
+            update book set statement=#{statement},number=#{number} where bookid=#{bookid},
+        </update>
+       <insert id="lendbookpower" parameterType="Relation" >
+        insert into relation (adminid,bookid,readerid,lendtime,returntime,fine) values (#{adminid},#{bookid},#{readerid},#{lendtime},#{returntime},#{fine})
+      </insert>
+</mapper>

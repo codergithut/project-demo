@@ -7,8 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/project-demo.iml" filepath="$PROJECT_DIR$/project-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-java/project-java.iml" filepath="$PROJECT_DIR$/project-java/project-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-lucene-demo/project-lucene-demo.iml" filepath="$PROJECT_DIR$/project-lucene-demo/project-lucene-demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/project-rabbitmq-project-demo/project-rabbitmq-project-demo.iml" filepath="$PROJECT_DIR$/project-rabbitmq-project-demo/project-rabbitmq-project-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-rabbitmq-file-client/project-rabbitmq-file-client.iml" filepath="$PROJECT_DIR$/project-rabbitmq-file-client/project-rabbitmq-file-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-rabbitmq-file-server/project-rabbitmq-file-server.iml" filepath="$PROJECT_DIR$/project-rabbitmq-file-server/project-rabbitmq-file-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-springboot-demo/project-springboot-demo.iml" filepath="$PROJECT_DIR$/project-springboot-demo/project-springboot-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-springboot-mybatis-plugin/project-springboot-mybatis-plugin.iml" filepath="$PROJECT_DIR$/project-springboot-mybatis-plugin/project-springboot-mybatis-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-wechart-demo/project-wechart-demo.iml" filepath="$PROJECT_DIR$/project-wechart-demo/project-wechart-demo.iml" />
     </modules>
   </component>

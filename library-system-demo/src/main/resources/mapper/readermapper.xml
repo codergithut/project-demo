@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//library.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="library.mybatis.Readermapper">
+<select id="findReaderByReaderId" parameterType="int" resultType="Reader">
+    SELECT * FROM reader WHERE readerid=#{readerid}
+</select>
+    <select id="findAllReader" resultType="Reader" >
+        SELECT * FROM reader
+    </select>
+    <update id="UpdateLendBook" parameterType="int" >
+        UPDATE book SET statement="false",number=number+1  WHERE bookid=#{bookid}
+    </update>
+    <update id="updateReader" parameterType="Reader" >
+        update reader
+        <set >
+            <if test="username != null" >
+                username = #{username},
+            </if>
+            <if test="password!= null" >
+                password = #{password},
+            </if>
+
+        </set>
+        where readerid= #{readerid}
+    </update>
+
+<insert id="insertReader" parameterType="Reader" >
+ insert into reader (username,password) values (#{username},#{password})
+</insert>
+    <delete id="deleteReaderByReaderId" parameterType="int" >
+        DELETE  from reader WHERE readerid=#{readerid}
+    </delete>
+
+
+    <select id="selectReaderAndRelation" parameterType="int" >
+        SELECT reader.username,reader.password,relation.bookid,relation.lendtime,relation.returntime FROM reader, relation WHERE reader.readerid=relation.readerid;
+    </select>
+</mapper>

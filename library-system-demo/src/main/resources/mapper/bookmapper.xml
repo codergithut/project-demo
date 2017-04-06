@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//library.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="library.mybatis.BookMapper">
+    <select id="findBookById" parameterType="int" resultType="Book">
+        SELECT * FROM book WHERE bookid=#{bookid}
+    </select>
+    <select id="findAllBook" resultType="book">
+        SELECT * FROM book
+    </select>
+
+    <insert id="insertBook" parameterType="Book">
+        insert into book (bookname,statement,classification,number) values (#{bookname},#{statement},#{classification},#{number})
+    </insert>
+    <delete id="deleteBookById" parameterType="int" >
+        DELETE  from book  WHERE bookid=#{bookid}
+    </delete>
+
+    <update id="UpdateLendBook" parameterType="int" >
+        UPDATE book SET statement="false",number=number+1  WHERE bookid=#{bookid}
+    </update>
+    <update id="updateBookInfo" parameterType="Book" >
+        update book
+        <set >
+            <if test="bookname != null" >
+                bookname = #{bookname},
+            </if>
+            <if test="classification!= null" >
+                classification = #{classification},
+            </if>
+            <if test="statement != null" >
+                statement = #{statement},
+            </if>
+            <if test="number!= null" >
+                number = #{number},
+            </if>
+        </set>
+        where bookid= #{bookid}
+    </update>
+
+
+</mapper>
