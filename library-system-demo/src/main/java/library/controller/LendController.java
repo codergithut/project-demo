@@ -2,6 +2,11 @@ package library.controller;
 
 import library.entity.Book;
 import library.entity.Reader;
+import library.mybatis.RelationMapper;
+import library.server.BookService;
+import library.server.LibraryService;
+import library.server.ReaderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,45 +30,52 @@ import java.util.Map;
 
 public class LendController {
 
+    @Autowired
+    BookService bookService;
+
+
+    @Autowired
+    RelationMapper lendBookMapper;
+
+    @Autowired
+    ReaderService readerService;
+
+    @Autowired
+    LibraryService libraryService;
+
     //选取所有book信息
     @RequestMapping(value = "/readservice/{readerid}", method = RequestMethod.GET)
     public ModelAndView getAllBookGET(@PathVariable int readerid) throws IOException, SQLException {
-        Map<String,Object> showBookData = new HashMap<String,Object>();
-
-        //TODO 查询用户信息 如果用户不存在就跳过
-        Reader reader = new Reader();
-        reader.setPassword("123");
-        reader.setReaderid(123);
-        reader.setUsername("345");
+        Map<String, Object> showBookData = new HashMap<String, Object>();
+        Reader reader=readerService.findReaderById(readerid);
         showBookData.put("reader",reader);
-
-        //TODO 查询该用户所有借阅的书籍
-        List<Book> lendBooks = new ArrayList<Book>();
-        Book book = new Book();
-        book.setBookid(22);
-        book.setBookname("haha");
-        book.setClassification("stes");
-        book.setNumber(33);
-        book.setStatement("true");
-        lendBooks.add(book);
+        //多表查询，根据relation中readerid的值取bookid，在根据bookid在book中取得book的所有信息
+        List<Book> lendBooks= lendBookMapper.findAllBookByRelationId(readerid);
         showBookData.put("lendBooks",lendBooks);
+       // List<Book> lendBooks = new ArrayList<Book>();
         if(lendBooks.size()>5){
             showBookData.put("result","false");
         }else{
             showBookData.put("result","true");
         }
         return new ModelAndView("lend/booklend", showBookData);
+
     }
 
     //选取所有book信息
-    @RequestMapping(value = "/lendBook", method = RequestMethod.GET)
+    @RequestMapping(value = "/lendBook", method = RequestMethod.POST)
     @ResponseBody
     public Map<String,String> lendBook(int readerid, int bookid, int adminid) throws IOException, SQLException {
         Map<String,String> result = new HashMap<String,String>();
-        //跟新数据信息并返回msg
-        result.put("msg","ok");
+
+        boolean flag = libraryService.lendBook(readerid, bookid, adminid);
+
+        if(flag){
+            result.put("msg", "ok");
+        }else{
+            result.put("msg", "error");
+        }
         return result;
     }
-
 
 }

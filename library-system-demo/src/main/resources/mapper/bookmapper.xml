@@ -15,7 +15,7 @@
         DELETE  from book  WHERE bookid=#{bookid}
     </delete>
 
-    <update id="UpdateLendBook" parameterType="int" >
+    <update id="increaseLendBookNumber" parameterType="int" >
         UPDATE book SET statement="false",number=number+1  WHERE bookid=#{bookid}
     </update>
     <update id="updateBookInfo" parameterType="Book" >
@@ -36,6 +36,10 @@
         </set>
         where bookid= #{bookid}
     </update>
+
+    <select id="findAllBookByRelationId"  parameterType="int" resultType="Book">
+        SELECT book.bookname,book.statement,book.classification,book.number FROM book,relation where relation.readerid=#{readerid} AND book.bookid=relation.bookid
+    </select>
 
 
 </mapper>

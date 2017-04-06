@@ -25,4 +25,6 @@ public interface BookService {
 
     //更新图书信息
     boolean updateBookInfo(Book book);
+
+    List<Book> findAllBookByRelationId(int readerid);
 }

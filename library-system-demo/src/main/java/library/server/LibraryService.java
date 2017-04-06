@@ -6,4 +6,5 @@ package library.server;
  * @description
  */
 public interface LibraryService {
+    boolean lendBook(int readerid, int bookid, int adminid);
 }

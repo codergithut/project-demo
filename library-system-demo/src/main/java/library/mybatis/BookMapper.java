@@ -26,4 +26,8 @@ public interface BookMapper {
     //update 不要返回值，只有是否更新成功，
     int updateBookInfo(Book book);
 
+    List<Book> findAllBookByRelationId(int readerid);
+
+    int increaseLendBookNumber(int bookid);
+
 }

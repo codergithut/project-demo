@@ -13,21 +13,20 @@
 <body>
 <script>
     function lendBook(bookid){
-        debugger;
         var adminid = $("#adminid").val();
         var readerid = $("#readerid").val();
         alert(adminid);
         alert(readerid);
         $.ajax({
-            url:'lendBook',
+            url:'../lendBook',
             data:{'bookid':bookid,'adminid':adminid,'readerid':readerid},
             dataType:'JSON',
-            type:'get',
+            type:'post',
             success:function(data){
+                debugger;
                 var obj = JSON.parse(data);
                 if(obj.msg == 'ok'){
-                    //todo 需要动态添加一个tr
-                    //$("tr[id="+bookid+"]").remove();
+                    alert('ok');
                 }else{
                     alert('失败');
                 }
@@ -64,7 +63,7 @@
         <label> 图书编号: <input type="text" name="username"  value = "<#if (reader.username)??>${(reader.username)}<#else>""</#if>"/> </label>
     </form>
 
-    <button onclick="lendBook(33)">借阅图书</button>
+    <button onclick="lendBook(3)">借阅图书</button>
 
     <#else>借阅图书已经达到上限了</#if>
     <#list lendBooks as book>
@@ -79,6 +78,5 @@
     </#list>
     </tbody>
 </table>
-
 
 </html>

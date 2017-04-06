@@ -11,7 +11,7 @@ import java.util.List;
  * Created by zlj on 2017/3/27.
  */
 @Mapper
-public interface Readermapper {
+public interface ReaderMapper {
 
     Reader findReaderByReaderId(@Param("readerid") int readerid);
 
