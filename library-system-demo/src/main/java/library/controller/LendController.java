@@ -64,8 +64,14 @@ public class LendController {
     public Map<String,String> lendBook(int readerid, int bookid, int adminid) throws IOException, SQLException {
         Map<String,String> result = new HashMap<String,String>();
         boolean flag = libraryService.lendBook(readerid, bookid, adminid);
+        Book book = bookService.findBookById(bookid);
         if(flag){
             result.put("msg", "ok");
+            result.put("bookname", book.getBookname());
+            result.put("classification", book.getClassification());
+            result.put("statement", book.getStatement());
+            result.put("number", book.getNumber()+"");
+            result.put("bookid", book.getBookid()+"");
         }else{
             result.put("msg", "error");
         }

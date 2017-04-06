@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <title>根据adminid相关联数据</title>
         <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
     </head>
 
 <body>
@@ -26,7 +26,22 @@
                 debugger;
                 var obj = JSON.parse(data);
                 if(obj.msg == 'ok'){
-                    alert('ok');
+
+//                <th>bookid</th>
+//                    <th>bookname</th>
+//                    <th>classification</th>
+//                    <th>statement</th>
+//                    <th>number</th>
+//                    <th>give</th>
+
+                    $("#tab").append("<tr>"
+                            +"<td>"+obj.bookid+"</td>"
+                            +"<td>"+obj.bookname+"</td>"
+                            +"<td>"+obj.classification+"</td>"
+                            +"<td>"+obj.statement+"</td>"
+                            +"<td>"+obj.number+"</td>"
+                            +"<td> <a onclick=\'giveBook("+obj.bookid+")\'>归还图书</a></td>"
+                            +"</tr>");
                 }else{
                     alert('失败');
                 }
@@ -45,7 +60,7 @@
 </form>
 
 
-<table class="table table-bordered">
+<table class="table table-bordered" id="tab">
     <thead>
     <tr>
         <th>bookid</th>
@@ -73,7 +88,7 @@
         <td><#if (book.classification)??>${(book.classification)}<#else>""</#if></td>
         <td><#if (book.statement)??>${(book.statement)}<#else>""</#if></td>
         <td><#if (book.number)??>${(book.number)}<#else>""</#if></td>
-        <td><a onclick="giveBook/<#if (book.bookid)??>${(book.bookid)}<#else>0</#if>">归还图书</a></td>
+        <td><a onclick="giveBook(<#if (book.bookid)??>${(book.bookid)}<#else>0</#if>)">归还图书</a></td>
         </tr>
     </#list>
     </tbody>
