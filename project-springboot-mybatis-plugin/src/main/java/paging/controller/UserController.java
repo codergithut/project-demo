@@ -7,6 +7,7 @@ import paging.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import paging.service.BaseService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,9 @@ public class UserController {
 
     @Autowired
     UserMapper userMapper;
+
+//    @Autowired
+//    BaseService<User> DemoService;
 
     @RequestMapping(value = "/queryAll", method= RequestMethod.GET)
     @ResponseBody
@@ -43,16 +47,16 @@ public class UserController {
 
     @RequestMapping("/query")
     public String queryDefault() {
-        Map<String,Object> datas= new HashMap<String,Object>();
-        List<User> users = new ArrayList<User>();
-        User user1 = new User();
-        user1.setName("haha1");
-        user1.setId(1);
-        User user2 = new User();
-        user2.setName("haha2");
-        user2.setId(2);
-        users.add(user2);
-        datas.put("datas",users);
+        return "index";
+    }
+
+    @RequestMapping("/entity")
+    public String entityMapper() {
+        User user = new User();
+        user.setId(3333);
+        user.setName("OOXX");
+//        DemoService.save(user);
+
         return "index";
     }
 }

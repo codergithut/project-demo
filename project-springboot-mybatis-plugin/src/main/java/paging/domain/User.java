@@ -1,10 +1,18 @@
 package paging.domain;
 
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by xujiashuai on 2016/6/18.
  */
+@Table(name="users")
 public class User {
+
+    @Id
     private int id;
+
     private String name;
 
     public int getId() {
