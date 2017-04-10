@@ -1,4 +1,4 @@
-package library.entity;
+package library.domain;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package paging.config;
+package library.mybatis;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -62,7 +64,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         props.setProperty("returnPageInfo", "check");
         props.setProperty("params", "count=countSql");
         pageHelper.setProperties(props);
-        bean.setTypeAliasesPackage("paging.domain");
+        bean.setTypeAliasesPackage("library.domain");
 
         //添加插件
         bean.setPlugins(new Interceptor[]{pageHelper});
@@ -94,10 +96,10 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     @Bean
     public MapperScannerConfigurer getMapperScannerConfigurer() throws ClassNotFoundException {
         MapperScannerConfigurer mapperConfig = new MapperScannerConfigurer();
-        mapperConfig.setBasePackage("paging.mapper");
+        mapperConfig.setBasePackage("library.mapper");
         Properties pro = new Properties();
         //注册通用接口，插件的通用接口是第一个，自定义通用接口是第二个。
-        pro.put("mappers", "tk.mybatis.mapper.common.Mapper,paging.common.MyMapper");
+        pro.put("mappers", "tk.mybatis.mapper.common.Mapper,library.common.MyMapper");
         //定义主键生成策略
         pro.put("IDENTITY", "select uuid()");
         //数据库生成主键需要回塞到对象中

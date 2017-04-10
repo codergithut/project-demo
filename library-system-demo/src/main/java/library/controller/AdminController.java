@@ -1,7 +1,7 @@
 package library.controller;
 
 
-import library.entity.Admin;
+import library.domain.Admin;
 import library.server.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

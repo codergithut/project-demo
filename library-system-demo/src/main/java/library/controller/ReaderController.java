@@ -1,6 +1,6 @@
 package library.controller;
 
-import library.entity.Reader;
+import library.domain.Reader;
 import library.server.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -84,7 +84,6 @@ public class ReaderController {
     //根据上面readerid 更新reader用户信息
     @RequestMapping(value = "/updateReader", method = RequestMethod.POST)
     public String updateReader(Reader reader) throws IOException, SQLException {
-
         readerService.updateReadeInfo(reader);
         return "redirect:/rest/getreaderall";
     }

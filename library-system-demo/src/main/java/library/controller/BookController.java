@@ -1,6 +1,6 @@
 package library.controller;
 
-import library.entity.Book;
+import library.domain.Book;
 import library.server.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

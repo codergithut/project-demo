@@ -1,6 +1,6 @@
-package library.mybatis;
+package library.mapper;
 
-import library.entity.Admin;
+import library.domain.Admin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

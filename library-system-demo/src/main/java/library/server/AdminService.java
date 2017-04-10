@@ -1,6 +1,6 @@
 package library.server;
 
-import library.entity.Admin;
+import library.domain.Admin;
 import org.springframework.stereotype.Service;
 
 /**

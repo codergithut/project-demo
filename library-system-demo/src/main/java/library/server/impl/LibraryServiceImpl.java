@@ -1,8 +1,8 @@
 package library.server.impl;
 
-import library.entity.Relation;
-import library.mybatis.BookMapper;
-import library.mybatis.RelationMapper;
+import library.domain.Relation;
+import library.mapper.BookMapper;
+import library.mapper.RelationMapper;
 import library.server.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

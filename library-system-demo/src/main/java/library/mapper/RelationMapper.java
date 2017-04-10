@@ -1,7 +1,7 @@
-package library.mybatis;
+package library.mapper;
 
-import library.entity.Book;
-import library.entity.Relation;
+import library.domain.Book;
+import library.domain.Relation;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

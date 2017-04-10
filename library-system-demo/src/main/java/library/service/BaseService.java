@@ -1,4 +1,4 @@
-package paging.service;
+package library.service;
 
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
