@@ -34,8 +34,9 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
 
     /**
      * 此处不能用springboot自带的方式注解dataSource会出现null的异常
+     * 数据源配置不能通过springboot自带的方法进行处理
      * 有时间可以看看
-     * @return
+     * @return 数据源
      */
     @Primary
     @Bean(name = "primaryDataSource")
@@ -51,7 +52,10 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     }
 
 
-
+    /**
+     *
+     * @return sqlSessionFactory mybatis配置
+     */
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
@@ -88,19 +92,33 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         return new DataSourceTransactionManager(DataSource());
     }
 
+    /**
+     *
+     * @return 通用接口配置配置通用接口服务
+     * @throws ClassNotFoundException
+     */
     @Bean
     public MapperScannerConfigurer getMapperScannerConfigurer() throws ClassNotFoundException {
         MapperScannerConfigurer mapperConfig = new MapperScannerConfigurer();
         mapperConfig.setBasePackage("paging.mapper");
-        mapperConfig.setMarkerInterface(Class.forName("paging.common.MyMapper"));
         Properties pro = new Properties();
-        pro.put("mappers", "tk.mybatis.mapper.common.Mapper");
+        //注册通用接口，插件的通用接口是第一个，自定义通用接口是第二个。
+        pro.put("mappers", "tk.mybatis.mapper.common.Mapper,paging.common.MyMapper");
+        //定义主键生成策略
         pro.put("IDENTITY", "select uuid()");
+        //数据库生成主键需要回塞到对象中
         pro.put("ORDER", "BEFORE");
         mapperConfig.setProperties(pro);
         return mapperConfig;
     }
 
+    //将上文配置的通用接口注册到对应的工具上
+
+    /**
+     *
+     * @param sqlSession
+     * @return 通用接口工具类用于注册通用接口服务
+     */
     @Bean
     @DependsOn("sqlSessionTemplate")
     public MapperHelper getMapperHelper(SqlSessionTemplate sqlSession) {
