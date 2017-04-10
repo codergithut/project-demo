@@ -11,6 +11,6 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper {
-    public User selectById(@Param("id") int id);
+    public User selectById(@Param("id") String id);
     public List<User> list();
 }

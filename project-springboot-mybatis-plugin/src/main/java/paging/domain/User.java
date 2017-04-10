@@ -1,6 +1,8 @@
 package paging.domain;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,16 +13,13 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     private String name;
 
-    public int getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -31,4 +30,7 @@ public class User {
         this.name = name;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

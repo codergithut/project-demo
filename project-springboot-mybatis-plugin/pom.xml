@@ -49,13 +49,6 @@
             <version>3.4.0</version>
         </dependency>
 
-        <dependency>
-           <groupId>com.github.abel533</groupId>
-           <artifactId>mapper</artifactId>
-           <!-- 可以通过上面的更新日志来看最新的版本号 -->
-        <version>3.0.1</version>
-        </dependency>
-
         <!--分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -67,9 +60,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.github.abel533</groupId>
+            <artifactId>mapper</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
+
+    <plugins>
+        <plugin>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>3.4.0</version>
+            </dependency>
+        </plugin>
+    </plugins>
 
 
 

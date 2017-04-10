@@ -1,13 +1,14 @@
 package paging.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.github.abel533.mapperhelper.MapperHelper;
 import com.github.pagehelper.PageHelper;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
@@ -19,6 +20,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -30,15 +32,22 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class MyBatisConfig implements TransactionManagementConfigurer {
 
-
+    /**
+     * 此处不能用springboot自带的方式注解dataSource会出现null的异常
+     * 有时间可以看看
+     * @return
+     */
     @Primary
     @Bean(name = "primaryDataSource")
     @Qualifier("primaryDataSource")
-    @ConfigurationProperties(prefix="datasource.primary")
     public DataSource DataSource() {
         System.out.println("-------------------- firstDataSource init ---------------------");
-        DataSource dataSource= DataSourceBuilder.create().build();
-        return dataSource;
+        DruidDataSource dataSource1 = new DruidDataSource();
+        dataSource1.setPassword("root");
+        dataSource1.setUsername("root");
+        dataSource1.setUrl("jdbc:mysql://localhost:3306/mysql");
+        dataSource1.setDriverClassName("com.mysql.jdbc.Driver");
+        return dataSource1;
     }
 
 
@@ -56,11 +65,11 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         props.setProperty("params", "count=countSql");
         pageHelper.setProperties(props);
         bean.setTypeAliasesPackage("paging.domain");
+
         //添加插件
         bean.setPlugins(new Interceptor[]{pageHelper});
         try {
             ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//            bean.setConfigLocation(resolver.getResource("classpath:mapper/*.xml"));
             bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
             return bean.getObject();
         } catch (Exception e) {
@@ -70,8 +79,8 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     }
 
     @Bean(name = "sqlSessionTemplate")
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
+    public SqlSessionTemplate sqlSessionTemplate() {
+        return new SqlSessionTemplate(sqlSessionFactoryBean());
     }
 
     @Bean
@@ -80,18 +89,22 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     }
 
     @Bean
-    public MapperScannerConfigurer getMapperScannerConfigurer() {
+    public MapperScannerConfigurer getMapperScannerConfigurer() throws ClassNotFoundException {
         MapperScannerConfigurer mapperConfig = new MapperScannerConfigurer();
-        mapperConfig.setBasePackage("com.isea533.mybatis.mapper,com.isea533.mybatis.mapperhelper,com.github.abel533.mapper.Mapper");
+        mapperConfig.setBasePackage("paging.mapper");
+        mapperConfig.setMarkerInterface(Class.forName("paging.common.MyMapper"));
+        Properties pro = new Properties();
+        pro.put("mappers", "tk.mybatis.mapper.common.Mapper");
+        pro.put("IDENTITY", "select uuid()");
+        pro.put("ORDER", "BEFORE");
+        mapperConfig.setProperties(pro);
         return mapperConfig;
     }
 
     @Bean
     @DependsOn("sqlSessionTemplate")
     public MapperHelper getMapperHelper(SqlSessionTemplate sqlSession) {
-        System.out.println("ssse");
         MapperHelper mapperHelper = new MapperHelper();
-        mapperHelper.setMappers(new String[]{"com.isea533.mybatis.mapperhelper.Mapper", "com.github.abel533.mapper.Mapper"});
         mapperHelper.setSqlSessions(new SqlSession[]{sqlSession});
         mapperHelper.initMapper();
         return mapperHelper;

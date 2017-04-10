@@ -2,6 +2,7 @@ package paging.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import paging.common.MyMapper;
 import paging.domain.User;
 import paging.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,11 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
-//    @Autowired
-//    BaseService<User> DemoService;
+    @Autowired
+    BaseService<User> DemoService;
+
+    @Autowired
+    MyMapper mapper;
 
     @RequestMapping(value = "/queryAll", method= RequestMethod.GET)
     @ResponseBody
@@ -53,9 +57,14 @@ public class UserController {
     @RequestMapping("/entity")
     public String entityMapper() {
         User user = new User();
-        user.setId(3333);
         user.setName("OOXX");
-//        DemoService.save(user);
+        DemoService.save(user);
+
+        User user1 = new User();
+        user1.setName("OOXX1");
+        mapper.insert(user1);
+
+        System.out.println(userMapper.selectById(user.getId()).getName() + "sssssssssss");
 
         return "index";
     }
