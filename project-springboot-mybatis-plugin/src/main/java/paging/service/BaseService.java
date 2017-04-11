@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * Created by tianjian on 2017/4/8.
+ * 此处需要将类修饰为抽象对象 防止有人手贱加了@Servcie 注解让这个类可以进行单列处理
  */
-@Service
 public abstract class BaseService<T> {
     @Autowired
     protected Mapper<T> mapper;

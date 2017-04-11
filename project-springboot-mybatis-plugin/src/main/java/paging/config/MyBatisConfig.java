@@ -47,7 +47,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
 
 
     /**
-     *
+     *mybatis sqlSessionFactoryBean 配置 用于配置插件扫描的包名添加插件等等
      * @return sqlSessionFactory mybatis配置
      */
     @Bean(name = "sqlSessionFactory")
@@ -76,6 +76,11 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         }
     }
 
+
+    /**
+     * sqlSessionTemplate 模板配置
+     * @return
+     */
     @Bean(name = "sqlSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate() {
         return new SqlSessionTemplate(sqlSessionFactoryBean());

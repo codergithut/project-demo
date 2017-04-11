@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by xujiashuai on 2016/6/18.
  */
 @SpringBootApplication
-public class Application {
+public class MybatisPluginsStartUp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(MybatisPluginsStartUp.class, args);
     }
 }

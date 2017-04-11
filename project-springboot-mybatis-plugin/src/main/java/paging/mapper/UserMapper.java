@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by xujiashuai on 2016/6/18.
+ * 普通的mapper对象需要有xml文件与之对应
  */
 @Mapper
 public interface UserMapper {
