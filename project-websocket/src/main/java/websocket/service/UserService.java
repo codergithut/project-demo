@@ -21,7 +21,7 @@ public class UserService extends BaseService<User> {
        return super.save(user);
    }
 
-   public User selectById(long id) {
+   public User selectById(String id) {
        return super.slectById(id);
    }
 }

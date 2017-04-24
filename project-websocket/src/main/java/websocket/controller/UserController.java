@@ -12,6 +12,7 @@ import websocket.entity.User;
 import websocket.service.UserService;
 import websocket.token.SecurityUtil;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,12 +32,17 @@ public class UserController {
     public ModelAndView checkUserInfo(
 //            User user
     ) throws Exception {
-//        if(! userService.selectById(user.getNumber()).equals(user)) {
-//            return new ModelAndView("5xx");
-//        }
+        User user = new User();
+        user.setId("1");
+        user.setName("1");
+        user.setPassword("1");
+        user.setDate(new Date());
+        if(! userService.selectById(user.getId()).equals(user)) {
+            return new ModelAndView("5xx");
+        }
 
         Map<String,Object> sign = new HashMap<String,Object>();
-        sign.put("userinfo", "this is test");
+        sign.put("userinfo", user);
         String signResult = SecurityUtil.authentication(sign);
         Map<String,String> model = new HashMap<String,String>();
         model.put("sign", signResult);
