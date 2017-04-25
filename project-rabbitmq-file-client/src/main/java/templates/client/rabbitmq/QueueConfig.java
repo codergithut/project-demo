@@ -1,5 +1,6 @@
-package server.rabbitmq;
+package templates.client.rabbitmq;
 
+import templates.client.service.impl.ClientRecMessageServiceImpl;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import server.service.impl.ServerRecMessageServiceImpl;
 
 /**
  * @author <a href="mailto:tianjian@gtmap.cn">tianjian</a>
@@ -46,8 +46,8 @@ public class QueueConfig {
      */
 
     @Bean
-    public ServerRecMessageServiceImpl getMyMessageContainer(){
-        return new ServerRecMessageServiceImpl();
+    public ClientRecMessageServiceImpl getMyMessageContainer(){
+        return new ClientRecMessageServiceImpl();
     }
 
     @Bean
@@ -57,12 +57,12 @@ public class QueueConfig {
 
     @Bean
     public Queue direct() {
-        return new Queue(QUEUE_SERVER_KEY, true); //队列持久
+        return new Queue(QUEUE_CLIENT_KEY, true); //队列持久
     }
 
     @Bean
     public Binding directBinding() {
-        return BindingBuilder.bind(direct()).to(directExchange()).with(QUEUE_SERVER_KEY);
+        return BindingBuilder.bind(direct()).to(directExchange()).with(QUEUE_CLIENT_KEY);
     }
 
 
@@ -73,6 +73,5 @@ public class QueueConfig {
         container.setListener(getMyMessageContainer());
         return container;
     }
-
 
 }

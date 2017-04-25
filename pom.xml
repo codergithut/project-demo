@@ -18,6 +18,8 @@
         <module>project-springboot-mybatis-plugin</module>
         <module>project-rabbitmq-file-server</module>
         <module>project-wechart-service-demo</module>
+        <module>protect-springboot-spark</module>
+        <module>project-websocket</module>
     </modules>
 
     <dependencyManagement>
