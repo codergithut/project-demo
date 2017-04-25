@@ -19,6 +19,8 @@ public class User {
     private String name;
     private String password;
     private Date date;
+    private String sign;
+    private String status;
 
     public String getName() {
         return name;
@@ -52,9 +54,24 @@ public class User {
         this.id = id;
     }
 
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public boolean equals(User user) {
-        if(user.getId().equals(id) && user.getName().equals(name)
-                && user.getPassword().equals(password)) {
+        if(user.getId().equals(id) && user.getPassword().equals(password)) {
             return true;
         }
         return false;

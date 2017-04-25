@@ -3,6 +3,7 @@ package websocket.service;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -18,8 +19,16 @@ public abstract class BaseService<T> {
         return mapper.insert(entity);
     }
 
+    public int update(T t) {
+        return mapper.updateByPrimaryKey(t);
+    }
+
     public int delete(T entity){
         return mapper.deleteByPrimaryKey(entity);
+    }
+
+    public List<T> getEntityByParam(Example example) {
+        return mapper.selectByExample(example);
     }
 
     /**

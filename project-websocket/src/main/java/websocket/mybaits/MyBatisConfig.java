@@ -101,7 +101,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     @Bean
     public MapperScannerConfigurer getMapperScannerConfigurer() throws ClassNotFoundException {
         MapperScannerConfigurer mapperConfig = new MapperScannerConfigurer();
-        mapperConfig.setBasePackage("websocket.mapper");
+        mapperConfig.setBasePackage("websocket.mybaits.mapper");
         Properties pro = new Properties();
         //注册通用接口，插件的通用接口是第一个，自定义通用接口是第二个。
         pro.put("mappers", "tk.mybatis.mapper.common.Mapper");
