@@ -96,7 +96,7 @@ public class MyWebSocket {
      * @param message 客户端发送过来的消息*/
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
-
+        //todo message需要给我特定的说明比如 添加好友addfriend@+消息体 聊天就是talk@+消息体 群聊天就是allTalk@+消息体  等等
         MessageSingle messageSingle1 = new MessageSingle();
         messageSingle1.setFromId("root@qq.com");
         messageSingle1.setToId("root1@qq.com");
