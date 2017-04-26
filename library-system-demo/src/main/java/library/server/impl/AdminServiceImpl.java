@@ -1,7 +1,7 @@
 package library.server.impl;
 
-import library.entity.Admin;
-import library.mybatis.AdminMapper;
+import library.domain.Admin;
+import library.mapper.AdminMapper;
 import library.server.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

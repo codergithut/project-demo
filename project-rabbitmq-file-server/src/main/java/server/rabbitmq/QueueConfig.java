@@ -57,7 +57,7 @@ public class QueueConfig {
 
     @Bean
     public Queue direct() {
-        return new Queue(QUEUE_CLIENT_KEY, true); //队列持久
+        return new Queue(QUEUE_SERVER_KEY, true); //队列持久
     }
 
     @Bean

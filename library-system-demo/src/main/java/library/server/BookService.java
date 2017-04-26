@@ -1,6 +1,6 @@
 package library.server;
 
-import library.entity.Book;
+import library.domain.Book;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public interface BookService {
 
     //获取所有图书信息
-    public List<library.entity.Book> getAllBooks();
+    public List<Book> getAllBooks();
 
     //添加图书信息
     boolean addBook(Book book);

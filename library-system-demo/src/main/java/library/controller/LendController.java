@@ -1,8 +1,7 @@
 package library.controller;
 
-import library.entity.Book;
-import library.entity.Reader;
-import library.mybatis.RelationMapper;
+import library.domain.Book;
+import library.domain.Reader;
 import library.server.BookService;
 import library.server.LibraryService;
 import library.server.ReaderService;
@@ -43,10 +42,10 @@ public class LendController {
     @RequestMapping(value = "/readservice/{readerid}", method = RequestMethod.GET)
     public ModelAndView getAllBookGET(@PathVariable int readerid) throws IOException, SQLException {
         Map<String, Object> showBookData = new HashMap<String, Object>();
-        Reader reader=readerService.findReaderById(readerid);
+        Reader reader = readerService.findReaderById(readerid);
         showBookData.put("reader",reader);
         //多表查询，根据relation中readerid的值取bookid，在根据bookid在book中取得book的所有信息
-        List<Book> lendBooks= bookService.findAllBookByRelationId(readerid);
+        List<Book> lendBooks = bookService.findAllBookByRelationId(readerid);
         showBookData.put("lendBooks",lendBooks);
        // List<Book> lendBooks = new ArrayList<Book>();
         if(lendBooks.size()>5){

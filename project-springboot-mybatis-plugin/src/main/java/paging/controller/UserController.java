@@ -2,13 +2,17 @@ package paging.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import paging.common.MyMapper;
+import paging.domain.Haha;
 import paging.domain.User;
 import paging.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import paging.service.BaseService;
+import paging.service.HahaService;
+import paging.service.UserService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +25,12 @@ public class UserController {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    HahaService hahaService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/queryAll", method= RequestMethod.GET)
     @ResponseBody
@@ -43,16 +53,22 @@ public class UserController {
 
     @RequestMapping("/query")
     public String queryDefault() {
-        Map<String,Object> datas= new HashMap<String,Object>();
-        List<User> users = new ArrayList<User>();
-        User user1 = new User();
-        user1.setName("haha1");
-        user1.setId(1);
-        User user2 = new User();
-        user2.setName("haha2");
-        user2.setId(2);
-        users.add(user2);
-        datas.put("datas",users);
+        return "index";
+    }
+
+    @RequestMapping("/entity")
+    public String entityMapper() {
+        User user = new User();
+        user.setName("this is also test");
+
+        Haha haha = new Haha();
+        haha.setName("this is test");
+        hahaService.save(haha);
+
+        userService.save(user);
+
+        System.out.println(userMapper.selectById(user.getId()).getName() + "sssssssssss");
+
         return "index";
     }
 }

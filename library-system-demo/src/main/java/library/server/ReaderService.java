@@ -1,7 +1,6 @@
 package library.server;
 
-import library.entity.Book;
-import library.entity.Reader;
+import library.domain.Reader;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

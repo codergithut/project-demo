@@ -8,9 +8,10 @@ import java.util.List;
 
 /**
  * Created by xujiashuai on 2016/6/18.
+ * 普通的mapper对象需要有xml文件与之对应
  */
 @Mapper
 public interface UserMapper {
-    public User selectById(@Param("id") int id);
+    public User selectById(@Param("id") String id);
     public List<User> list();
 }

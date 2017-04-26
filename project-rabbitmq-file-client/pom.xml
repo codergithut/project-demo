@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>project-rabbitmq-file-client</artifactId>
+    <artifactId>project-rabbitmq-file-templates.client</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

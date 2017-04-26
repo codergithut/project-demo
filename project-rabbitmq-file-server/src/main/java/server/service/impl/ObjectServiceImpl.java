@@ -19,6 +19,8 @@ import static server.config.ConstantConfig.ENTITY_PATH;
 public class ObjectServiceImpl implements ConstantConfig {
 
     public ObjectServiceImpl(){
+
+
     }
 
     public  List<Object> getObject(String content) throws DocumentException, ClassNotFoundException {
