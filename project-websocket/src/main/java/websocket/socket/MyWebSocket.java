@@ -2,10 +2,10 @@ package websocket.socket;
 
 import org.springframework.stereotype.Component;
 import websocket.config.CommonConstant;
-import websocket.entity.User;
 import websocket.model.Message;
-import websocket.model.MessageSingle;
-import websocket.service.UserService;
+import websocket.model.TalkMessage;
+import websocket.service.LoginInfoService;
+import websocket.service.ServiceBean;
 import websocket.util.BeanUtils;
 
 import javax.websocket.OnClose;
@@ -14,9 +14,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 
@@ -29,7 +26,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @Component
 public class MyWebSocket {
 
-    UserService userService;
+    LoginInfoService loginInfoService;
 
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
@@ -45,40 +42,35 @@ public class MyWebSocket {
     /**
      * 连接建立成功调用的方法*/
     @OnOpen
-    public void onOpen(Session session) {
+    public void onOpen(Session session) throws Exception {
         this.session = session;
-        if(userService == null) {
-            userService = BeanUtils.getBean("userService");
-        }
+        ServiceBean serviceBean = BeanUtils.getBean("serviceBean");
         String token = session.getRequestParameterMap().get("token").toString();
-        String id = checkTokenAndGetName(token);
+        String id = serviceBean.checkTokenAndGetName(token);
         System.out.println(token);
-
+        //加入set中
+        //在线数加1
+        webSocketSet.add(this);
+        addOnlineCount();
         if(id != null){
             userid = id;
-            webSocketSet.add(this);     //加入set中
-            addOnlineCount();           //在线数加1
             System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
             try {
                 sendMessage(CommonConstant.XIAOXI);
             } catch (IOException e) {
                 System.out.println("IO异常");
             }
-        }
-
-    }
-
-    private String checkTokenAndGetName(String token) {
-
-        Map<String,Object> param = new HashMap<String,Object>();
-        param.put("sign",token.substring(1,token.length() -1));
-        List<User> users = userService.selectByParam(param);
-        if(users != null && users.size() > 0) {
-            return users.get(0).getId();
         } else {
-            return null;
+            /**
+             * 通过抛出异常触发管理器对容器中的session进行清理
+             * 不是很友好
+             */
+            onClose();
+            throw new Exception("this is unsave session");
         }
+
     }
+
 
     /**
      * 连接关闭调用的方法
@@ -93,42 +85,39 @@ public class MyWebSocket {
     /**
      * 收到客户端消息后调用的方法
      *
-     * @param message 客户端发送过来的消息*/
+     * @param recMessage 客户端发送过来的消息*/
     @OnMessage
-    public void onMessage(String message, Session session) throws IOException {
+    public void onMessage(String recMessage, Session session) throws IOException {
         //todo message需要给我特定的说明比如 添加好友addfriend@+消息体 聊天就是talk@+消息体 群聊天就是allTalk@+消息体  等等
-        MessageSingle messageSingle1 = new MessageSingle();
-        messageSingle1.setFromId("root@qq.com");
-        messageSingle1.setToId("root1@qq.com");
-        messageSingle1.setContent("this is test");
-        String json = messageSingle1.changeToJSON();
+        TalkMessage messageSingle = new TalkMessage();
+        this.session = session;
+        messageSingle.setFromId(userid);
+        messageSingle.setToId(recMessage.split("\\|")[0]);
+        messageSingle.setContent(recMessage);
+        String json = messageSingle.changeToJSON();
         System.out.println(json);
-
-
-        Message message1 = Message.changeToObject(json);
+        Message message = Message.changeToObject(json);
         System.out.println("来自客户端的消息:" + message);
-
-        if(message1 instanceof MessageSingle) {
-            String rec = ((MessageSingle) message1).getToId();
-            for(MyWebSocket item : webSocketSet) {
-                if(item.getUserid().equals(rec)) {
-                    item.sendMessage(((MessageSingle) message1).getContent());
-                    return;
-                }
-            }
+        if(message instanceof TalkMessage) {
+            sendUserInfo((TalkMessage)message);
         }
 
 
+    }
 
-        //群发消息
-        for (MyWebSocket item : webSocketSet) {
-            try {
-                item.sendMessage(message);
-            } catch (IOException e) {
-                e.printStackTrace();
+    public void sendUserInfo(TalkMessage message) throws IOException {
+        String rec = message.getToId();
+        for(MyWebSocket item : webSocketSet) {
+            if(item.getUserid() != null && item.getUserid().equals(rec)) {
+                item.sendMessage(message.getContent());
             }
         }
     }
+
+
+
+
+
 
     /**
      * 发生错误时调用
@@ -149,7 +138,7 @@ public class MyWebSocket {
      /**
       * 群发自定义消息
       * */
-    public static void sendInfo(String message) throws IOException {
+    public static void sendAllInfo(String message) throws IOException {
         for (MyWebSocket item : webSocketSet) {
             try {
                 item.sendMessage(message);
@@ -178,4 +167,5 @@ public class MyWebSocket {
     public static synchronized void subOnlineCount() {
         MyWebSocket.onlineCount--;
     }
+
 }

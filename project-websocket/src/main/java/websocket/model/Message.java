@@ -8,12 +8,19 @@ import com.alibaba.fastjson.JSON;
  * @description
  */
 public abstract class Message {
+
+    public String type;
+
+    public Message(String type) {
+        this.type = type;
+    }
+
     public String changeToJSON() {
         return JSON.toJSONString(this);
     }
 
-    public static MessageSingle changeToObject(String json) {
-        return JSON.parseObject(json, MessageSingle.class);
+    public static TalkMessage changeToObject(String json) {
+        return JSON.parseObject(json, TalkMessage.class);
     }
 
 }

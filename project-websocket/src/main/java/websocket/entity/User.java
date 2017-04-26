@@ -15,12 +15,22 @@ import java.util.Date;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String name;
     private String password;
-    private Date date;
-    private String sign;
+    private Date register;
     private String status;
+    private String image;
+    private String address;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -38,28 +48,12 @@ public class User {
         this.password = password;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getRegister() {
+        return register;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
+    public void setRegister(Date register) {
+        this.register = register;
     }
 
     public String getStatus() {
@@ -68,6 +62,22 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public boolean equals(User user) {

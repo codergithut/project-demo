@@ -7,14 +7,14 @@ package websocket.model;
  */
 public class test {
     public static void main(String[] args) {
-        MessageSingle messageSingle1 = new MessageSingle();
+        TalkMessage messageSingle1 = new TalkMessage();
         messageSingle1.setFromId("root@qq.com");
         messageSingle1.setToId("root1@qq.com");
         messageSingle1.setContent("this is test");
         String json = messageSingle1.changeToJSON();
         System.out.println(json);
 
-        MessageSingle x = MessageSingle.changeToObject(json);
+        TalkMessage x = TalkMessage.changeToObject(json);
 
 
     }

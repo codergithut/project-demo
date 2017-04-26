@@ -1,5 +1,7 @@
 package websocket.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,13 +14,18 @@ import javax.persistence.Table;
 public class Friend {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    private String friend1;
+    private String userid;
 
-    private String friend2;
+    private String friend;
 
     private String relation;
+
+    private String remark;
+
+    private String tag;
 
     public String getId() {
         return id;
@@ -28,20 +35,20 @@ public class Friend {
         this.id = id;
     }
 
-    public String getFriend1() {
-        return friend1;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setFriend1(String friend1) {
-        this.friend1 = friend1;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public String getFriend2() {
-        return friend2;
+    public String getFriend() {
+        return friend;
     }
 
-    public void setFriend2(String friend2) {
-        this.friend2 = friend2;
+    public void setFriend(String friend) {
+        this.friend = friend;
     }
 
     public String getRelation() {
@@ -50,5 +57,21 @@ public class Friend {
 
     public void setRelation(String relation) {
         this.relation = relation;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

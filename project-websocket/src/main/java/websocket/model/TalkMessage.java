@@ -7,10 +7,14 @@ import com.alibaba.fastjson.JSON;
  * @version 1.0, 2017/4/25
  * @description
  */
-public class MessageSingle extends Message{
+public class TalkMessage extends Message{
     private String fromId;
     private String toId;
     private String content;
+
+    public TalkMessage() {
+        super("talk");
+    }
 
     public String getFromId() {
         return fromId;

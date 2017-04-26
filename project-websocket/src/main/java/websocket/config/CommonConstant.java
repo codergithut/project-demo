@@ -6,5 +6,5 @@ package websocket.config;
  * @description
  */
 public interface CommonConstant {
-    static final String XIAOXI = "this is test info";
+    static final String XIAOXI = "客户端成功连接！用户好友列表为 ";
 }

@@ -19,7 +19,7 @@ public class BeanUtils implements BeanFactoryAware {
     public void setBeanFactory(BeanFactory factory) throws BeansException {
         beanFactory = factory;
     }
-    public static<UserService> UserService getBean(String name){
-        return (UserService) beanFactory.getBean(name);
+    public static<T> T getBean(String name){
+        return (T)beanFactory.getBean(name);
     }
 }
