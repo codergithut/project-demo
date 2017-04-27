@@ -18,20 +18,12 @@ $(function () {
         c.modalSelect = $(".chat-launch-body-box > div").detach();
 
         //登录用户信息
-        c.user = $(".user-id").val();
 
-        //将消息显示在网页上
-        c.showMessage = function (innerHTML){
-            console.log(chat.other.data());
-            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("img"),innerHTML));
-            var answer = chat.view.message.clone();
-            //将消息输出到页面
-            answer.find("img").attr("src",chat.other.data("img")).end()
-                .find("p").html(innerHTML).end()
-                .addClass("chat-content-talk-other");
-            chat.index.content.find(".chat-content-talk-box").append(answer);
-            chat.scroll.talk.resize();
-        };
+        // c.user = $(".user-id").val();
+        c.user = $("#userid").val();
+
+        debugger;
+        alert(c.user);
 
     })(window.chat.view = window.chat.view || {});
 
@@ -78,13 +70,13 @@ $(function () {
         //     chat.index.friends.append(sort);
         $.each(data,function () {
             var list = chat.view.friendList.clone();
-            list.find(".chat-content-friends-icon > img").attr("src",this.img).end()
-                .find(".chat-content-friends-name > span").text(this.name).end()
+            list.find(".chat-content-friends-icon > img").attr("src","img/icon.jpg").end()
+                .find(".chat-content-friends-name > span").text(this.friend).end()
                 .data({
-                    "id":this.userid,
-                    "name":this.userid,
+                    "id":this.id,
+                    "name":this.friend,
                     "tag":this.tag,
-                    "img":this.imgage,
+                    "img":"img/icon.jpg",
                     "remark":this.remark,
                     "address":this.address
                 });
@@ -92,11 +84,11 @@ $(function () {
 
             //写入模态框
             var modal = chat.view.modalSelect.clone();
-            modal.find("img").attr("src",this.img).end()
-                .find("span").text(this.name).end()
+            modal.find("img").attr("src","img/icon.jpg").end()
+                .find("span").text(this.userid).end()
                 .data({
-                    "id":this.userid,
-                    "img":this.imgage,
+                    "id":this.id,
+                    "img":"img/icon.jpg",
                     "name":this.userid
                 });
             chat.index.chatLaunch.find(".chat-launch-body-box").append(modal);
@@ -135,7 +127,7 @@ $(function () {
         chat.index.content.find(".chat-content-talk-box").append(time,text);
 
         //发送数据
-        var data = {otherId:chat.other.data("id"),id:chat.user.id,text:news};
+        var data = {otherId:chat.other.data("name"),id:chat.user.name,text:news};
         websocket.send(data);
 
         //在好友处插入时间以及消息预览
@@ -160,20 +152,17 @@ $(function () {
     });
 
     //接收到消息的回调方法
-    websocket.onmessage = function(event){
-        websocket.onmessage = function(event){
-            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("image"),event.data));
+    websocket.onmessage = function(e){
+        if (e.data.type == "talk"){
+            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("img"),e.data.content));
             var answer = chat.view.message.clone();
             //将消息输出到页面
             answer.find("img").attr("src",chat.other.data("img")).end()
-                .find("p").html(event.data).end()
+                .find("p").html(e.data.content).end()
                 .addClass("chat-content-talk-other");
             chat.index.content.find(".chat-content-talk-box").append(answer);
             chat.scroll.talk.resize();
-            // chat.view.showMessage(event.data);
-        };
-
-        // chat.view.showMessage(event.data);
+        }
     };
 
     /*
