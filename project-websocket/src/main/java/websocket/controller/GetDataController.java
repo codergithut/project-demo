@@ -39,7 +39,6 @@ public class GetDataController {
     @RequestMapping(value = "/getFriends", method= RequestMethod.POST)
     @ResponseBody
     public Object loginPost(String userid) throws Exception {
-        userid = "root1@qq.com";
         Map<String,Object> params = new HashMap<String,Object>();
         params.put("userid", userid);
         List<Friend> friends = friendService.selectByParam(params);
@@ -49,7 +48,6 @@ public class GetDataController {
     @RequestMapping(value = "/getUserInfo", method= RequestMethod.POST)
     @ResponseBody
     public Object getUserInfo(String userid) throws Exception {
-        userid = "root1@qq.com";
         Map<String,Object> params = new HashMap<String,Object>();
         User user = userService.selectById(userid);
         if(user != null) {
