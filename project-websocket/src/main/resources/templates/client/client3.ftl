@@ -13,8 +13,6 @@
 </head>
 <body>
 
-    <input class="user-id" value="" style="display: none" value = "${userid}" />
-
     <div class="chat">
         <div class="chat-box">
             <!--内容区-->
@@ -292,6 +290,7 @@
         </div>
     </div>
     <input name = "token"  id = "token" type = "hidden" value = "${token}" />
+    <input class="user-id" value="" style="display: none" value = "${userid}" />
 
     <script src="js/index.js"></script>
     <script src="js/chat.js"></script>
