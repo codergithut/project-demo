@@ -60,17 +60,17 @@ public class UserController {
         String tokenResult = SecurityUtil.authentication(token);
         model.put("token", tokenResult);
         user.setStatus("上线");
-        model.put("userid", user.getId());
+        model.put("userid", user.getUserid());
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setIp(request.getRemoteHost());
         loginInfo.setLoginway("PC");
         loginInfo.setSignintime(new Date());
         loginInfo.setToken(tokenResult);
-        loginInfo.setUserid(user.getId());
+        loginInfo.setUserid(user.getUserid());
         loginInfoService.save(loginInfo);
         userService.updateUser(user);
 
-        data.put("userid",user.getId());
+        data.put("userid",user.getUserid());
         data.put("token", tokenResult);
         return data;
     }

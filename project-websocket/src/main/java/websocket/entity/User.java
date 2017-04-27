@@ -16,7 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private String userid;
     private String name;
     private String password;
     private Date register;
@@ -24,12 +24,12 @@ public class User {
     private String image;
     private String address;
 
-    public String getId() {
-        return id;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getName() {
@@ -81,7 +81,7 @@ public class User {
     }
 
     public boolean equals(User user) {
-        if(user.getId().equals(id) && user.getPassword().equals(password)) {
+        if(user.getUserid().equals(userid) && user.getPassword().equals(password)) {
             return true;
         }
         return false;
