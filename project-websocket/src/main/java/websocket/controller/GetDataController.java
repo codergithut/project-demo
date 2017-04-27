@@ -58,4 +58,27 @@ public class GetDataController {
             return null;
         }
     }
+
+    @RequestMapping(value = "/getUserInfobak", method= RequestMethod.GET)
+    @ResponseBody
+    public Object getUserInfobak(String userid) throws Exception {
+        userid = "root1@qq.com";
+        Map<String,Object> params = new HashMap<String,Object>();
+        User user = userService.selectById(userid);
+        if(user != null) {
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/getFriendsbak", method= RequestMethod.GET)
+    @ResponseBody
+    public Object loginPostbak(String userid) throws Exception {
+        userid = "root1@qq.com";
+        Map<String,Object> params = new HashMap<String,Object>();
+        params.put("userid", userid);
+        List<Friend> friends = friendService.selectByParam(params);
+        return friends;
+    }
 }

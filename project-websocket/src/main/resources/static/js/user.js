@@ -28,7 +28,7 @@ $(function () {
         var password = $("#loginPassword").val();
         $.ajax({
             url:'http://tianjian3209.vicp.io/check',
-            type:'post',
+            method :'POST',
             dataType:'json',
             data:{id:id,password:password},
         }).done(function(data) {
