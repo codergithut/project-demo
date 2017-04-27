@@ -1,5 +1,6 @@
 package websocket.socket;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 import websocket.config.CommonConstant;
 import websocket.model.Message;
@@ -89,30 +90,23 @@ public class MyWebSocket {
     @OnMessage
     public void onMessage(String recMessage, Session session) throws IOException {
         //todo message需要给我特定的说明比如 添加好友addfriend@+消息体 聊天就是talk@+消息体 群聊天就是allTalk@+消息体  等等
-        TalkMessage messageSingle = new TalkMessage();
-        this.session = session;
-        messageSingle.setFromId(userid);
-        messageSingle.setToId(recMessage.split("\\|")[0]);
-        messageSingle.setContent(recMessage);
-        String json = messageSingle.changeToJSON();
-        System.out.println(json);
-        Message message = Message.changeToObject(json);
-        System.out.println("来自客户端的消息:" + message);
-        if(message instanceof TalkMessage) {
-            sendUserInfo((TalkMessage)message);
+        JSONObject jsStr = JSONObject.parseObject(recMessage);
+        String type = jsStr.get("type").toString();
+        if(type.equals("talk")) {
+            sendUserInfo(jsStr);
         }
-
-
     }
 
-    public void sendUserInfo(TalkMessage message) throws IOException {
-        String rec = message.getToId();
+
+    public void sendUserInfo(JSONObject jsStr) throws IOException {
+        String toid = jsStr.get("toId").toString();
         for(MyWebSocket item : webSocketSet) {
-            if(item.getUserid() != null && item.getUserid().equals(rec)) {
-                item.sendMessage(message.getContent());
+            if(item.getUserid() != null && item.getUserid().equals(toid)) {
+                item.sendMessage(jsStr.toJSONString());
             }
         }
     }
+
 
 
 

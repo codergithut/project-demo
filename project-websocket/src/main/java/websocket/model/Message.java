@@ -19,7 +19,7 @@ public abstract class Message {
         return JSON.toJSONString(this);
     }
 
-    public static TalkMessage changeToObject(String json) {
+    public static TalkMessage changeToTalkMessage(String json) {
         return JSON.parseObject(json, TalkMessage.class);
     }
 
