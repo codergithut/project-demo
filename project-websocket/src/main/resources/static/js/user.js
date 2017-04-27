@@ -4,6 +4,8 @@ $(function () {
         c.box = $(".user");
         c.login = c.box.find("#userLogin");
 
+        c.register = $("#userRegister");
+
         //尺寸调节
         c.resize = function () {
             if (chat.size.height >800){
@@ -20,16 +22,39 @@ $(function () {
     });
 
     //提交登录信息
-    // chat.user.login.on("click",".user-login-submit",function (e) {
-    //     e.preventDefault();
-    //     var data = chat.user.login.serializeArray();
-    //
-    //     $.ajax({
-    //         url: "login",
-    //         method:"post",
-    //         data:data,
-    //     }).done(function(data) {
-    //         //完成后的操作data为返回的数据
-    //     });
-    // });
+    chat.user.login.on("click",".user-login-submit",function (e) {
+        e.preventDefault();
+        var data = chat.user.login.serializeArray();
+
+        // $.ajax({
+        //     url: "请求地址",
+        //     data:data,
+        // }).done(function(data) {
+        //     //完成后的操作data为返回的数据
+        // });
+    });
+
+    //提交注册信息
+    chat.user.register.on("click",".user-register-submit",function (e) {
+       e.preventDefault();
+       var data = chat.user.register.serializeArray();
+        // $.ajax({
+        //     url: "请求地址",
+        //     data:data,
+        // }).done(function(data) {
+        //     //完成后的操作data为返回的数据
+        // });
+    });
+
+    //注册转登录
+    chat.user.box.on("click",".user-register-login-a",function (e) {
+       chat.user.box.find(".user-login").show().end()
+           .find(".user-register").hide();
+    });
+
+    //登录转注册
+    chat.user.box.on("click",".user-login-register-a",function (e) {
+        chat.user.box.find(".user-register").show().end()
+            .find(".user-login").hide();
+    });
 });
