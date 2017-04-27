@@ -24,6 +24,7 @@ $(function () {
 
         debugger;
         alert(c.user);
+        chat.otherId.push({id:"???",obj:{}});
 
     })(window.chat.view = window.chat.view || {});
 
@@ -258,18 +259,18 @@ $(function () {
                 }else{mark = true}
             });
             if (mark){
-                var active =  chat.view.readerList.clone();
-                active.find("img").attr("src",info.img).end()
-                    .find(".chat-content-reader-name").text(info.name).end()
-                    .data({"id":info.id,
-                        "name":info.name,
-                        "timeHour":-2,
-                        "timeMinute":-6,
-                        "lastTime":0,
-                        "dialog":{}
-                    });
-                chat.index.reader.append(active);
-                chat.otherId.push({id:info.id,obj:active});
+                // var active =  chat.view.readerList.clone();
+                // active.find("img").attr("src",info.img).end()
+                //     .find(".chat-content-reader-name").text(info.name).end()
+                //     .data({"id":info.id,
+                //         "name":info.name,
+                //         "timeHour":-2,
+                //         "timeMinute":-6,
+                //         "lastTime":0,
+                //         "dialog":{}
+                //     });
+                // chat.index.reader.append(active);
+                chat.otherId.push({id:"？？？",obj:{}});
             }
         } else if (select.length > 1){
             //群聊
