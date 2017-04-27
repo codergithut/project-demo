@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2017-04-26 18:07:46
+Date: 2017-04-27 11:17:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` varchar(255) NOT NULL,
+  `userid` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `group_id` varchar(255) DEFAULT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `users` (
   `status` varchar(23) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
