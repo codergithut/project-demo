@@ -12,6 +12,7 @@ import websocket.entity.LoginInfo;
 import websocket.entity.User;
 import websocket.service.FriendService;
 import websocket.service.LoginInfoService;
+import websocket.service.UserService;
 import websocket.util.token.SecurityUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,14 +32,30 @@ public class GetDataController {
     @Autowired
     FriendService friendService;
 
-    @RequestMapping(value = "/getFriends", method= RequestMethod.GET)
+    @Autowired
+    UserService userService;
+
+
+    @RequestMapping(value = "/getFriends", method= RequestMethod.POST)
     @ResponseBody
     public Object loginPost(String userid) throws Exception {
-        Map<String,Object> model = new HashMap<String,Object>();
+        userid = "root1@qq.com";
         Map<String,Object> params = new HashMap<String,Object>();
         params.put("userid", userid);
         List<Friend> friends = friendService.selectByParam(params);
-        model.put("friends", friends);
         return friends;
+    }
+
+    @RequestMapping(value = "/getUserInfo", method= RequestMethod.POST)
+    @ResponseBody
+    public Object getUserInfo(String userid) throws Exception {
+        userid = "root1@qq.com";
+        Map<String,Object> params = new HashMap<String,Object>();
+        User user = userService.selectById(userid);
+        if(user != null) {
+            return user;
+        } else {
+            return null;
+        }
     }
 }

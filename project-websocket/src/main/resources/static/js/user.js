@@ -24,14 +24,27 @@ $(function () {
     //提交登录信息
     chat.user.login.on("click",".user-login-submit",function (e) {
         e.preventDefault();
-        var data = chat.user.login.serializeArray();
-
-        // $.ajax({
-        //     url: "请求地址",
-        //     data:data,
-        // }).done(function(data) {
-        //     //完成后的操作data为返回的数据
-        // });
+        var id = $("#loginEmail").val();
+        var password = $("#loginPassword").val();
+        $.ajax({
+            url:'http://tianjian3209.vicp.io/check',
+            type:'post',
+            dataType:'json',
+            data:{id:id,password:password},
+        }).done(function(data) {
+            var token = null;
+            var userid = null;
+            for(var key in data){
+                var value=JSON.stringify(data[key]).replace(new RegExp(/\"/g),'');
+                if(key == 'token'){
+                    token = value;
+                }
+                if(key == 'userid'){
+                    userid = value;
+                }
+            }
+            window.location = "http://tianjian3209.vicp.io/success?token="+token+"&&userid="+userid;
+        });
     });
 
     //提交注册信息

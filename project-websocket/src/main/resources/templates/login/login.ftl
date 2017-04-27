@@ -15,14 +15,14 @@
         <div class="user-box">
             <div class="user-login">
                 <h3 class="user-login-title">使用账户登录</h3>
-                <form id="userLogin" method = "post" action = "login">
+                <form id="userLogin">
                     <div class="user-login-account user-style-input">
                         <span class="fa fa-envelope fa-lg"></span>
                         <input type="text" id="loginEmail" name="id" placeholder="输入账号" />
                     </div>
                     <div class="user-login-password user-style-input">
                         <span class="fa fa-key fa-lg"></span>
-                        <input type="password" id="loginPassword" name="password" placeholder="输入密码" />
+                        <input type="password" id="loginPassword" name="password" id = "password" placeholder="输入密码" />
                     </div>
                     <#--<div class="user-login-remember">-->
                         <#--<input type="checkbox" id="loginRemember" name="loginRemember" value="1" />-->

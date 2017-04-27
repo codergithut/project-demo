@@ -22,6 +22,7 @@ $(function () {
 
         //将消息显示在网页上
         c.showMessage = function (innerHTML){
+            alert(innerHTML);
             Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("img"),innerHTML));
             var answer = chat.view.message.clone();
             //将消息输出到页面
@@ -56,7 +57,7 @@ $(function () {
     // });
 
     //拉取用户信息
-    $.post("http://tianjian3209.vicp.io/getFriends",{userid:chat.view.user},function (data) {
+    $.post("http://tianjian3209.vicp.io/getUserInfo",{userid:chat.view.user},function (data) {
         chat.user.id = data[0].id;
         chat.user.name = data[0].name;
         chat.user.img = data[0].img;

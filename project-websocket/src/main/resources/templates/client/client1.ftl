@@ -9,6 +9,7 @@ Welcome<br/>
 <input id="text" type="text" /><button onclick="send()">Send</button>    <button onclick="closeWebSocket()">Close</button>
 <div id="message">
 </div>
+<input type="hidden" name = "userid" id = "userid" value = "${userid}"/>
 </body>
 
 <script type="text/javascript">
@@ -16,7 +17,7 @@ Welcome<br/>
 
     //判断当前浏览器是否支持WebSocket
     if('WebSocket' in window){
-        websocket = new WebSocket("ws://localhost:8080/websocket?token=${sign}");
+        websocket = new WebSocket("ws://tianjian3209.vicp.io/websocket?token=${token}");
     }
     else{
         alert('Not support websocket')
