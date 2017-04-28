@@ -129,12 +129,13 @@ $(function () {
 
     //接收到消息的回调方法
     websocket.onmessage = function(e){
+        console.log(e.data);
         var content = e.data.content;
         if (e.data.type == "talk"){
-            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("img"),content));
+            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),"img/icon.jpg",content));
             var answer = chat.view.message.clone();
             //将消息输出到页面
-            answer.find("img").attr("src",chat.other.data("img")).end()
+            answer.find("img").attr("src","img/icon.jpg").end()
                 .find("p").html(e.data.content).end()
                 .addClass("chat-content-talk-other");
             chat.index.content.find(".chat-content-talk-box").append(answer);
@@ -142,19 +143,19 @@ $(function () {
         }
 
         //将非正在会话的消息缓存
-        var userid = e.data.fromId;
-        var textOther = chat.view.message.clone();
-        //将消息输出到页面
-        textOther.find("img").attr("src",chat.user.img).end()
-            .find("p").html(content).end()
-            .addClass("chat-content-talk-self");
-
-        $.each(chat.otherId,function () {
-           if (userid == this.id) {
-               this.obj.data("unread").push(textOther[0]);
-               return false;
-           }
-        });
+        // var userid = e.data.fromId;
+        // var textOther = chat.view.message.clone();
+        // //将消息输出到页面
+        // textOther.find("img").attr("src",chat.user.img).end()
+        //     .find("p").html(content).end()
+        //     .addClass("chat-content-talk-self");
+        //
+        // $.each(chat.otherId,function () {
+        //    if (userid == this.id) {
+        //        this.obj.data("unread").push(textOther[0]);
+        //        return false;
+        //    }
+        // });
     };
 
     /*
