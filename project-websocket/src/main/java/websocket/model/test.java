@@ -14,8 +14,6 @@ public class test {
         String json = messageSingle1.changeToJSON();
         System.out.println(json);
 
-        TalkMessage x = TalkMessage.changeToObject(json);
-
 
     }
 }

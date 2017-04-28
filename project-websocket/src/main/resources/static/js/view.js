@@ -22,32 +22,7 @@ $(function () {
         // c.user = $(".user-id").val();
         c.user = $("#userid").val();
 
-        debugger;
-        alert(c.user);
-        chat.otherId.push({id:"???",obj:{}});
-
     })(window.chat.view = window.chat.view || {});
-
-    //输出正在聊天好友列表
-    // $.post("http://tianjian3209.vicp.io/getFriends",{userid:chat.view.user},function (data) {
-    //     var active={};
-    //     $.each(data,function (key) {
-    //         active =  chat.view.readerList.clone();
-    //         active.find("img").attr("src",this.img).end()
-    //             .find(".chat-content-reader-name").text(this.name).end()
-    //             .data({"id":this.id,
-    //                 "name":this.name,
-    //                 "timeHour":-2,
-    //                 "timeMinute":-6,
-    //                 "lastTime":0,
-    //                 "dialog":{}
-    //             });
-    //         chat.index.reader.append(active);
-    //         chat.otherId.push({id:this.id,obj:active});
-    //     });
-    //
-    //     chat.scroll.reader.resize();
-    // });
 
     //拉取用户信息
     $.post("http://tianjian3209.vicp.io/getUserInfo",{userid:chat.view.user},function (data) {
@@ -86,11 +61,11 @@ $(function () {
             //写入模态框
             var modal = chat.view.modalSelect.clone();
             modal.find("img").attr("src","img/icon.jpg").end()
-                .find("span").text(this.userid).end()
+                .find("span").text(this.friend).end()
                 .data({
                     "id":this.id,
                     "img":"img/icon.jpg",
-                    "name":this.userid
+                    "name":this.friend
                 });
             chat.index.chatLaunch.find(".chat-launch-body-box").append(modal);
         });
@@ -128,7 +103,7 @@ $(function () {
         chat.index.content.find(".chat-content-talk-box").append(time,text);
 
         //发送数据
-        var data = {otherId:chat.other.data("name"),id:chat.user.name,text:news};
+        var data = JSON.stringify({otherId:chat.other.data("name"),id:chat.user.name,text:news});
         websocket.send(data);
 
         //在好友处插入时间以及消息预览
@@ -154,8 +129,9 @@ $(function () {
 
     //接收到消息的回调方法
     websocket.onmessage = function(e){
+        var content = e.data.content;
         if (e.data.type == "talk"){
-            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("img"),e.data.content));
+            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),chat.other.data("img"),content));
             var answer = chat.view.message.clone();
             //将消息输出到页面
             answer.find("img").attr("src",chat.other.data("img")).end()
@@ -164,6 +140,21 @@ $(function () {
             chat.index.content.find(".chat-content-talk-box").append(answer);
             chat.scroll.talk.resize();
         }
+
+        //将非正在会话的消息缓存
+        var userid = e.data.fromId;
+        var textOther = chat.view.message.clone();
+        //将消息输出到页面
+        textOther.find("img").attr("src",chat.user.img).end()
+            .find("p").html(content).end()
+            .addClass("chat-content-talk-self");
+
+        $.each(chat.otherId,function () {
+           if (userid == this.id) {
+               this.obj.data("unread").push(textOther[0]);
+               return false;
+           }
+        });
     };
 
     /*

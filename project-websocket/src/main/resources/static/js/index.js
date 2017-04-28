@@ -163,6 +163,11 @@ $(function () {
             }
             $(this).addClass("chat-content-reader-active");
             chat.index.headName.text($(this).data("name"));
+
+            //将未读的消息导入
+            $.each($(this).data("unread"),function () {
+                chat.index.content.find(".chat-content-talk-box").append(this);
+            });
         }
     });
 
@@ -209,6 +214,9 @@ $(function () {
         //标识对象是否存在
         var mark = false;
         //循环已存在的对话
+        if (chat.otherId.length == 0){
+            mark = true;
+        }
         $.each(chat.otherId,function () {
             if (info.id == this.id){
                 chat.index.tabReader.trigger("click");

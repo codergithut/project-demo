@@ -91,15 +91,18 @@ public class MyWebSocket {
     public void onMessage(String recMessage, Session session) throws IOException {
         //todo message需要给我特定的说明比如 添加好友addfriend@+消息体 聊天就是talk@+消息体 群聊天就是allTalk@+消息体  等等
         JSONObject jsStr = JSONObject.parseObject(recMessage);
-        String type = jsStr.get("type").toString();
-        if(type.equals("talk")) {
-            sendUserInfo(jsStr);
-        }
+//        String type = jsStr.get("type").toString();
+//        if(type.equals("talk")) {
+//            sendUserInfo(jsStr);
+//        }
+        sendUserInfo(jsStr);
+
+
     }
 
 
     public void sendUserInfo(JSONObject jsStr) throws IOException {
-        String toid = jsStr.get("toId").toString();
+        String toid = jsStr.get("otherId").toString();
         for(MyWebSocket item : webSocketSet) {
             if(item.getUserid() != null && item.getUserid().equals(toid)) {
                 item.sendMessage(jsStr.toJSONString());
