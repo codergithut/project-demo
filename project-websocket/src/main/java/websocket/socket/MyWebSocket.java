@@ -51,10 +51,10 @@ public class MyWebSocket {
         System.out.println(token);
         //加入set中
         //在线数加1
-        webSocketSet.add(this);
         addOnlineCount();
         if(id != null){
             userid = id;
+            webSocketSet.add(this);
             System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
             try {
                 sendMessage(CommonConstant.XIAOXI);

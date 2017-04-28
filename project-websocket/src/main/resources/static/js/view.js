@@ -97,13 +97,13 @@ $(function () {
         var replace = news.split("\n").join('<br />');
 
         //将消息输出到页面
-        text.find("img").attr("src",chat.user.img).end()
+        text.find("img").attr("src","img/icon.jpg").end()
             .find("p").html(replace).end()
             .addClass("chat-content-talk-self");
         chat.index.content.find(".chat-content-talk-box").append(time,text);
 
         //发送数据
-        var data = JSON.stringify({otherId:chat.other.data("name"),id:chat.user.name,text:news});
+        var data = JSON.stringify({otherId:chat.other.data("name"),type:"talk",id:chat.user.name,text:news});
         websocket.send(data);
 
         //在好友处插入时间以及消息预览
@@ -130,13 +130,17 @@ $(function () {
     //接收到消息的回调方法
     websocket.onmessage = function(e){
         console.log(e.data);
-        var content = e.data.content;
-        if (e.data.type == "talk"){
-            Notification.requestPermission().then(chat.notifyMsg(chat.other.data("name"),"img/icon.jpg",content));
+        var data = JSON.parse(e.data);
+        console.log(data);
+        var content = data.text,
+            sender = data.id;
+        console.log(content + " | " + sender + " | "+data.type);
+        if (data.type == "talk"){
+            Notification.requestPermission().then(chat.notifyMsg(sender,"img/icon.jpg",content));
             var answer = chat.view.message.clone();
             //将消息输出到页面
             answer.find("img").attr("src","img/icon.jpg").end()
-                .find("p").html(e.data.content).end()
+                .find("p").html(content).end()
                 .addClass("chat-content-talk-other");
             chat.index.content.find(".chat-content-talk-box").append(answer);
             chat.scroll.talk.resize();

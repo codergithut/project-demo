@@ -72,6 +72,7 @@ public class UserController {
 
         data.put("userid",user.getUserid());
         data.put("token", tokenResult);
+        System.out.println(tokenResult);
         return data;
     }
 
@@ -81,6 +82,7 @@ public class UserController {
         Map<String,Object> model = new HashMap<String,Object>();
         model.put("token", token);
         model.put("userid", userid);
+        System.out.println(token);
         return new ModelAndView("client3", model);
     }
 

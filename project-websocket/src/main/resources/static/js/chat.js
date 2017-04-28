@@ -3,9 +3,11 @@ var websocket = null;
 $(function () {
     (function (c) {
 
+        var token = $("#token").val();
+
         //判断当前浏览器是否支持WebSocket
         if('WebSocket' in window){
-            websocket = new WebSocket("ws://tianjian3209.vicp.io/websocket?token=f8f0a337f7c5bf7f6fd0ab53df40dc03");
+            websocket = new WebSocket("ws://tianjian3209.vicp.io/websocket?token="+token);
         }
         else{
             console.log('Not support websocket');
