@@ -3,14 +3,16 @@
     c.scroll = {};
     //存放用户信息
     c.user = {};
-    //存放当前会话用户
-    c.other = {};
+    //存放当前会话用户索引
+    c.other = null;
     //存放当前所有正在会话用户的id
     c.otherId = [];
     //存放正在操作的会话好友
     c.topClose = {};
     //存放所有好友
     c.allFriends = [];
+    //好友索引
+    c.key = 0;
     //浏览器当前宽和高
     c.size = {
         get width(){return document.documentElement.clientWidth},

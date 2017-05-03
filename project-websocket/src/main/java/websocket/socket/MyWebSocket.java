@@ -1,8 +1,11 @@
 package websocket.socket;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 import websocket.config.CommonConstant;
+import websocket.entity.Friend;
+import websocket.entity.User;
 import websocket.model.Message;
 import websocket.model.TalkMessage;
 import websocket.service.LoginInfoService;
@@ -15,6 +18,10 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 
@@ -40,12 +47,14 @@ public class MyWebSocket {
 
     private String userid;
 
+    ServiceBean serviceBean ;
+
     /**
      * 连接建立成功调用的方法*/
     @OnOpen
     public void onOpen(Session session) throws Exception {
         this.session = session;
-        ServiceBean serviceBean = BeanUtils.getBean("serviceBean");
+        serviceBean = BeanUtils.getBean("serviceBean");
         String token = session.getRequestParameterMap().get("token").toString();
         String id = serviceBean.checkTokenAndGetName(token);
         System.out.println(token);
@@ -57,7 +66,17 @@ public class MyWebSocket {
             webSocketSet.add(this);
             System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
             try {
-                sendMessage(CommonConstant.XIAOXI);
+                List<Friend> friends = serviceBean.getAllFriends(id);
+                Map<String,Object> friendsData = new HashMap<String,Object>();
+                friendsData.put("type", "friendsinfo");
+                friendsData.put("Data", friends);
+
+                Map<String,Object> userData = new HashMap<String,Object>();
+                User user = serviceBean.getUserInfo(id);
+                userData.put("type", "userinfo");
+                userData.put("Data", user);
+                sendMessage(JSON.toJSONString(friendsData));
+                sendMessage(JSON.toJSONString(userData));
             } catch (IOException e) {
                 System.out.println("IO异常");
             }
@@ -91,13 +110,72 @@ public class MyWebSocket {
     public void onMessage(String recMessage, Session session) throws IOException {
         //todo message需要给我特定的说明比如 添加好友addfriend@+消息体 聊天就是talk@+消息体 群聊天就是allTalk@+消息体  等等
         JSONObject jsStr = JSONObject.parseObject(recMessage);
-//        String type = jsStr.get("type").toString();
-//        if(type.equals("talk")) {
-//            sendUserInfo(jsStr);
-//        }
-        sendUserInfo(jsStr);
+        String type = jsStr.get("type").toString();
+        if(type.equals("talk")) {
+            sendUserInfo(jsStr);
+        }
+
+        if(type.equals("addFriend")) {
+            sendAddFriendRequest(jsStr);
+        }
+
+        if(type.equals("agreeFriend")) {
+            sendResultFrendRequest(jsStr);
+        }
+
+        if(type.equals("recFriend")) {
+
+        }
 
 
+    }
+
+    private void sendResultFrendRequest(JSONObject jsStr) throws IOException {
+        String toid = jsStr.get("account").toString();
+        String result = jsStr.get("result").toString();
+        String id = jsStr.get("id").toString();
+        if(result.equals("agree")) {
+            serviceBean.insertFriend(id,toid);
+
+            for(MyWebSocket item : webSocketSet) {
+                if(item.getUserid() != null && item.getUserid().equals(toid)) {
+                    List<Friend> friends = serviceBean.getAllFriends(toid);
+                    Map<String,Object> friendsData = new HashMap<String,Object>();
+                    friendsData.put("type", "friendsinfo");
+                    friendsData.put("Data", friends);
+                    item.sendMessage(JSON.toJSONString(friendsData));
+
+                    Map<String,String> send = new HashMap<String,String>();
+                    send.put("type", "agree");
+                    send.put("friendid", id);
+                    item.sendMessage(JSON.toJSONString(send));
+                }
+            }
+
+            for(MyWebSocket item : webSocketSet) {
+                if(item.getUserid() != null && item.getUserid().equals(id)) {
+                    List<Friend> friends = serviceBean.getAllFriends(id);
+                    Map<String,Object> friendsData = new HashMap<String,Object>();
+                    friendsData.put("type", "friendsinfo");
+                    friendsData.put("Data", friends);
+                    item.sendMessage(JSON.toJSONString(friendsData));
+                }
+            }
+        }
+    }
+
+    private void sendAddFriendRequest(JSONObject jsStr) throws IOException {
+        String account = jsStr.get("account").toString();
+        String id = jsStr.get("id").toString();
+        for(MyWebSocket item : webSocketSet) {
+            if(item.getUserid() != null && item.getUserid().equals(account)) {
+                Map<String,Object> data = new HashMap<String,Object>();
+                User user = serviceBean.getUserInfo(id);
+                data.put("type", "friendRequest");
+                data.put("user",user);
+                item.sendMessage(JSON.toJSONString(data));
+            }
+        }
     }
 
 

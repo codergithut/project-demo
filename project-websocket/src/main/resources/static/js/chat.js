@@ -4,10 +4,11 @@ $(function () {
     (function (c) {
 
         var token = $("#token").val();
+        //console.log(window.location);
 
         //判断当前浏览器是否支持WebSocket
         if('WebSocket' in window){
-            websocket = new WebSocket("ws://tianjian3209.vicp.io/websocket?token="+token);
+            websocket = new WebSocket("ws://localhost:8080/websocket?token="+token);
         }
         else{
             console.log('Not support websocket');

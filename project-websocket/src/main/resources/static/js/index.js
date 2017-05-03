@@ -48,50 +48,15 @@ $(function () {
         var right = $(".chat-content-right");
         var left = $(".chat-content-left");
         var footer = $("footer");
-
-        //标准屏幕高度,内容高度
-        var initSHeight = 974;
-        var initCHeight = 780;
-        //尺寸调节
-        c.resize = function () {
-            var windowHeight = chat.size.height;
-            var contentHeight = initCHeight+windowHeight-initSHeight;
-            chatBox.height(windowHeight+"px");
-
-            //高度判断调节
-            if (windowHeight < 780){
-                if (windowHeight < 600)
-                    windowHeight = 600;
-                footer.hide();
-                contentBox.height(windowHeight+"px");
-                contentBox.find(".chat-content-box").height(windowHeight+"px");
-                //移动优化动画
-                contentBox.clearQueue();
-                contentBox.animate({top: 0,
-                }, 500);
-            } else {
-                footer.show();
-                contentBox.height(contentHeight+"px");
-                contentBox.find(".chat-content-box").height(contentHeight+"px");
-
-                contentBox.clearQueue();
-                contentBox.animate({top: 100,
-                }, 500);
-            }
-
-            //这里一个是会话框的高度,一个是好友列表高度,这里按语义不应该用right,不过效果一样
-            var rightTalkHeight = right.height() - 230,friendListHeight = right.height() -151;
-            left.find(".chat-content-reader-maxBox,.chat-content-friends-box").height(friendListHeight+"px");
-            c.content.height(rightTalkHeight+"px");
-
-            c.modal.find(".chat-modal-mask").height(windowHeight+"px");
-        };
+        
     })(window.chat.index = window.chat.index || {});
 
-    chat.index.resize();
+    setTimeout("$('.chat-wait').remove()",400);
+
     $(window).resize(function () {
-        chat.index.resize();
         chat.scroll.reader.resize();
+        chat.scroll.talk.resize();
+        chat.scroll.friends.resize();
     });
     
     //插入滚动条
@@ -152,21 +117,43 @@ $(function () {
 
         //避免重复点击
         if (!$(this).hasClass("chat-content-reader-active")) {
-            chat.other = $(this);
+            chat.other = $(this).data("index");
             var active = $(".chat-content-reader-active");
-            //将此好友的会话保存
-            var dialog = chat.index.content.find(".chat-content-talk-box > div").detach();
             if (active.length !== 0){
-                active.data("dialog",dialog);
-                chat.index.content.find(".chat-content-talk-box").html($(this).data("dialog"));
+                chat.index.content.find(".chat-content-talk-box").empty();
                 active.removeClass("chat-content-reader-active");
             }
             $(this).addClass("chat-content-reader-active");
-            chat.index.headName.text($(this).data("name"));
+            chat.index.headName.text(chat.allFriends[$(this).data("index")].nodeDiv.data("name"));
 
-            //将未读的消息导入
-            $.each($(this).data("unread"),function () {
-                chat.index.content.find(".chat-content-talk-box").append(this);
+            //页面输出内容
+            var message = chat.allFriends[$(this).data("index")].message;
+            var unread = chat.allFriends[$(this).data("index")].nodeDiv.data("unread");
+            if (unread !== 0){
+                $(".chat-content-reader-count").addClass("chat-hide");
+                chat.allFriends[$(this).data("index")].nodeDiv.data("unread",0);
+            }
+            $.each(message,function(key){
+                if (key>20){
+                    return false;
+                }
+                if (this.type == "user") {
+                    var text = chat.view.message.clone();
+                    text.find("img").attr("src",chat.user.img).end()
+                        .find(".pre-plain").html(this.content).end()
+                        .addClass("chat-content-talk-self");
+                    chat.index.content.find(".chat-content-talk-box").prepend(text);
+                } else if (this.type == "time") {
+                    var time = chat.view.time.clone();
+                    time.find("div").text(this.content);
+                    chat.index.content.find(".chat-content-talk-box").prepend(time);
+                } else if (this.type == "form") {
+                    var text = chat.view.message.clone();
+                    text.find("img").attr("src",chat.allFriends[this.userId].nodeDiv.data("img")).end()
+                        .find(".pre-plain").html(this.content).end()
+                        .addClass("chat-content-talk-other");
+                    chat.index.content.find(".chat-content-talk-box").prepend(text);
+                }
             });
         }
     });
@@ -189,7 +176,7 @@ $(function () {
 
             //插入信息
             var info =$(this).data();
-            chat.index.info.find(".chat-content-info-icon > img").attr("src","img/icon.jpg").end()
+            chat.index.info.find(".chat-content-info-icon > img").attr("src",info.img).end()
                 .find(".chat-content-info-name>span").text(info.name).end()
                 .find(".chat-content-info-tag").text(info.tag).end()
                 .find(".chat-content-info-remark>span").text("备注: "+info.remark).end()
@@ -203,44 +190,46 @@ $(function () {
             if (!info.tag)
                 chat.index.info.find(".chat-content-info-tag").text("");
             //给发消息按钮一个部分用户信息
-            chat.index.sendJump.data({"id":info.id,"img":info.img,"name":info.name});
+            chat.index.sendJump.data("index",info.index);
         }
     });
 
     //给好友列表的好友发送消息
     chat.index.sendJump.on("click",function () {
         //得到当前好友信息
-        var info=$(this).data();
+        var index=$(this).data("index");
         //标识对象是否存在
         var mark = false;
+        //判断好友会话是否打开
+        var otherIndex = chat.otherId.indexOf(index);
         //循环已存在的对话
         if (chat.otherId.length == 0){
             mark = true;
         }
-        $.each(chat.otherId,function () {
-            if (info.id == this.id){
-                chat.index.tabReader.trigger("click");
-                this.obj.trigger("click");
-                mark = false;
-                return false;
-            }else{mark = true}
-        });
+
+        if (otherIndex !== -1){
+             chat.index.tabReader.trigger("click");
+             chat.allFriends[index].point.trigger("click");
+             mark = false;
+             return false;
+        }else{mark = true}
+
         if (mark){
             var active =  chat.view.readerList.clone();
+            var info = chat.allFriends[index].nodeDiv.data();
             active.find("img").attr("src",info.img).end()
                 .find(".chat-content-reader-name").text(info.name).end()
-                .data({"id":info.id,
-                    "name":info.name,
+                .data({
                     "timeHour":-2,
                     "timeMinute":-6,
                     "lastTime":0,
-                    "dialog":{}
+                    "index":index
                 });
             chat.index.reader.append(active);
-            chat.otherId.push({id:info.id,obj:active});
+            chat.otherId.push(index);
             chat.index.tabReader.trigger("click");
             active.trigger("click");
-
+            chat.allFriends[index].point = active;
             //滚动条调整
             chat.scroll.reader.resize();
         }
@@ -312,12 +301,14 @@ $(function () {
         chat.index.delete.hide();
     });
     chat.index.delete.on("click",".chat-delete-close",function () {
-        var id = chat.topClose.data("id");
+
+        var id = chat.topClose.data("index");
         var userKey = 0;
         if (chat.topClose.hasClass("chat-content-reader-active")){
             chat.index.talk.find(".chat-content-talk-box,.chat-content-talk-input").addClass("chat-content-talk-hide").end()
                 .find(".chat-content-talk-none").removeClass("chat-content-talk-hide");
             chat.index.headName.text("");
+            chat.index.talk.find(".chat-content-talk-box").empty();
         }
         $.each(chat.otherId,function (key) {
            if (this.id == id){
@@ -327,6 +318,8 @@ $(function () {
         chat.otherId.splice(userKey,1);
         chat.topClose.remove();
         chat.index.delete.hide();
+
+        chat.allFriends[id].point=null;
         //滚动条调整
         chat.scroll.reader.resize();
     });
@@ -393,7 +386,5 @@ $(function () {
             button.addClass("chat-modal-foot-active");
         }
     });
-    
 
-  //  chat.index.tabFriends.trigger("click");
 });

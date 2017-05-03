@@ -83,12 +83,12 @@ public class UserController {
         model.put("token", token);
         model.put("userid", userid);
         System.out.println(token);
-        return new ModelAndView("client3", model);
+        return new ModelAndView("client4", model);
     }
 
     @RequestMapping(value = "/fail", method= RequestMethod.POST)
     public ModelAndView fail(User user, HttpServletRequest request) throws Exception {
-        return new ModelAndView("client3", null);
+        return new ModelAndView("client4", null);
     }
 
 

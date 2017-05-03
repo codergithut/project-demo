@@ -18,61 +18,9 @@ $(function () {
         c.modalSelect = $(".chat-launch-body-box > div").detach();
 
         //登录用户信息
-
-        // c.user = $(".user-id").val();
         c.user = $("#userid").val();
 
     })(window.chat.view = window.chat.view || {});
-
-    //拉取用户信息
-    $.post("http://tianjian3209.vicp.io/getUserInfo",{userid:chat.view.user},function (data) {
-        chat.user.id = data.userid;
-        chat.user.name = data.userid;
-        chat.user.img = data.image;
-        chat.user.tag = "无";
-        chat.user.address = data.address;
-
-        //将信息写入模态框
-        chat.index.chatEdit.find("#editName").val(chat.user.name).end()
-            .find("#editTag").val(chat.user.tag).end()
-            .find("#editAddress").val(chat.user.address);
-    });
-
-    //拉取好友信息
-    $.post("http://tianjian3209.vicp.io/getFriends",{userid:chat.view.user},function (data) {
-        // $.each(data,function (key,val) {
-        //     var sort = chat.view.friendSort.clone();
-        //     sort.find("span").text(key);
-        //     chat.index.friends.append(sort);
-        $.each(data,function () {
-            var list = chat.view.friendList.clone();
-            list.find(".chat-content-friends-icon > img").attr("src","img/icon.jpg").end()
-                .find(".chat-content-friends-name > span").text(this.friend).end()
-                .data({
-                    "id":this.id,
-                    "name":this.friend,
-                    "tag":this.tag,
-                    "img":"img/icon.jpg",
-                    "remark":this.remark,
-                    "address":this.address
-                });
-            chat.index.friends.append(list);
-
-            //写入模态框
-            var modal = chat.view.modalSelect.clone();
-            modal.find("img").attr("src","img/icon.jpg").end()
-                .find("span").text(this.friend).end()
-                .data({
-                    "id":this.id,
-                    "img":"img/icon.jpg",
-                    "name":this.friend
-                });
-            chat.index.chatLaunch.find(".chat-launch-body-box").append(modal);
-        });
-        // });
-        //加入好友滚动条
-        chat.scroll.friends.resize();
-    });
 
     //发送消息
     chat.index.sendA.on("click",function () {
@@ -80,46 +28,50 @@ $(function () {
         var hour = chat.time().hour,minute = chat.time().minute;
         var news = chat.index.text.val();
         var text = chat.view.message.clone();
+        var index = chat.other,
+            info = chat.allFriends[index].nodeDiv.data(),
+            active = chat.allFriends[index].point;
 
         //时间显示优化,间隔短不显示,这里只做当天的判断,年月日不作判断
-        var minusHour = hour-chat.other.data("timeHour"),
-            minusMinute = minute - chat.other.data("timeMinute");
+        var minusHour = hour-active.data("timeHour"),
+            minusMinute = minute - active.data("timeMinute");
         minute < 10 ? minute ="0" + minute : minute;
         if (minusHour > 1 || minusMinute > 5){
-            chat.other.data("timeHour",hour);
-            chat.other.data("timeMinute",minute);
+            active.data("timeHour",hour);
+            active.data("timeMinute",minute);
             var timeText = hour + ":"+minute;
             var time = chat.view.time.clone();
             time.find("div").text(timeText);
+
+            var timeRecord = {
+                type:"time",
+                content:timeText
+            }
+            chat.allFriends[chat.other].message.unshift(timeRecord);
         } else {time = {};}
 
-        //将js空格转换成html空格
-        var replace = news.split("\n").join('<br />');
-
         //将消息输出到页面
-        text.find("img").attr("src","img/icon.jpg").end()
-            .find("p").html(replace).end()
+        text.find("img").attr("src",chat.user.img).end()
+            .find(".pre-plain").html(news).end()
             .addClass("chat-content-talk-self");
         chat.index.content.find(".chat-content-talk-box").append(time,text);
 
         //发送数据
-        var data = JSON.stringify({otherId:chat.other.data("name"),type:"talk",id:chat.user.name,text:news});
+        var data = JSON.stringify({otherId:info.friend,type:"talk",id:chat.user.id,text:news});
         websocket.send(data);
 
-        //在好友处插入时间以及消息预览
-        chat.other.find(".chat-content-reader-time").text(hour + ":"+minute);
-        if (news.length > 12){news = news.substring(0,12) + "...";}
-        chat.other.find(".chat-content-reader-message").text(news);
-
-        //高度调整
-        var height = 0;
-
-        chat.index.newHeight.html(replace);
-        var multi = chat.index.newHeight.height() / 20;
-        if (multi > 1){
-             height = 26 + multi*20;
-            text.height(height + "px");
+        var record = {
+            type:"user",
+            userId:chat.user.id,
+            content:news
         }
+        chat.allFriends[chat.other].message.unshift(record);
+
+        //在好友处插入时间以及消息预览
+        active.find(".chat-content-reader-time").text(hour + ":"+minute);
+        if (news.length > 12){news = news.substring(0,12) + "...";}
+        active.find(".chat-content-reader-message").text(news);
+
         //清空发送框栏
         chat.index.text.val("");
 
@@ -129,37 +81,197 @@ $(function () {
 
     //接收到消息的回调方法
     websocket.onmessage = function(e){
-        console.log(e.data);
         var data = JSON.parse(e.data);
-        console.log(data);
-        var content = data.text,
-            sender = data.id;
-        console.log(content + " | " + sender + " | "+data.type);
-        if (data.type == "talk"){
-            Notification.requestPermission().then(chat.notifyMsg(sender,"img/icon.jpg",content));
-            var answer = chat.view.message.clone();
-            //将消息输出到页面
-            answer.find("img").attr("src","img/icon.jpg").end()
-                .find("p").html(content).end()
-                .addClass("chat-content-talk-other");
-            chat.index.content.find(".chat-content-talk-box").append(answer);
-            chat.scroll.talk.resize();
-        }
+        var hour = chat.time().hour,minute = chat.time().minute;
 
-        //将非正在会话的消息缓存
-        // var userid = e.data.fromId;
-        // var textOther = chat.view.message.clone();
-        // //将消息输出到页面
-        // textOther.find("img").attr("src",chat.user.img).end()
-        //     .find("p").html(content).end()
-        //     .addClass("chat-content-talk-self");
-        //
-        // $.each(chat.otherId,function () {
-        //    if (userid == this.id) {
-        //        this.obj.data("unread").push(textOther[0]);
-        //        return false;
-        //    }
-        // });
+        if (data.type == "talk"){
+        //得到对话消息
+            var content = data.text,
+               sender = data.id,
+               img = chat.allFriends[sender].nodeDiv.data("img");
+            Notification.requestPermission().then(chat.notifyMsg(sender,img,content));
+
+            var point = chat.allFriends[sender].point;
+
+            if (!point) {
+                //接受人会话框未打开
+                var active =  chat.view.readerList.clone();
+                var info = chat.allFriends[sender].nodeDiv.data();
+                info.unread++;
+                active.find(".chat-content-reader-count").removeClass("chat-hide");
+                active.find("img").attr("src",info.img).end()
+                    .find(".chat-content-reader-name").text(info.name).end()
+                    .find(".chat-content-reader-count").text(info.unread).end()
+                    .data({
+                        "timeHour":hour,
+                        "timeMinute":minute,
+                        "lastTime":0,
+                        "index":sender
+                    });
+
+                 //在好友处插入时间以及消息预览
+                 var news="";
+                 active.find(".chat-content-reader-time").text(hour + ":"+minute);
+                 if (content.length > 12){news = content.substring(0,12) + "...";}else{news = content;}
+                 active.find(".chat-content-reader-message").text(news);
+
+                 var timeText = hour + ":"+minute;
+                 var time = chat.view.time.clone();
+                 time.find("div").text(timeText);
+
+                 var timeRecord = {
+                     type:"time",
+                     content:timeText
+                 }
+                 chat.allFriends[sender].message.unshift(timeRecord);
+
+                chat.index.reader.append(active);
+                chat.otherId.push(sender);
+                chat.allFriends[sender].point = active;
+                //滚动条调整
+                chat.scroll.reader.resize();
+            } else if (point.data("index") == chat.other){
+                //接收人会话框处于激活状态
+               //时间显示优化,间隔短不显示,这里只做当天的判断,年月日不作判断
+                  var minusHour = hour-point.data("timeHour"),
+                      minusMinute = minute - point.data("timeMinute");
+                  minute < 10 ? minute ="0" + minute : minute;
+                 if (minusHour > 1 || minusMinute > 5){
+                      point.data("timeHour",hour);
+                      point.data("timeMinute",minute);
+                      var timeText = hour + ":"+minute;
+                      var time = chat.view.time.clone();
+                      time.find("div").text(timeText);
+
+                      var timeRecord = {
+                          type:"time",
+                          content:timeText
+                      }
+                      chat.allFriends[sender].message.unshift(timeRecord);
+                      console.log(chat.allFriends[chat.other].message);
+                  } else {time = {};}
+                var answer = chat.view.message.clone();
+                answer.find("img").attr("src",img).end()
+                    .find(".pre-plain").html(content).end()
+                    .addClass("chat-content-talk-other");
+                chat.index.content.find(".chat-content-talk-box").append(time,answer);
+
+
+
+                chat.scroll.talk.resize();
+            } else {
+                //接受人会话存在但未激活
+                var info = chat.allFriends[sender].nodeDiv.data();
+                var nodeDiv = chat.allFriends[sender].point;
+                info.unread++;
+                nodeDiv.find(".chat-content-reader-count").removeClass("chat-hide");
+                //在好友处插入时间以及消息预览
+                var news="";
+                nodeDiv.find(".chat-content-reader-time").text(hour + ":"+minute);
+                if (content.length > 12){news = content.substring(0,12) + "...";}else{news = content;}
+                nodeDiv.find(".chat-content-reader-message").text(news).end()
+                    .find(".chat-content-reader-count").text(info.unread);
+
+                //时间显示优化,间隔短不显示,这里只做当天的判断,年月日不作判断
+                var minusHour = hour-nodeDiv.data("timeHour"),
+                    minusMinute = minute - nodeDiv.data("timeMinute");
+                minute < 10 ? minute ="0" + minute : minute;
+                if (minusHour > 1 || minusMinute > 5){
+                    nodeDiv.data("timeHour",hour);
+                    nodeDiv.data("timeMinute",minute);
+                    var timeText = hour + ":"+minute;
+                    var time = chat.view.time.clone();
+                    time.find("div").text(timeText);
+
+                    var timeRecord = {
+                        type:"time",
+                        content:timeText
+                    }
+                    chat.allFriends[sender].message.unshift(timeRecord);
+                } else {time = {};}
+            }
+
+            var record = {
+                type:"form",
+                userId:sender,
+                content:content
+            }
+            chat.allFriends[sender].message.unshift(record);
+
+            //滚动条调整
+            chat.scroll.talk.resize();
+
+        }else if (data.type == "friendsinfo"){
+            //得到好友列表
+            chat.index.friends.empty();
+            chat.index.chatLaunch.find(".chat-launch-body-box").empty();
+            console.log(data);
+             $.each(data.Data,function () {
+                 var list = chat.view.friendList.clone();
+                 var img = "../img/user/" + this.image;
+                 list.find(".chat-content-friends-icon > img").attr("src",img).end()
+                     .find(".chat-content-friends-name > span").text(this.friendname).end()
+                     .data({
+                         "id":this.id,
+                         "friend":this.friend,
+                         "name":this.friendname,
+                         "tag":this.tag,
+                         "img":img,
+                         "remark":this.remark,
+                         "address":this.address,
+                         "index":this.friend,
+                         "unread":0,
+                     });
+                 chat.index.friends.append(list);
+
+                 //写入模态框
+                 var modal = chat.view.modalSelect.clone();
+                 modal.find("img").attr("src",img).end()
+                     .find("span").text(this.friendname).end()
+                     .data({
+                         "id":this.id,
+                         "img":img,
+                         "name":this.friendname,
+                         "index":this.id
+                     });
+                 chat.index.chatLaunch.find(".chat-launch-body-box").append(modal);
+
+                  chat.allFriends[this.friend] = {
+                      nodeDiv:list,
+                      message:[],
+                      point:null
+                  }
+             });
+
+             //加入好友滚动条
+             chat.scroll.friends.resize();
+         }else if (data.type == "userinfo") {
+         //得到用户信息
+              var data = data.Data;
+              var img = "../img/user/" +data.image;
+              chat.user.id = data.userid;
+              chat.user.name = data.name;
+              chat.user.img = img;
+              chat.user.tag = data.signname;
+              chat.user.address = data.address;
+
+              //将信息写入模态框
+              chat.index.chatEdit.find("#editName").val(chat.user.name).end()
+                  .find("#editTag").val(chat.user.tag).end()
+                  .find("#editAddress").val(chat.user.address);
+
+              //写入头部
+              $(".chat-content-header-icon").find("img").attr("src",img)
+                .end().find("p").html(data.name);
+         }else if (data.type == "friendRequest") {
+             $("#chatAccept").find(".chat-add-count").text("添加人账号: "+data.user.userid).end()
+                .find(".chat-add-name").text("添加人昵称: "+data.user.name);
+             $("#chatAccept").find(".chat-modal-box").animate({top: 150,opacity:1
+             }, 300,function () {
+                 $("#chatAccept").show();
+             });
+             $("#chatAccept").find(".chat-modal-foot-save").data("account",data.user.userid);
+         }
     };
 
     /*
@@ -227,13 +339,36 @@ $(function () {
     //添加好友
     chat.index.chatAdd.on("click",".chat-modal-foot-save",function () {
        var account = chat.index.chatAdd.find("#addAccount").val();
-       //将账号传进后台
-       //匹配成功需要返还首字母,如果能返还加在那个id下最好
-        chat.index.chatAdd.find(".chat-modal-close").trigger("click");
+       console.log(chat.allFriends[account]);
+       if (!chat.allFriends[account]){
+         //将账号传进后台
+          var data = JSON.stringify({account:account,type:"addFriend",id:chat.user.id});
+          websocket.send(data);
 
-        //滚动条调整
-        chat.scroll.friends.resize();
+          chat.index.chatAdd.find(".chat-modal-close").trigger("click");
+       }else{
+          chat.index.chatAdd.find(".add-message").text("好友已存在！");
+       }
+
     });
+
+    //接受好友申请
+    $("#chatAccept").on("click",".chat-modal-foot-save",function(){
+         var  chatAccept = $("#chatAccept");
+         var data = JSON.stringify({account:chatAccept.find(".chat-modal-foot-save").data("account"),type:"agreeFriend",id:chat.user.id,result:"agree"});
+         websocket.send(data);
+
+         chatAccept.find(".chat-modal-box").animate({top: 0,opacity:0
+         }, 300,function () {
+             chatAccept.hide();
+         });
+    });
+    //拒绝好友申请
+    $("#chatAccept").on("click",".chat-modal-foot-save",function(){
+         var data = JSON.stringify({account:$("#chatAccept").find(".chat-modal-foot-save").data("account"),type:"agreeFriend",id:chat.user.id,result:"refused"});
+         websocket.send(data);
+    });
+
     //发起聊天
     chat.index.chatLaunch.on("click",".chat-modal-foot-save",function () {
        var launch =  chat.index.chatLaunch;
@@ -266,7 +401,7 @@ $(function () {
                 //         "dialog":{}
                 //     });
                 // chat.index.reader.append(active);
-                chat.otherId.push({id:"？？？",obj:{}});
+                //chat.otherId.push({id:"？？？",obj:{}});
             }
         } else if (select.length > 1){
             //群聊

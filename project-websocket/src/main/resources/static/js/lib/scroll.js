@@ -106,6 +106,13 @@ $(function () {
             //窗口变化尺寸改变
             Scroll.prototype.resize = function () {
                 this.style();
+                var $this = this;
+                var block = $this.block(),hObj = $this.hObj;
+                var move = $this.height - $this.blockHeight;
+                //得到内容移动高度
+                var lkMove =  -1*move*$this.LK;
+                block.css("marginTop",move+"px");
+                hObj.css("marginTop",lkMove+"px");
             };
             //初始化
             Scroll.prototype.initialization = function () {

@@ -27,6 +27,12 @@ public class Friend {
 
     private String tag;
 
+    private String address;
+
+    private String image;
+
+    private String friendname;
+
     public String getId() {
         return id;
     }
@@ -73,5 +79,29 @@ public class Friend {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getFriendname() {
+        return friendname;
+    }
+
+    public void setFriendname(String friendname) {
+        this.friendname = friendname;
     }
 }

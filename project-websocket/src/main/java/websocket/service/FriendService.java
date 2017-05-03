@@ -22,11 +22,7 @@ public class FriendService extends BaseService<Friend> {
        if (friend == null) {
            throw new NullPointerException("保存的对象不能为空!");
        }
-       String frindId = friend.getFriend();
-       Friend friend1 = new Friend();
-       friend1.setFriend(friend.getId());
-       friend1.setId(friend.getFriend());
-       return super.save(friend)+super.save(friend1);
+       return super.save(friend);
    }
 
    public Friend selectById(String id) {

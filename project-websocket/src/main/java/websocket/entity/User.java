@@ -23,6 +23,7 @@ public class User {
     private String status;
     private String image;
     private String address;
+    private String signname;
 
     public String getUserid() {
         return userid;
@@ -78,6 +79,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getSignname() {
+        return signname;
+    }
+
+    public void setSignname(String signname) {
+        this.signname = signname;
     }
 
     public boolean equals(User user) {
