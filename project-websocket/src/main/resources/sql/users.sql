@@ -1,24 +1,31 @@
-/*
-Navicat MySQL Data Transfer
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: 2017-05-01 11:33:09
+-- 服务器版本： 5.7.15-log
+-- PHP Version: 5.6.26
 
-Source Server         : root
-Source Server Version : 50528
-Source Host           : localhost:3306
-Source Database       : mysql
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-Target Server Type    : MYSQL
-Target Server Version : 50528
-File Encoding         : 65001
 
-Date: 2017-04-27 11:17:52
-*/
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-SET FOREIGN_KEY_CHECKS=0;
+--
+-- Database: `chat`
+--
 
--- ----------------------------
--- Table structure for `users`
--- ----------------------------
-DROP TABLE IF EXISTS `users`;
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `users`
+--
+
 CREATE TABLE `users` (
   `userid` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -28,14 +35,29 @@ CREATE TABLE `users` (
   `status` varchar(23) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`userid`)
+  `signname` varchar(100) NOT NULL COMMENT '//签名'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of users
--- ----------------------------
-INSERT INTO `users` VALUES ('root1@qq.com', null, 'root1', 'test', null, '上线', null, null);
-INSERT INTO `users` VALUES ('root@qq.com', null, 'root', 'test', '2017-04-24 16:16:25', '上线', null, null);
-INSERT INTO `users` VALUES ('周丽娟', null, 'root', null, '2017-04-25 16:16:37', null, null, null);
-INSERT INTO `users` VALUES ('田剑', null, 'root', null, null, '上线', null, null);
-INSERT INTO `users` VALUES ('陈龙', null, 'root', null, null, '上线', null, null);
+--
+-- 转存表中的数据 `users`
+--
+
+INSERT INTO `users` (`userid`, `name`, `password`, `group_id`, `register`, `status`, `image`, `address`, `signname`) VALUES
+('clong', '陈龙', 'root', NULL, '2017-04-30 03:50:17', '上线', 'user4.jpg', '大丰', '签名'),
+('root1', 'root', 'root', 'test', '2017-04-30 03:48:14', '上线', 'user1.jpg', '大丰', '签名'),
+('tianjian', '田剑', 'root', NULL, '2017-04-30 03:50:12', '上线', 'user3.jpg', '大丰', '签名'),
+('zhou', '周丽娟', 'root', NULL, '2017-04-30 03:49:57', NULL, 'user2.jpg', '大丰', '签名');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userid`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
