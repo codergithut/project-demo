@@ -47,13 +47,6 @@ public class SecurityInterceptor implements Interceptor
         for(int i=0;i<args.length;i++)
         {
             Object arg=args[i];
-            if(arg instanceof MappedStatement) {
-                map = (MappedStatement) arg;
-                /**
-                 * 获取返回值类型，单表插件可以放心使用，如果对象不同需要分情况讨论，暂时没有处理
-                 */
-                params = security.getAllAnnoationInfo(map.getResultMaps().get(0).getType());
-            }
 
             String className=arg.getClass().getName();
             System.out.println(i + " 参数类型："+className);
@@ -68,6 +61,13 @@ public class SecurityInterceptor implements Interceptor
                     update = true;
                     continue;
                 } else if(sqlCommandType == SqlCommandType.SELECT) {
+                    if(arg instanceof MappedStatement) {
+                        map = (MappedStatement) arg;
+                        /**
+                         * 获取返回值类型，单表插件可以放心使用，如果对象不同需要分情况讨论，暂时没有处理
+                         */
+                        params = security.getAllAnnoationInfo(map.getResultMaps().get(0).getType());
+                    }
                     query = true;
                     continue;
                 }
@@ -99,6 +99,7 @@ public class SecurityInterceptor implements Interceptor
                 if(params!= null && params.size() > 0 && arg instanceof Map) {
                     setQueryMap((Map)arg, params);
                 }
+                query = false;
             }
 
             returnValue = invocation.proceed();
