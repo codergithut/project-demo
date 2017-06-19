@@ -6,7 +6,7 @@
     </select>
 
     <insert id="insertUser" parameterType="User" >
-        insert into users (id,name,password,group_id) values (#{id},#{name},#{password},#{group_id})
+        insert into users (userid,name,password,group_id) values (#{userid},#{name},#{password},#{group_id})
     </insert>
 
     <insert id="insertUserByGenerate" parameterType="User" useGeneratedKeys="true" keyProperty="id">

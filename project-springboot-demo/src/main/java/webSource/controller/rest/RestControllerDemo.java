@@ -65,7 +65,15 @@ public class RestControllerDemo {
 
         users.add(getResource.getWealthByUrlResource());
 
-        users.add(userMapper.findUserByName("11"));
+        User user = new User();
+        user.setPassword("hshshs");
+        user.setName("hshshs");
+        user.setGroup_id(33l);
+        user.setUserid(2222l);
+//        userMapper.insertUser(user);
+
+
+        users.add(userMapper.findUserByName("hshshs"));
 
         users.add(userMapper.findUserByNameByAnnotation("11"));
 

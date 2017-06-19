@@ -1,5 +1,6 @@
 package webSource.mybatis.configuration;
 
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,6 +16,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import webSource.util.AESUtil;
+import webSource.util.Security;
+import webSource.util.plugin.SecurityInterceptor;
+
 import javax.sql.DataSource;
 
 /**
@@ -46,6 +51,9 @@ public class MybatisConfig implements TransactionManagementConfigurer {
         bean.setDataSource(DataSource());
         //模型对象会默认在这个路径下
         bean.setTypeAliasesPackage("webSource.jpa.entry");
+        SecurityInterceptor securityInterceptor = new SecurityInterceptor();
+        securityInterceptor.setSecurity(getSecurity());
+        bean.setPlugins(new Interceptor[]{securityInterceptor});
         //分页插件,插件无非是设置mybatis的拦截器
 //        PageHelper pageHelper = new PageHelper();
 //        Properties properties = new Properties();
@@ -67,6 +75,12 @@ public class MybatisConfig implements TransactionManagementConfigurer {
         } catch (Exception e) {
             throw new RuntimeException("sqlSessionFactory init fail",e);
         }
+    }
+
+
+    @Bean
+    public Security getSecurity() {
+        return new AESUtil();
     }
 
 

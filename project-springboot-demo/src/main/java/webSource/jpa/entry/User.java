@@ -1,5 +1,7 @@
 package webSource.jpa.entry;
 
+import webSource.annotation.encrypt;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,19 +16,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class User {
-    private Long id ;
+
+    private Long userid ;
+
+    @encrypt
     private String name;
+
+    @encrypt
     private String password ;
+
     private long group_id;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
-    public Long getId() {
-        return id;
+    @Column(name="userid")
+    public Long getUserid() {
+        return userid;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 
     @Column(name="group_id")
@@ -45,8 +53,8 @@ public class User {
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
 
-    public User(Long id,String name,String password){
-        this.id = id;
+    public User(Long userid,String name,String password){
+        this.userid = userid;
         this.name = name;
         this.password = password;
     }
