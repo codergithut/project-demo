@@ -41,9 +41,11 @@ public class SecurityInterceptor implements Interceptor
         for(int i=0;i<args.length;i++)
         {
             Object arg=args[i];
+            if(arg != null) {
+                String className=arg.getClass().getName();
+                System.out.println(i + " 参数类型："+className);
+            }
 
-            String className=arg.getClass().getName();
-            System.out.println(i + " 参数类型："+className);
             //第一个参数处理。根据它判断是否给“操作属性”赋值。
             if(arg instanceof MappedStatement)
             {//如果是第一个参数 MappedStatement
