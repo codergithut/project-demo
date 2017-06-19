@@ -44,9 +44,9 @@ public abstract class Security {
 
     private void dealField(Object source, int type) throws InvocationTargetException, IllegalAccessException {
         Method[] sourceMethods = source.getClass().getMethods();
-        String encryptBefore = null;
         Class<?> c = source.getClass();
         List<String> encryptFields = getAllAnnoationInfo(c);
+        Map<String,Object> changeValue = new HashMap<String,Object>();
 
         if(encryptFields.size() > 0) {
             for (int i = 0; i < sourceMethods.length; i++) {
@@ -54,7 +54,7 @@ public abstract class Security {
                     String lsName = sourceMethods[i].getName().substring(3);// 属性
                     if (encryptFields.contains(lsName.toLowerCase())) {
                         Object loValue = sourceMethods[i].invoke(source, null);  // 值
-                        encryptBefore = loValue.toString();
+                        changeValue.put(lsName.toLowerCase(), loValue);
                     }
                 }
             }
@@ -65,7 +65,7 @@ public abstract class Security {
                     String lsName = sourceMethods[i].getName().substring(3);// 属性
                     if (encryptFields.contains(lsName.toLowerCase())) {
                         //todo 加密
-                        String ss = decrypt(encryptBefore);
+                        String encryptBefore = changeValue.get(lsName.toLowerCase()).toString();
                         if(type ==1) {
                             sourceMethods[i].invoke(source, encrypt(encryptBefore));
                         } else if(type ==2){
