@@ -66,11 +66,11 @@ public class RestControllerDemo {
         users.add(getResource.getWealthByUrlResource());
 
         User user = new User();
-        user.setPassword("hshshs");
+        user.setPassword("thisis test");
         user.setName("hshshs");
         user.setGroup_id(33l);
         user.setUserid(2222l);
-//        userMapper.insertUser(user);
+        userMapper.insertUser(user);
 
 
         users.add(userMapper.findUserByName("hshshs"));
