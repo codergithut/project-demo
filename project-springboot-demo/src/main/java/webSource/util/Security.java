@@ -42,7 +42,7 @@ public abstract class Security {
     Map<Class<?>,List<String>> classParams = new HashMap<Class<?>,List<String>>();
 
 
-    private void dealField(Object source, byte[] key, int type) throws InvocationTargetException, IllegalAccessException {
+    private void dealField(Object source, int type) throws InvocationTargetException, IllegalAccessException {
         Method[] sourceMethods = source.getClass().getMethods();
         String encryptBefore = null;
         Class<?> c = source.getClass();
@@ -77,12 +77,12 @@ public abstract class Security {
         }
     }
 
-    public void EncryptField(Object source, byte[] key) throws InvocationTargetException, IllegalAccessException {
-        dealField(source, key, 1);
+    public void EncryptField(Object source) throws InvocationTargetException, IllegalAccessException {
+        dealField(source, 1);
     }
 
-    public void DecryptField(Object source, byte[] key) throws InvocationTargetException, IllegalAccessException {
-        dealField(source, key, 2);
+    public void DecryptField(Object source) throws InvocationTargetException, IllegalAccessException {
+        dealField(source, 2);
     }
 
     public List<String> getAllAnnoationInfo(Class<?> o) {
