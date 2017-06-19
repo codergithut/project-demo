@@ -6,16 +6,10 @@ import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
-import webSource.annotation.encrypt;
-import webSource.jpa.entry.User;
 import webSource.util.AESUtil;
 import webSource.util.Security;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.util.*;
 
@@ -107,7 +101,7 @@ public class SecurityInterceptor implements Interceptor
             if(returnValue != null && returnValue instanceof ArrayList<?>){
                 List<?> list = (ArrayList<?>)returnValue;
                 for(Object val:list){
-                    security.DecryptField(val, key);
+                    security.DecryptField(val);
                 }
                 break;
             }
@@ -128,7 +122,7 @@ public class SecurityInterceptor implements Interceptor
     }
 
     public void setProperty(Object o) throws InvocationTargetException, IllegalAccessException, ParseException {
-        security.EncryptField(o, key);
+        security.EncryptField(o);
     }
 
     public void setQueryMap(Map map, List<String> params) {
