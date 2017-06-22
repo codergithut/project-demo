@@ -1,6 +1,7 @@
 package webSource.controller.rest;
 
 import com.github.abel533.entity.EntityMapper;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import webSource.annotation.getTime;
 import webSource.jpa.entry.User;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import webSource.jpa.repository.JpaRepositoryBean;
+import webSource.mybatis.routingdata.CustomerContextHolder;
 import webSource.sqlite.SqlLiteTest;
 import webSource.tool.GetUrlResource;
 
@@ -56,8 +58,11 @@ public class RestControllerDemo {
     @Autowired
     SqlLiteTest sqlLiteTest;
 
+
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public List<Object> getUser(@PathVariable Long id) throws IOException, SQLException {
+
+
 
         List<Object> users=new ArrayList<Object>();
 
@@ -70,7 +75,10 @@ public class RestControllerDemo {
         user.setName("hshshs");
         user.setGroup_id(33l);
         user.setUserid(2222l);
-        userMapper.insertUser(user);
+
+        CustomerContextHolder.setCustomerType(CustomerContextHolder.DATA_SOURCE_A);
+
+       // userMapper.insertUser(user);
 
 
         users.add(userMapper.findUserByName("hshshs"));

@@ -13,14 +13,19 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import webSource.mybatis.routingdata.CustomerContextHolder;
+import webSource.mybatis.routingdata.DynamicDataSource;
 import webSource.util.AESUtil;
 import webSource.util.Security;
 import webSource.util.plugin.SecurityInterceptor;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author <a href="mailto:Administrator@gtmap.cn">Administrator</a>
@@ -48,7 +53,8 @@ public class MybatisConfig implements TransactionManagementConfigurer {
     public SqlSessionFactory sqlSessionFactoryBean() {
 
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(DataSource());
+        AbstractRoutingDataSource dataSource = initRoutingDataSource();
+        bean.setDataSource(dataSource);
         //模型对象会默认在这个路径下
         bean.setTypeAliasesPackage("webSource.jpa.entry");
         SecurityInterceptor securityInterceptor = new SecurityInterceptor();
@@ -76,6 +82,21 @@ public class MybatisConfig implements TransactionManagementConfigurer {
             throw new RuntimeException("sqlSessionFactory init fail",e);
         }
     }
+
+    /**
+     * 数据源路由类
+     * @return
+     */
+    @Bean
+    public AbstractRoutingDataSource initRoutingDataSource() {
+        DynamicDataSource dynamicDataSource = new DynamicDataSource();
+        Map<Object,Object> dataSources = new HashMap<Object,Object>();
+        dataSources.put("dataSource", DataSource());
+        dynamicDataSource.setTargetDataSources(dataSources);
+        dynamicDataSource.setDefaultTargetDataSource(DataSource());
+        return dynamicDataSource;
+    }
+
 
 
     @Bean
