@@ -1,8 +1,10 @@
 package webSource.controller.rest;
 
 import com.github.abel533.entity.EntityMapper;
+import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import webSource.annotation.getTime;
 import webSource.jpa.entry.User;
 import webSource.mybatis.UserMapper;
@@ -15,8 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import webSource.jpa.repository.JpaRepositoryBean;
 import webSource.mybatis.routingdata.CustomerContextHolder;
 import webSource.sqlite.SqlLiteTest;
+import webSource.thread.CommonBean;
+import webSource.thread.PrototypeBean;
 import webSource.tool.GetUrlResource;
+import webSource.util.BeanUtils;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -58,6 +64,15 @@ public class RestControllerDemo {
     @Autowired
     SqlLiteTest sqlLiteTest;
 
+//    @Autowired
+    PrototypeBean prototypeBean;
+
+//    @Autowired
+    CommonBean commonBean;
+//
+    @Autowired
+    ThreadPoolTaskExecutor taskExecutor;
+
 
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public List<Object> getUser(@PathVariable Long id) throws IOException, SQLException {
@@ -76,7 +91,31 @@ public class RestControllerDemo {
         user.setGroup_id(33l);
         user.setUserid(2222l);
 
+        commonBean = (CommonBean) BeanUtils.getFileSendService("commonBean");
+        prototypeBean = (PrototypeBean)BeanUtils.getFileSendService("prototypeBean");
+
+
+
+
+
         CustomerContextHolder.setCustomerType(CustomerContextHolder.DATA_SOURCE_A);
+        commonBean.sayCommonBean();
+        prototypeBean.sayPrototypeBean();
+
+        commonBean.addNumber();
+        prototypeBean.addNumber();
+
+        Thread t = new Thread(commonBean);
+//        t.setDaemon(true);
+        t.start();
+
+
+
+        //new Thread(prototypeBean).run();
+
+
+        taskExecutor.execute(commonBean);
+        taskExecutor.execute(prototypeBean);
 
        // userMapper.insertUser(user);
 
