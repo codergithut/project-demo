@@ -30,8 +30,9 @@ public class MyTemplateController {
 
     @RequestMapping(value="", method= RequestMethod.GET)
     public String getUser(Map<String,Object> model) {
-        model.put("name","tianjian");
-        model.put("password","tianjian");
+        model.put("name","test");
+        model.put("auto_value", "url1");
+        model.put("auto_value1", "url2");
         return "template";
     }
 
