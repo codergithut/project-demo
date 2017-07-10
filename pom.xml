@@ -20,6 +20,9 @@
         <module>project-wechart-service-demo</module>
         <module>protect-springboot-spark</module>
         <module>project-websocket</module>
+        <module>project-web.mongodb</module>
+        <module>project-socket</module>
+        <module>project-elasticsearch-demo</module>
     </modules>
 
     <dependencyManagement>
